@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+/.vscode
+little-lemon.code-workspace
+Little-Lemon-Dessert-Menu-11.8.23c_compressed.pdf
+Little-Lemon-Menu-11.8.23c_compressed.pdf
