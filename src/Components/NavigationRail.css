@@ -1,10 +1,9 @@
 nav {
     position: fixed;
-    outline: 1px solid red;/* For debugging layout*/
     height: 100%;
+    min-width: 120px;
     list-style-type: none;
     padding: 2rem 0.5rem;
-    background-color: var(--md-sys-color-primary);
   }
   nav ul{
     list-style-type: none;

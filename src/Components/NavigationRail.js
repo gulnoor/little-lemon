@@ -1,9 +1,13 @@
+import { useContext } from "react";
+import { ThemeContext } from "../ThemeContext";
 import "./NavigationRail.css"
-const NavigationRail = () => {
+const NavigationRail = ({toggle}) => {
+  const colors = useContext(ThemeContext)
+
 
   return (
     <>
-      <nav>
+      <nav style={{background:colors.secondary}}>
         <ul>
           <li>
             <a href="">Home</a>
@@ -15,7 +19,7 @@ const NavigationRail = () => {
             <a href="">Reservation</a>
           </li>
           <li>
-            <a href="">Toggle Theme</a>
+            <button onClick={toggle}>Toggle Theme</button>
           </li>
         </ul>
       </nav>
