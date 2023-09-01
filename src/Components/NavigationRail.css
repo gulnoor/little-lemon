@@ -1,0 +1,18 @@
+nav {
+    position: fixed;
+    outline: 1px solid red;/* For debugging layout*/
+    height: 100%;
+    list-style-type: none;
+    padding: 2rem 0.5rem;
+    background-color: var(--md-sys-color-primary);
+  }
+  nav ul{
+    list-style-type: none;
+  }
+  nav li{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 48px;
+    min-height: 48px;
+  }
