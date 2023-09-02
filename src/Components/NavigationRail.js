@@ -2,7 +2,7 @@ import "./NavigationRail.css";
 const NavigationRail = ({ toggle, theme }) => {
   return (
     <>
-      <nav>
+      <nav className="Nav">
         <ul>
           <li>
             <span className="material-symbols-outlined">home</span>
