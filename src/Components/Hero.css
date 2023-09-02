@@ -1,20 +1,30 @@
 .Hero{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    border-radius: 30px;
+    border-radius: 16px;
     background-color: var(--md-sys-color-primary-container);
-    height: 600px;
+    /* height: 600px; */
     margin: 0.5rem;
-    padding: 0px 6rem;
+    padding: 0.5rem;
+    flex-wrap: wrap-reverse;
+    overflow: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
+    /* min-height: 600px; */
+    height: 80%;
 }
+.Hero::-webkit-scrollbar {
+    display: none;
+  }
 .Hero .hero-text{
     display: flex;
     flex-direction: column;
 }
 .Hero img{
-    max-height: 100%;
-    height: 300px;
+    
+    max-height: 20vi;
+    min-height: 250px;
 }
 .Hero h1{
     color: var(--md-sys-color-primary);
@@ -26,4 +36,14 @@
 }
 .Hero span{
     font-size: 1.8rem;
+}
+
+.logo-bg{
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    height: 100%;
+    float: right;
 }

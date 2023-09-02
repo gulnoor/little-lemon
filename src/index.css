@@ -13,6 +13,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 code {
@@ -122,3 +123,6 @@ code {
   --md-sys-color-surface-dim: var(--md-sys-color-surface-dim-light);
   --md-sys-color-surface-bright: var(--md-sys-color-surface-bright-light);
  }
+:root{
+  height: 100%;
+}

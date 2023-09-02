@@ -8,7 +8,15 @@ const Hero = () => {
         <h2>Chicago</h2>
         <span>traditional recipes served with a modern twist</span>
       </div>
-      <img src={logo} alt="" />
+      <div
+        className="logo-bg"
+        style={{
+          background: "var(--md-sys-color-primary)",
+          borderRadius: "16px"
+        }}
+      >
+        <img src={logo} alt="" />
+      </div>
     </div>
   );
 };
