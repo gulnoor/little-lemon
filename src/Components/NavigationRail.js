@@ -6,22 +6,22 @@ const NavigationRail = ({ toggle, theme }) => {
       <nav>
         <ul>
           <li>
-            <span class="material-symbols-outlined">home</span>
+            <span className="material-symbols-outlined">home</span>
             Home
           </li>
           <li>
-            <span class="material-symbols-outlined">restaurant_menu</span>
+            <span className="material-symbols-outlined">restaurant_menu</span>
             Menu
           </li>
           <li>
-            <span class="material-symbols-outlined">table_restaurant</span>
+            <span className="material-symbols-outlined">table_restaurant</span>
             Reservation
           </li>
           <li onClick={toggle}>
             {theme === "light" ? (
-              <span class="material-symbols-outlined">dark_mode</span>
+              <span className="material-symbols-outlined">dark_mode</span>
             ) : (
-              <span class="material-symbols-outlined">light_mode</span>
+              <span className="material-symbols-outlined">light_mode</span>
             )}
             Toggle
           </li>
