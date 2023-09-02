@@ -1,11 +1,12 @@
 import "./App.css";
-import Hero from "./Components/Hero";
 import "./css/tokens.css";
-import {  useRef } from "react";
+import Hero from "./Components/Hero";
 import NavigationRail from "./Components/NavigationRail";
-function App() {
-  const theme = useRef("light");
+import {  useRef } from "react";
 
+function App() {
+
+  const theme = useRef("light");
   const toggleTheme = () => {
     if (theme.current === "light") {
       document.querySelector("html").className = "dark";
@@ -17,7 +18,7 @@ function App() {
   };
 
   return (
-    <div className="App" style={{ height: "100vh", display: "flex" }}>
+    <div className="App" style={{ height: "100vh", display: "flex",background:"var(--md-sys-color-surface)" }}>
       <NavigationRail theme={theme.current} toggle={toggleTheme} />
       <div
         className="Content-container"
@@ -25,7 +26,6 @@ function App() {
           height: "100vh",
           overflowY: "scroll",
           width: "100%"
-         
         }}
       >
         <Hero />
