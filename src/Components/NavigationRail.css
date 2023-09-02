@@ -16,6 +16,7 @@ li {
   display: flex;
   padding: 0.8rem 0px;
   flex-direction: column;
+  border-radius: 16px;
   justify-content: center;
   align-items: center;
   min-width: 48px;
@@ -33,7 +34,6 @@ li:hover {
     display: flex;
     height: auto;
     position: static;
-    outline: 1px solid red;/* For debugging layout*/
     flex-direction: row;
   }
 
