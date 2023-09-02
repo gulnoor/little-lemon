@@ -24,8 +24,8 @@ function App() {
         style={{
           height: "100vh",
           overflowY: "scroll",
-          width: "100%",
-          paddingLeft: "1rem",
+          width: "100%"
+         
         }}
       >
         <Hero />
