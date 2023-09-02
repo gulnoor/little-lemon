@@ -1,6 +1,5 @@
 import "./NavigationRail.css";
 const NavigationRail = ({ toggle, theme }) => {
-
   return (
     <>
       <nav>

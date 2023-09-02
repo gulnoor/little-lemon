@@ -8,11 +8,11 @@ nav {
   background: var(--md-sys-color-surface-container-lowest);
 }
 
-nav ul {
+ul {
   list-style-type: none;
 }
 
-nav li {
+li {
   display: flex;
   padding: 0.8rem 0px;
   flex-direction: column;
@@ -21,8 +21,24 @@ nav li {
   min-width: 48px;
   min-height: 48px;
   transition: 0.3s;
+  cursor: pointer;
+  user-select: none;
 }
 
 li:hover {
   background-color: var(--md-sys-color-secondary-container);
 }
+@media screen and (max-width:600px){
+  ul{
+    display: flex;
+    height: auto;
+    position: static;
+    outline: 1px solid red;/* For debugging layout*/
+    flex-direction: row;
+  }
+
+  li{
+    width: fit-content;
+
+  }
+  }
