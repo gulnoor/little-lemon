@@ -1,28 +1,29 @@
-import { useContext } from "react";
-import { ThemeContext } from "../ThemeContext";
 import "./NavigationRail.css";
-const NavigationRail = ({ toggle }) => {
-  const colors = useContext(ThemeContext);
+const NavigationRail = ({ toggle, theme }) => {
 
   return (
     <>
-      <nav style={{ background: colors.secondary }}>
+      <nav>
         <ul>
           <li>
             <span class="material-symbols-outlined">home</span>
-            <a href="">Home</a>
+            Home
           </li>
           <li>
             <span class="material-symbols-outlined">restaurant_menu</span>
-            <a href="">Menu</a>
+            Menu
           </li>
           <li>
             <span class="material-symbols-outlined">table_restaurant</span>
-            <a href="">Reservation</a>
+            Reservation
           </li>
-          <li>
-            <span class="material-symbols-outlined">dark_mode</span>
-            <button onClick={toggle}>Toggle Theme</button>
+          <li onClick={toggle}>
+            {theme === "light" ? (
+              <span class="material-symbols-outlined">dark_mode</span>
+            ) : (
+              <span class="material-symbols-outlined">light_mode</span>
+            )}
+            Toggle
           </li>
         </ul>
       </nav>
