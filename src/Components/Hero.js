@@ -19,23 +19,24 @@ const Hero = () => {
   // const heroHeight = window.getComputedStyle(heroRef.current).height;
   return (
 
-      <div className="Hero">
-        <div
-          className="logo-bg"
-          // style={logobgStyle}
-        >
-          <h1>Little Lemmon</h1>
-          <img src={logo} alt="" />
-        </div>
+    <div className="Hero">
 
-        <div className="hero-content">
+      <div className="hero-content">
+        <h1>Little Lemmon</h1>
         <h2>Chicago</h2>
         <span>traditional recipes served with a modern twist</span>
         <Button type="outline">Order Online</Button>
         <Button type="filled">Reserve a Table</Button>
 
-        </div>
       </div>
+      <div
+        className="logo-bg"
+      // style={logobgStyle}
+      >
+        <h1>Little Lemmon</h1>
+        <img src={logo} alt="" />
+      </div>
+    </div>
   );
 };
 export default Hero;
