@@ -8,7 +8,7 @@
   padding: 0;
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
-  outline: 1px solid #2d4e37;/* For debugging layout*/
+  /* outline: 1px solid #2d4e37; *//* For debugging layout*/
 }
 
 body {

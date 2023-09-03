@@ -4,6 +4,7 @@ import Hero from "./Components/Hero";
 import NavigationRail from "./Components/NavigationRail";
 import {  useRef } from "react";
 import TopNav from "./Components/TopNav";
+import AboutUs from "./Components/AboutUs";
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
       >
         <Hero />
         <TopNav></TopNav>
+        <AboutUs></AboutUs>
       </div>
     </div>
   );
