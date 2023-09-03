@@ -6,7 +6,10 @@ const Button = ({ children, type, style={} }) => {
     width: "fit-content",
     padding: "0px 2rem",
     // marginTop:"1rem",
-    fontSize:"1rem"
+    fontSize:"1rem",
+    // textOverflow: "ellipsis"
+
+
   };
   const filled = {
     ...styleButton,

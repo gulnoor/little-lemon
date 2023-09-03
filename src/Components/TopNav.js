@@ -4,7 +4,11 @@ import "./TopNav.css"
 const TopNav = ()=>{
     const buttonStyle = {
         border:"none",
-        padding:"0 4rem"
+        padding:"1rem 3.5rem",
+        fontSize:"1.5rem",
+        minHeight:"85px",
+        flex:"1"
+        
     }
     return(
         
