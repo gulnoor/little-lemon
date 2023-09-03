@@ -17,6 +17,7 @@
 
 .logo-bg h1 {
     display: none;
+    text-align: center;
 }
 
 .Hero::-webkit-scrollbar {
@@ -32,7 +33,6 @@
     /* background: var(--md-sys-color-primary); */
     /* border-radius: 1rem; */
     justify-content: center;
-    justify-content: center;
     align-items: center;
     /* width: 35%; */
     /* height: 100%; */
@@ -45,11 +45,11 @@
 .hero-content {
     display: flex;
     flex-direction: column;
-    padding: 2rem;
+    padding: 2rem 0 2rem 4rem;
 }
 
 .Hero img {
-    width: 100%;
+    /* width: 100%; */
     max-height: 300px;
     object-fit: contain;
     /* margin: 16px 0; */
@@ -85,7 +85,7 @@
         order: 2;
         padding: 0 1rem 1rem 1rem;
     width: 100%;
-
+align-items: center;
     }
 
     .Hero img {
@@ -97,6 +97,7 @@
         /* margin-left: 0; */
         order: 1;
         width: 100%;
+        justify-content: space-evenly;
         /* height: 100px; */
         /* margin-bottom: auto; */
         /* margin-top: 8px; */
@@ -126,7 +127,7 @@
 
 @media screen and (max-width:1042px) and (min-width:601px) {
     .hero-content {
-        padding: 1.4rem;
+        padding: 1.4rem 0 1.4rem 2.2rem;
     }
 
     .hero-content h1 {
