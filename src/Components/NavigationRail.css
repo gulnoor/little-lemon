@@ -1,18 +1,20 @@
-.App nav {
+ul {
+  display: flex;
+  position: fixed;
+  bottom: 0px;
+  list-style-type: none;
+  z-index: 99;
+  background-color: var(--md-sys-color-surface-container-highest);
+  width: 100vw;
+  justify-content: space-evenly;
+  align-items: center;
   color: var(--md-sys-color-on-surface);
-  display: block;
-  height: 100%;
-  width: 120px;
-  list-style-type: none;
-  padding: 2rem 0.5rem;
-  background: var(--md-sys-color-surface-container-lowest);
+  transition: 0.3s;
+
 }
 
-.Nav ul {
-  list-style-type: none;
-}
-
-.Nav li {
+li {
+  /* width: fit-content; */
   display: flex;
   padding: 0.8rem 0px;
   flex-direction: column;
@@ -24,21 +26,26 @@
   transition: 0.3s;
   cursor: pointer;
   user-select: none;
+
 }
 
 .Nav li:hover {
   background-color: var(--md-sys-color-secondary-container);
 }
-@media screen and (max-width:600px){
-  ul{
-    display: flex;
-    height: auto;
-    position: static;
-    flex-direction: row;
+
+
+@media screen and (min-width:600px) {
+  .App ul {
+    position: relative;
+    display: block;
+    height: 100%;
+    width: 120px;
+    list-style-type: none;
+    padding: 2rem 0.5rem;
+    flex-direction: column;
   }
 
-  li{
-    width: fit-content;
+  .Nav ul {
+  }
 
-  }
-  }
+}

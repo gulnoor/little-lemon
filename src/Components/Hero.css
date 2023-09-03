@@ -12,8 +12,7 @@
     -ms-overflow-style: none;
     /* IE and Edge */
     scrollbar-width: none;
-    height: 65vmin;
-    
+    height: 550px;
 }
 
 .Hero::-webkit-scrollbar {
