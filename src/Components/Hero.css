@@ -1,7 +1,9 @@
+
 .Hero {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     border-radius: 16px;
     background-color: var(--md-sys-color-primary-container);
     /* height: 600px; */
@@ -12,54 +14,79 @@
     -ms-overflow-style: none;
     /* IE and Edge */
     scrollbar-width: none;
-    height: 550px;
+    /* height: 550px; */
 }
 
 .Hero::-webkit-scrollbar {
     display: none;
 }
 
-.Hero .hero-text {
-    display: flex;
-    flex-direction: column;
-    padding: 5%;
-}
 
 .logo-bg {
     display: flex;
+    width: 100%;
     background: var(--md-sys-color-primary);
     border-radius: 1rem;
     justify-content: center;
+    /* justify-content: space-between; */
     align-items: center;
-    width: 35%;
-    height: 100%;
-    margin-left: auto;
-    /* padding: 0 rem; */
+    /* width: 35%; */
+    /* height: 100%; */
+    /* margin-left: auto; */
+    padding: 0 2rem;
     /* align-self: flex-end; */
     /* flex-grow: 1; */
 }
+.hero-content{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0px 1rem;
+}
 .Hero img {
-   width:50%;
-   /* height: 70%; */
-   max-height: 95%;
+   width:25%;
+   max-height:200px;
+   object-fit: contain;
+   margin: 16px 0;
 }
 
 .Hero h1 {
     font-family: "Google Sans";
-    color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
     font-size: 6vw;
     margin-bottom: 8px;
 }
 
 .Hero h2 {
     color: var(--md-sys-color-primary);
-    font-size: 3.5vw;
-    margin-bottom: 8px;
+    font-size: 3.5rem;
+    margin: 8px 0px;
 }
 
 .Hero span {
-    font-size: 2vw;
+    font-size: 2rem;
 }
 .Hero Button{
     margin-top: 1rem;
+}
+@media screen and (max-width: 600px) {
+
+    .logo-bg{
+        margin-left: 0;
+        /* width: 100%; */
+        height: 200px;
+        /* margin-bottom: auto; */
+        /* margin-top: 8px; */
+    }
+    .Hero h1{
+        font-size: 3rem;
+    }
+    .Hero h2{
+        font-size: 1.5rem;
+    }
+    .Hero span{
+        font-size: 1rem;
+    }
+
+
 }
