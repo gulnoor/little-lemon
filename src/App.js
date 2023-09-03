@@ -3,6 +3,7 @@ import "./App.css";
 import Hero from "./Components/Hero";
 import NavigationRail from "./Components/NavigationRail";
 import {  useRef } from "react";
+import TopNav from "./Components/TopNav";
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
         }}
       >
         <Hero />
+        <TopNav></TopNav>
       </div>
     </div>
   );

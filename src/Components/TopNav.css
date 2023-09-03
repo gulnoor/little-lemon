@@ -1,0 +1,11 @@
+.TopNav{
+    display: flex;
+    position: sticky;
+    top: 1rem;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin: auto;
+    border-radius: 100vh;
+    background: var(--md-sys-color-secondary-container);
+}
