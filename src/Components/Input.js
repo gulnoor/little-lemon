@@ -8,7 +8,7 @@ const Input = ({ type = "text", id, name, label }) => {
         padding: "0 8px",
         background: "var(--md-sys-color-surface)",
         top: "50%",
-        left: "16px",
+        left: "0.5rem",
         transform: "translate(0,-50%)",
         transition: "0.2s",
         zIndex: "41"
