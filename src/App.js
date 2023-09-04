@@ -22,7 +22,7 @@ function App() {
   return (
     <div className="App" style={{ height: "100vh", display: "flex",background:"var(--md-sys-color-surface)" }}>
       <NavigationRail theme={theme.current} toggle={toggleTheme} />
-      <div
+      <main
         className="Content-container"
         style={{
           height: "100vh",
@@ -33,7 +33,8 @@ function App() {
         <Hero />
         <TopNav></TopNav>
         <AboutUs></AboutUs>
-      </div>
+      </main>
+      <footer></footer>
     </div>
   );
 }
