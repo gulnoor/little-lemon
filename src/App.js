@@ -1,5 +1,5 @@
 import "./App.css";
-
+import Input from "./Components/Input";
 import Hero from "./Components/Hero";
 import NavigationRail from "./Components/NavigationRail";
 import {  useRef } from "react";
@@ -29,9 +29,10 @@ function App() {
           overflowY: "scroll",
           width: "100%"
         }}
-      >
+        >
         <Hero />
         <TopNav></TopNav>
+        <Input label="Name"/>
         <AboutUs></AboutUs>
       </main>
       <footer></footer>
