@@ -22,7 +22,8 @@ const Input = ({ type = "text", id, name,label }) => {
 
     }
     useEffect(() => {
-        isFocused ?
+
+        if(isFocused){
             setLabelStyle((labelStyle) => {
                 return {
                     ...labelStyle,
@@ -31,14 +32,39 @@ const Input = ({ type = "text", id, name,label }) => {
                     color: "var(--md-sys-color-primary)"
                 }
             })
-            : setLabelStyle((labelStyle) => {
-                return {
-                    ...labelStyle,
-                    top: "50%",
-                    fontSize: "1.2rem",
-                    color: "grey"
-                }
-            });
+
+        }
+        else{
+            if (!inputRef.current.value){
+                setLabelStyle((labelStyle) => {
+                    return {
+                        ...labelStyle,
+                        top: "50%",
+                        fontSize: "1.2rem",
+                        color: "grey"
+                    }
+                })
+
+            }
+        }
+        // isFocused ?
+        //     setLabelStyle((labelStyle) => {
+        //         return {
+        //             ...labelStyle,
+        //             top: "0px",
+        //             fontSize: "16px",
+        //             color: "var(--md-sys-color-primary)"
+        //         }
+        //     })
+        //     : setLabelStyle((labelStyle) => {
+        //         return {
+        //             ...labelStyle,
+        //             top: "50%",
+        //             fontSize: "1.2rem",
+        //             color: "grey"
+        //         }
+        //     });
+            
     }, [isFocused])
     return (
         
