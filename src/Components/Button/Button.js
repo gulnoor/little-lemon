@@ -1,5 +1,5 @@
 import "./style.css";
-const Button = ({ children, type, style={} }) => {
+const Button = ({ children,id, type, style={} }) => {
   const styleButton = {
     borderRadius: "100vh",
     minHeight: "48px",
@@ -29,7 +29,7 @@ const Button = ({ children, type, style={} }) => {
 
   return (
     <>
-      <button style={type === "filled" ? filled : outline}>{children}</button>
+      <button className={id} style={type === "filled" ? filled : outline}>{children}</button>
     </>
   );
 };

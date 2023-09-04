@@ -116,10 +116,10 @@ align-items: center;
     }
 
     .logo-bg h1 {
-        display: block;
+        display: inline;
         font-size: 3rem;
-        padding-left: 1rem;
-        padding-top: 1rem;
+        padding:0 0.5rem;
+        
     }
 
 

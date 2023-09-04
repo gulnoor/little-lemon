@@ -6,8 +6,9 @@ const TopNav = ()=>{
         border:"none",
         padding:"1rem 3.5rem",
         fontSize:"1.5rem",
-        minHeight:"85px",
-        flex:"1"
+        minHeight:(window.screen.width>600)?"70px":"52px",
+        flex:"1",
+        whiteSpace: "nowrap"
         
     }
     return(

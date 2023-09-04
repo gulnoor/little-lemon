@@ -27,7 +27,7 @@ const Hero = () => {
         <h2>Chicago</h2>
         <span>traditional recipes served with a modern twist</span>
         <Button type="outline" style={buttonStyle}>Order Online</Button>
-        <Button type="filled" style={buttonStyle}>Reserve a Table</Button>
+        <Button id="res" type="filled" style={buttonStyle}>Reserve a Table</Button>
 
       </div>
       <div
@@ -37,6 +37,7 @@ const Hero = () => {
         <h1>Little Lemmon</h1>
         <img src={logo} alt="" />
       </div>
+      
     </div>
   );
 };

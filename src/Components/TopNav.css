@@ -19,3 +19,9 @@
 ::-webkit-scrollbar {
     display: none;
 }
+@media screen and (max-width:600px) {
+    .TopNav Button{
+        min-height: 90px;
+    }
+    
+}
