@@ -5,6 +5,7 @@ import NavigationRail from "./Components/NavigationRail";
 import {  useRef } from "react";
 import TopNav from "./Components/TopNav";
 import AboutUs from "./Components/AboutUs";
+import ReservationForm from "./Components/ReservationForm";
 
 function App() {
 
@@ -32,7 +33,7 @@ function App() {
         >
         <Hero />
         <TopNav></TopNav>
-        <Input label="Name"/>
+        <ReservationForm />
         <AboutUs></AboutUs>
       </main>
       <footer></footer>
