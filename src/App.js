@@ -1,5 +1,4 @@
 import "./App.css";
-import Input from "./Components/Input";
 import Hero from "./Components/Hero";
 import NavigationRail from "./Components/NavigationRail";
 import {  useRef } from "react";

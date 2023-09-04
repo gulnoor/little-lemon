@@ -4,8 +4,8 @@ import Input from './Input';
 const ReservationForm = () => {
   return (
     <div>
-        <Input></Input>
-        <Input></Input>
+        <Input label={"First Name"}></Input><br />
+        <Input></Input><br />
         <Input></Input>
 
     </div>
