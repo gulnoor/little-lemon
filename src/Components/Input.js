@@ -1,26 +1,43 @@
 import { useEffect, useRef, useState } from "react"
 import "./Input.css"
+import '@material/web/button/filled-button.js';
 
-const inputContainer = ({ children }) => {
-    return (
-        <div style={{ position: "relative" }} className="input-container">
-            {children}
-        </div>
-    )
-}
+import '@material/web/textfield/outlined-text-field'
+// const inputContainer = ({ children }) => {
+//     return (
+//         <div style={{
+//             position: "relative",
+//             border:"2px solid var(--md-sys-color-outline)",
+//             background:"red"
+//         }} className="input-container">
+//             {children}
+//         </div>
+//     )
+// }
 const Input = ({ children, id, type, ...other }) => {
 
     const [value, setValue] = useState("");
     const [isFocused, setIsFocused] = useState(false);
+
+    const [containerStyle, setContainerStyle] = useState({
+        position: "relative",
+        display: "flex",
+        width: "fit-content",
+        border: "2px solid var(--md-sys-color-outline)",
+        borderRadius: "6px",
+    })
+
     const [labelStyle, setLabelStyle] = useState({
         position: "absolute",
-        padding: "0 8px",
+        padding: "1px 8px",
         background: "var(--md-sys-color-surface)",
         top: "50%",
         left: "0.5rem",
         transform: "translate(0,-50%)",
         transition: "0.2s",
-        zIndex: "41"
+        zIndex: "41",
+        borderRadius: "3px",
+        whiteSpace: "nowrap"
 
     })
     const inputRef = useRef(null);
@@ -38,7 +55,9 @@ const Input = ({ children, id, type, ...other }) => {
             setLabelStyle((labelStyle) => {
                 return {
                     ...labelStyle,
-                    top: "0px",
+                    top: "-1px",
+                    margin: "0px 3px",
+
                     fontSize: "16px",
                     color: "var(--md-sys-color-primary)",
                     zIndex: "43"
@@ -53,8 +72,10 @@ const Input = ({ children, id, type, ...other }) => {
                     return {
                         ...labelStyle,
                         top: "50%",
-                        fontSize: "1.2rem",
-                        color: "grey",
+                        fontSize: "1.1rem",
+                        margin: "0px 0px",
+
+                        color: "var(--md-sys-color-on-surface)",
                         zIndex: "41"
                     }
                 })
@@ -64,30 +85,32 @@ const Input = ({ children, id, type, ...other }) => {
 
     }, [isFocused, value])
 
+    useEffect(() => {
+        isFocused ? setContainerStyle((containerStyle) => {
+            return {
+                ...containerStyle,
+                border:"3px solid var(--md-sys-color-primary)"
+            }
+        }) 
+        : setContainerStyle((containerStyle) => {
+            return {
+                ...containerStyle,
+                border:"2px solid var(--md-sys-color-outline)"
+            }
+        })
+    }, [isFocused])
+
     switch (type) {
         case "submit":
             return (
-                <div style={{ position: "relative" }} className="input-container">
+                <md-filled-button >Next</md-filled-button>
 
-                    <inputContainer>
-
-                        <input style={{
-                            zIndex: "42",
-                            position: "relative"
-                        }}
-
-                            id={id}
-                            type={type}
-                            // onChange={(e) => { setValue(e.target.value) }}
-                            {...other} />
-                    </inputContainer>
-                </div>
             )
 
         default:
             return (
 
-                <div style={{ position: "relative" }} className="input-container">
+                <div style={containerStyle} className="input-container">
                     {/* <label ref={labelRef}
                         htmlFor={id} style={labelStyle}>{children}</label>
                     <input style={{
@@ -100,22 +123,31 @@ const Input = ({ children, id, type, ...other }) => {
                         id={id}
                         type={type}
                         {...other} /> */}
-                    <inputContainer>
-                        <label ref={labelRef}
-                            htmlFor={id} style={labelStyle}>{children}</label>
-                        <input style={{
-                            zIndex: "42",
-                            position: "relative"
-                        }}
-                            onBlur={handleBlur}
-                            value={value}
-                            onFocus={handleFocus}
-                            ref={inputRef}
-                            id={id}
-                            type={type}
-                            onChange={(e) => { setValue(e.target.value) }}
-                            {...other} />
-                    </inputContainer>
+                    {/* <inputContainer> */}
+
+                    <label ref={labelRef}
+                        htmlFor={id} style={labelStyle}>{children}</label>
+                    <input style={{
+                        zIndex: "42",
+                        position: "relative",
+                        border: "none",
+                        borderRadius: "6px",
+                        // minHeight: "56px",
+                        padding: "4px",
+                        margin: "0.65rem",
+                        fontSize: "1.1rem",
+                        background: "transparent",
+                        color: "var(--md-sys-color-on-surface)"
+                    }}
+                        onBlur={handleBlur}
+                        value={value}
+                        onFocus={handleFocus}
+                        ref={inputRef}
+                        id={id}
+                        type={type}
+                        onChange={(e) => { setValue(e.target.value) }}
+                        {...other} />
+                    {/* </inputContainer> */}
                 </div>
 
             )

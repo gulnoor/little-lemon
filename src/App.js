@@ -1,3 +1,5 @@
+import'@material/web/textfield/outlined-text-field'
+
 import "./App.css";
 import Hero from "./Components/Hero";
 import NavigationRail from "./Components/NavigationRail";
@@ -30,6 +32,13 @@ function App() {
           width: "100%"
         }}
         >
+          <br />
+          <form action="">
+
+          <label htmlFor="email">Email</label>
+          <md-outlined-text-field id={"email"}label="Email"  type="email" ></md-outlined-text-field>
+          </form>
+          
         <ReservationForm />
         <Hero />
         <TopNav></TopNav>

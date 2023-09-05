@@ -1,17 +1,10 @@
 
-.input-container input{
-        border: 2px solid var(--md-sys-color-outline);
-        border-radius: 8px;
-        min-height: 48px;
-        padding: 0 1rem;
-        font-size: 1.1rem;
-        background: transparent;
-    
-}
-
-.input-container input:invalid{
-    border: 2px solid var(--md-sys-color-error);
-}
 input:-webkit-autofill {
         -webkit-box-shadow: 0 0 0px 1000px var(--md-sys-color-secondary-container) inset;
+        -webkit-text-fill-color: var(--md-sys-color-on-secondary-container) ;
     }
+
+input:focus{
+    outline: none;
+    border: 3px solid var(--md-sys-color-primary);
+}

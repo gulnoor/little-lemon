@@ -5,7 +5,7 @@ const ReservationForm = () => {
   return (
     <form>
       <Input type={"select"}>Persons</Input> <br />
-      <Input type={"date"}></Input><br />
+      <Input type={"date"}>Date</Input><br />
       <Input type={"time"}>Time</Input><br />
       <Input  >First Name</Input><br />
       <Input >Last Name</Input><br />
