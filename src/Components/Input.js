@@ -19,7 +19,8 @@ const Input = ({ children, id, type, ...other }) => {
         fontSize: "1.1rem",
         background: "transparent",
         color: type === "date" || type === "time" ? "transparent" : "var(--md-sys-color-on-surface)",
-        outline: "none"
+        outline: "none",
+        transition:"color 0.1s"
     })
     const [containerStyle, setContainerStyle] = useState({
         position: "relative",
@@ -52,27 +53,33 @@ const Input = ({ children, id, type, ...other }) => {
     const handleFocus = () => {
         setIsFocused(true);
 
-    }
-    const handleDF = (e) => {
-        setIsFocused(false);
-        e.target.type = "date";
-    }
-    const handleTF = (e) => {
-        setIsFocused(false);
-        e.target.type = "time";
-    }
-
-    const handleDTB = (e) => {
-        setIsFocused(true);
-        e.target.type = "text";
-
-    }
-
+    }   
 
 
     useEffect(() => {
+        // if (isFocused&&!value) {
+        //     setLabelStyle((labelStyle) => {
+        //         return {
+        //             ...labelStyle,
+        //             top: "-1px",
+        //             margin: "0px 3px",
+        //             fontSize: "16px",
+        //             color: "var(--md-sys-color-primary)",
+        //             zIndex: "43"
+        //         }
+        //     })
+        // }
+        // else if(!isFocused&&value){
 
-        if (isFocused) {
+        // }
+        // else if (isFocused&&!value){
+
+        // }
+        // else if(!isFocused&&!value){
+
+        // }
+
+        if (isFocused||value) {
             setLabelStyle((labelStyle) => {
                 return {
                     ...labelStyle,
@@ -111,7 +118,7 @@ const Input = ({ children, id, type, ...other }) => {
             })
 
         }
-        else if (!isFocused && value) {
+        if (!isFocused && value) {
             setLabelStyle((labelStyle) => {
                 return {
                     ...labelStyle,
