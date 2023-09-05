@@ -1,7 +1,16 @@
 import { useEffect, useRef, useState } from "react"
 import "./Input.css"
-const Input = ({ type = "text", id, name, label }) => {
 
+const inputContainer = ({ children }) => {
+    return (
+        <div style={{ position: "relative" }} className="input-container">
+            {children}
+        </div>
+    )
+}
+const Input = ({ children, id, type, ...other }) => {
+
+    const [value, setValue] = useState("");
     const [isFocused, setIsFocused] = useState(false);
     const [labelStyle, setLabelStyle] = useState({
         position: "absolute",
@@ -25,7 +34,7 @@ const Input = ({ type = "text", id, name, label }) => {
     }
     useEffect(() => {
 
-        if (isFocused) {
+        if (isFocused || value) {
             setLabelStyle((labelStyle) => {
                 return {
                     ...labelStyle,
@@ -39,7 +48,7 @@ const Input = ({ type = "text", id, name, label }) => {
 
         }
         else {
-            if (!inputRef.current.value) {
+            if (!value) {
                 setLabelStyle((labelStyle) => {
                     return {
                         ...labelStyle,
@@ -53,17 +62,64 @@ const Input = ({ type = "text", id, name, label }) => {
             }
         }
 
-    }, [isFocused])
-    return (
+    }, [isFocused, value])
 
-        <div style={{ position: "relative" }} className="input-container">
-            <label ref={labelRef} htmlFor={id} style={labelStyle}>{label}</label>
-            <input style={{
-                zIndex: "42",
-                position:"relative"
-            }} onBlur={handleBlur} onFocus={handleFocus} ref={inputRef} name={name} id={id} type={type} />
-        </div>
+    switch (type) {
+        case "submit":
+            return (
+                <div style={{ position: "relative" }} className="input-container">
 
-    )
+                    <inputContainer>
+
+                        <input style={{
+                            zIndex: "42",
+                            position: "relative"
+                        }}
+
+                            id={id}
+                            type={type}
+                            // onChange={(e) => { setValue(e.target.value) }}
+                            {...other} />
+                    </inputContainer>
+                </div>
+            )
+
+        default:
+            return (
+
+                <div style={{ position: "relative" }} className="input-container">
+                    {/* <label ref={labelRef}
+                        htmlFor={id} style={labelStyle}>{children}</label>
+                    <input style={{
+                        zIndex: "42",
+                        position: "relative"
+                    }}
+                        onBlur={handleBlur}
+                        onFocus={handleFocus}
+                        ref={inputRef}
+                        id={id}
+                        type={type}
+                        {...other} /> */}
+                    <inputContainer>
+                        <label ref={labelRef}
+                            htmlFor={id} style={labelStyle}>{children}</label>
+                        <input style={{
+                            zIndex: "42",
+                            position: "relative"
+                        }}
+                            onBlur={handleBlur}
+                            value={value}
+                            onFocus={handleFocus}
+                            ref={inputRef}
+                            id={id}
+                            type={type}
+                            onChange={(e) => { setValue(e.target.value) }}
+                            {...other} />
+                    </inputContainer>
+                </div>
+
+            )
+    }
+
 }
 export default Input;

@@ -3,12 +3,16 @@ import React from 'react'
 import Input from './Input';
 const ReservationForm = () => {
   return (
-    <div>
-        <Input label={"First Name"}></Input><br />
-        <Input></Input><br />
-        <Input></Input>
+    <form>
+      <Input type={"select"}>Persons</Input> <br />
+      <Input type={"date"}></Input><br />
+      <Input type={"time"}>Time</Input><br />
+      <Input  >First Name</Input><br />
+      <Input >Last Name</Input><br />
+      <Input type={"email"} >Email</Input><br />
+      <Input type={"submit"}></Input>
 
-    </div>
+    </form>
   )
 }
 

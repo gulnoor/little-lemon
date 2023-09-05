@@ -30,9 +30,9 @@ function App() {
           width: "100%"
         }}
         >
+        <ReservationForm />
         <Hero />
         <TopNav></TopNav>
-        <ReservationForm />
         <AboutUs></AboutUs>
       </main>
       <footer></footer>
