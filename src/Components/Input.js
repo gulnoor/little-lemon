@@ -15,6 +15,7 @@ const Input = ({ children, id, type, ...other }) => {
         width: "fit-content",
         border: "2px solid var(--md-sys-color-outline)",
         borderRadius: "6px",
+        height:"56px"
     })
 
     const [labelStyle, setLabelStyle] = useState({
@@ -41,7 +42,7 @@ const Input = ({ children, id, type, ...other }) => {
     }
     useEffect(() => {
 
-        if (isFocused || value) {
+        if (isFocused ) {
             setLabelStyle((labelStyle) => {
                 return {
                     ...labelStyle,
@@ -54,8 +55,8 @@ const Input = ({ children, id, type, ...other }) => {
             })
 
         }
-        else {
-            if (!value) {
+        else if (!value) {
+           
                 setLabelStyle((labelStyle) => {
                     return {
                         ...labelStyle,
@@ -66,7 +67,17 @@ const Input = ({ children, id, type, ...other }) => {
                         zIndex: "41"
                     }
                 })
-            }
+            
+        }
+        else if (!isFocused && value){
+            setLabelStyle((labelStyle) => {
+                return {
+                    ...labelStyle,
+                    color: "var(--md-sys-color-on-surface)",
+                  
+                }
+            })
+
         }
 
     }, [isFocused, value])
