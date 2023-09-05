@@ -3,17 +3,7 @@ import "./Input.css"
 import '@material/web/button/filled-button.js';
 
 import '@material/web/textfield/outlined-text-field'
-// const inputContainer = ({ children }) => {
-//     return (
-//         <div style={{
-//             position: "relative",
-//             border:"2px solid var(--md-sys-color-outline)",
-//             background:"red"
-//         }} className="input-container">
-//             {children}
-//         </div>
-//     )
-// }
+
 const Input = ({ children, id, type, ...other }) => {
 
     const [value, setValue] = useState("");
@@ -57,11 +47,9 @@ const Input = ({ children, id, type, ...other }) => {
                     ...labelStyle,
                     top: "-1px",
                     margin: "0px 3px",
-
                     fontSize: "16px",
                     color: "var(--md-sys-color-primary)",
                     zIndex: "43"
-
                 }
             })
 
@@ -74,12 +62,10 @@ const Input = ({ children, id, type, ...other }) => {
                         top: "50%",
                         fontSize: "1.1rem",
                         margin: "0px 0px",
-
                         color: "var(--md-sys-color-on-surface)",
                         zIndex: "41"
                     }
                 })
-
             }
         }
 
@@ -89,42 +75,26 @@ const Input = ({ children, id, type, ...other }) => {
         isFocused ? setContainerStyle((containerStyle) => {
             return {
                 ...containerStyle,
-                border:"3px solid var(--md-sys-color-primary)"
-            }
-        }) 
-        : setContainerStyle((containerStyle) => {
-            return {
-                ...containerStyle,
-                border:"2px solid var(--md-sys-color-outline)"
+                border: "3px solid var(--md-sys-color-primary)"
             }
         })
+            : setContainerStyle((containerStyle) => {
+                return {
+                    ...containerStyle,
+                    border: "2px solid var(--md-sys-color-outline)"
+                }
+            })
     }, [isFocused])
 
     switch (type) {
         case "submit":
             return (
                 <md-filled-button >Next</md-filled-button>
-
             )
-
         default:
             return (
 
                 <div style={containerStyle} className="input-container">
-                    {/* <label ref={labelRef}
-                        htmlFor={id} style={labelStyle}>{children}</label>
-                    <input style={{
-                        zIndex: "42",
-                        position: "relative"
-                    }}
-                        onBlur={handleBlur}
-                        onFocus={handleFocus}
-                        ref={inputRef}
-                        id={id}
-                        type={type}
-                        {...other} /> */}
-                    {/* <inputContainer> */}
-
                     <label ref={labelRef}
                         htmlFor={id} style={labelStyle}>{children}</label>
                     <input style={{
@@ -132,12 +102,13 @@ const Input = ({ children, id, type, ...other }) => {
                         position: "relative",
                         border: "none",
                         borderRadius: "6px",
-                        // minHeight: "56px",
                         padding: "4px",
                         margin: "0.65rem",
                         fontSize: "1.1rem",
                         background: "transparent",
-                        color: "var(--md-sys-color-on-surface)"
+                        color: "var(--md-sys-color-on-surface)",
+                        outline: "none"
+
                     }}
                         onBlur={handleBlur}
                         value={value}
@@ -147,7 +118,6 @@ const Input = ({ children, id, type, ...other }) => {
                         type={type}
                         onChange={(e) => { setValue(e.target.value) }}
                         {...other} />
-                    {/* </inputContainer> */}
                 </div>
 
             )
