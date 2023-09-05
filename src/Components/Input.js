@@ -9,13 +9,25 @@ const Input = ({ children, id, type, ...other }) => {
     const [value, setValue] = useState("");
     const [isFocused, setIsFocused] = useState(false);
 
+    const [inputStyle, setInputStyle] = useState({
+        zIndex: "42",
+        position: "relative",
+        border: "none",
+        borderRadius: "6px",
+        padding: "4px",
+        margin: "0.65rem",
+        fontSize: "1.1rem",
+        background: "transparent",
+        color: type === "date" || type === "time" ? "transparent" : "var(--md-sys-color-on-surface)",
+        outline: "none"
+    })
     const [containerStyle, setContainerStyle] = useState({
         position: "relative",
         display: "flex",
         width: "fit-content",
         border: "2px solid var(--md-sys-color-outline)",
         borderRadius: "6px",
-        height:"56px"
+        height: "56px"
     })
 
     const [labelStyle, setLabelStyle] = useState({
@@ -36,13 +48,31 @@ const Input = ({ children, id, type, ...other }) => {
     const handleBlur = () => {
         setIsFocused(false);
     }
+
     const handleFocus = () => {
         setIsFocused(true);
 
     }
+    const handleDF = (e) => {
+        setIsFocused(false);
+        e.target.type = "date";
+    }
+    const handleTF = (e) => {
+        setIsFocused(false);
+        e.target.type = "time";
+    }
+
+    const handleDTB = (e) => {
+        setIsFocused(true);
+        e.target.type = "text";
+
+    }
+
+
+
     useEffect(() => {
 
-        if (isFocused ) {
+        if (isFocused) {
             setLabelStyle((labelStyle) => {
                 return {
                     ...labelStyle,
@@ -53,28 +83,40 @@ const Input = ({ children, id, type, ...other }) => {
                     zIndex: "43"
                 }
             })
+            setInputStyle(inputStyle => {
+                return {
+                    ...inputStyle,
+                    color: type === "date" || type === "time" ? "var(--md-sys-color-on-surface)":inputStyle.color,
+                }
+            })
 
         }
         else if (!value) {
-           
-                setLabelStyle((labelStyle) => {
-                    return {
-                        ...labelStyle,
-                        top: "50%",
-                        fontSize: "1.1rem",
-                        margin: "0px 0px",
-                        color: "var(--md-sys-color-on-surface)",
-                        zIndex: "41"
-                    }
-                })
-            
+
+            setLabelStyle((labelStyle) => {
+                return {
+                    ...labelStyle,
+                    top: "50%",
+                    fontSize: "1.1rem",
+                    margin: "0px 0px",
+                    color: "var(--md-sys-color-on-surface)",
+                    zIndex: "41"
+                }
+            });
+            setInputStyle(inputStyle => {
+                return {
+                    ...inputStyle,
+                    color: type === "date" || type === "time" ? "transparent":inputStyle.color,
+                }
+            })
+
         }
-        else if (!isFocused && value){
+        else if (!isFocused && value) {
             setLabelStyle((labelStyle) => {
                 return {
                     ...labelStyle,
                     color: "var(--md-sys-color-on-surface)",
-                  
+
                 }
             })
 
@@ -94,7 +136,13 @@ const Input = ({ children, id, type, ...other }) => {
                     ...containerStyle,
                     border: "2px solid var(--md-sys-color-outline)"
                 }
-            })
+            });
+            // setInputStyle(inputStyle => {
+            //     return {
+            //         ...inputStyle,
+            //         color: type === "date" || type === "time" ? "":inputStyle.color,
+            //     }
+            // })
     }, [isFocused])
 
     switch (type) {
@@ -108,19 +156,7 @@ const Input = ({ children, id, type, ...other }) => {
                 <div style={containerStyle} className="input-container">
                     <label ref={labelRef}
                         htmlFor={id} style={labelStyle}>{children}</label>
-                    <input style={{
-                        zIndex: "42",
-                        position: "relative",
-                        border: "none",
-                        borderRadius: "6px",
-                        padding: "4px",
-                        margin: "0.65rem",
-                        fontSize: "1.1rem",
-                        background: "transparent",
-                        color: "var(--md-sys-color-on-surface)",
-                        outline: "none"
-
-                    }}
+                    <input style={inputStyle}
                         onBlur={handleBlur}
                         value={value}
                         onFocus={handleFocus}

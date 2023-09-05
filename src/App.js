@@ -36,7 +36,7 @@ function App() {
           <form action="">
 
           <label htmlFor="email">Email</label>
-          <md-outlined-text-field id={"email"}label="Email"  type="email" ></md-outlined-text-field>
+          <md-outlined-text-field id={"email"}label="Email"  type="date" ></md-outlined-text-field>
           </form>
           
         <ReservationForm />
