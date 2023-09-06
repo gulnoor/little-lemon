@@ -32,15 +32,10 @@ function App() {
           width: "100%"
         }}
         >
-          <br />
-          <form action="">
 
-          <label htmlFor="email">Email</label>
-          <md-outlined-text-field id={"email"}label="Email"  type="date" ></md-outlined-text-field>
-          </form>
           
-        <ReservationForm />
         <Hero />
+        <ReservationForm />
         <TopNav></TopNav>
         <AboutUs></AboutUs>
       </main>

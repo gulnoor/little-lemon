@@ -1,18 +1,45 @@
-
 import React from 'react'
 import Input from './Input';
-const ReservationForm = () => {
+import "./ReservationForm.css"
+const ReservationForm = ({}) => {
   return (
-    <form>
-      <Input type={"select"}>Persons</Input> <br />
-      <Input type={"date"}>Date</Input><br />
-      <Input type={"time"}>Time</Input><br />
-      <Input  >First Name</Input><br />
-      <Input >Last Name</Input><br />
-      <Input type={"email"} >Email</Input><br />
-      <Input type={"submit"}></Input>
+    <div style={{
+      display: "flex",
+      flexWrap:"wrap",
+      justifyContent: "center",
+      alignItems: "center",
+      // flexDirection: "column",
+      background: "var(--md-sys-color-surface-container)",
 
-    </form>
+
+      margin: "0 8px",
+      // padding: "1rem",
+      borderRadius: "1rem"
+    }} className='booking-form'>
+
+      {/* <div className='booking-Summary'>
+        <h1>Reservation</h1>
+      </div> */}
+
+      <form style={{
+        display: "flex", flexWrap: "wrap",
+        // background: "var(--md-sys-color-surface-container)",
+        maxWidth: "600px",
+        justifyContent:"space-between",
+        padding:"2rem",
+
+
+      }}>
+        <Input styleContainer={{}} type={"select"}>Persons</Input>
+        <Input styleContainer={{}} type={"date"}>Date</Input>
+        <Input styleContainer={{}} type={"time"}>Time</Input>
+        <Input >First Name</Input>
+        <Input >Last Name</Input>
+        <Input type={"email"} >Email</Input>
+        <Input type={"submit"}></Input>
+
+      </form>
+    </div>
   )
 }
 

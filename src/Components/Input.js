@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from "react"
 import "./Input.css"
 import '@material/web/button/filled-button.js';
-
 import '@material/web/textfield/outlined-text-field'
 
-const Input = ({ children, id, type, ...other }) => {
+const Input = ({ gridArea,children, id, type, styleInput={},styleContainer={},...other }) => {
 
     const [value, setValue] = useState("");
     const [isFocused, setIsFocused] = useState(false);
@@ -15,26 +14,34 @@ const Input = ({ children, id, type, ...other }) => {
         border: "none",
         borderRadius: "6px",
         padding: "4px",
-        margin: "0.65rem",
+        // margin: "0.65rem",
         fontSize: "1.1rem",
         background: "transparent",
         color: type === "date" || type === "time" ? "transparent" : "var(--md-sys-color-on-surface)",
         outline: "none",
-        transition:"color 0.1s"
+        // transition:" 0.1s",
+        width:"100%",
+        // height:"fit-content",
+        ...styleInput
     })
     const [containerStyle, setContainerStyle] = useState({
         position: "relative",
         display: "flex",
-        width: "fit-content",
+        alignItems:"center",
+        // justifyContent:"center",
         border: "2px solid var(--md-sys-color-outline)",
         borderRadius: "6px",
-        height: "56px"
+        height: "56px",
+        padding:"8px",
+        margin:"0 0 0.8rem 0",
+        // width:"100%",
+        ...styleContainer
     })
 
     const [labelStyle, setLabelStyle] = useState({
         position: "absolute",
         padding: "1px 8px",
-        background: "var(--md-sys-color-surface)",
+        background: "var(--md-sys-color-surface-container)",
         top: "50%",
         left: "0.5rem",
         transform: "translate(0,-50%)",
@@ -160,7 +167,7 @@ const Input = ({ children, id, type, ...other }) => {
         default:
             return (
 
-                <div style={containerStyle} className="input-container">
+                <div style={containerStyle} className={`input-container ${children}`}>
                     <label ref={labelRef}
                         htmlFor={id} style={labelStyle}>{children}</label>
                     <input style={inputStyle}
