@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import "./Input.css"
-import '@material/web/button/filled-button.js';
-import '@material/web/textfield/outlined-text-field'
 
-const Input = ({ gridArea,children, id, type, styleInput={},styleContainer={},...other }) => {
+const Input = ({ gridArea, children, id, type, styleInput = {}, styleContainer = {}, ...other }) => {
 
     const [value, setValue] = useState("");
     const [isFocused, setIsFocused] = useState(false);
@@ -17,23 +15,23 @@ const Input = ({ gridArea,children, id, type, styleInput={},styleContainer={},..
         // margin: "0.65rem",
         fontSize: "1.1rem",
         background: "transparent",
-        color: type === "date" || type === "time" ? "transparent" : "var(--md-sys-color-on-surface)",
+        color: type === "date" || type === "time"||type==="select" ? "transparent" : "var(--md-sys-color-on-surface)",
         outline: "none",
         // transition:" 0.1s",
-        width:"100%",
+        width: "100%",
         // height:"fit-content",
         ...styleInput
     })
     const [containerStyle, setContainerStyle] = useState({
         position: "relative",
         display: "flex",
-        alignItems:"center",
+        alignItems: "center",
         // justifyContent:"center",
         border: "2px solid var(--md-sys-color-outline)",
         borderRadius: "6px",
         height: "56px",
-        padding:"8px",
-        margin:"0 0 0.8rem 0",
+        padding: "8px",
+        margin: "0 0 0.8rem 0",
         // width:"100%",
         ...styleContainer
     })
@@ -51,8 +49,7 @@ const Input = ({ gridArea,children, id, type, styleInput={},styleContainer={},..
         whiteSpace: "nowrap"
 
     })
-    const inputRef = useRef(null);
-    const labelRef = useRef(null);
+
     const handleBlur = () => {
         setIsFocused(false);
     }
@@ -60,7 +57,7 @@ const Input = ({ gridArea,children, id, type, styleInput={},styleContainer={},..
     const handleFocus = () => {
         setIsFocused(true);
 
-    }   
+    }
 
 
     useEffect(() => {
@@ -86,7 +83,7 @@ const Input = ({ gridArea,children, id, type, styleInput={},styleContainer={},..
 
         // }
 
-        if (isFocused||value) {
+        if (isFocused || value) {
             setLabelStyle((labelStyle) => {
                 return {
                     ...labelStyle,
@@ -100,7 +97,7 @@ const Input = ({ gridArea,children, id, type, styleInput={},styleContainer={},..
             setInputStyle(inputStyle => {
                 return {
                     ...inputStyle,
-                    color: type === "date" || type === "time" ? "var(--md-sys-color-on-surface)":inputStyle.color,
+                    color: type === "date" || type === "time"||type==="select" ? "var(--md-sys-color-on-surface)" : inputStyle.color,
                 }
             })
 
@@ -120,7 +117,7 @@ const Input = ({ gridArea,children, id, type, styleInput={},styleContainer={},..
             setInputStyle(inputStyle => {
                 return {
                     ...inputStyle,
-                    color: type === "date" || type === "time" ? "transparent":inputStyle.color,
+                    color: type === "date" || type === "time"||type==="select" ? "transparent" : inputStyle.color,
                 }
             })
 
@@ -151,30 +148,58 @@ const Input = ({ gridArea,children, id, type, styleInput={},styleContainer={},..
                     border: "2px solid var(--md-sys-color-outline)"
                 }
             });
-            // setInputStyle(inputStyle => {
-            //     return {
-            //         ...inputStyle,
-            //         color: type === "date" || type === "time" ? "":inputStyle.color,
-            //     }
-            // })
+        // setInputStyle(inputStyle => {
+        //     return {
+        //         ...inputStyle,
+        //         color: type === "date" || type === "time" ? "":inputStyle.color,
+        //     }
+        // })
     }, [isFocused])
 
     switch (type) {
-        case "submit":
+        case "select":
             return (
-                <md-filled-button >Next</md-filled-button>
+                <div style={containerStyle} className={`input-container ${children}`}>
+                    <label
+                        htmlFor={id} style={labelStyle}>{children}</label>
+                    <select  style={inputStyle} name=""
+                        id={id}
+                        onChange={(e) => { setValue(e.target.value) }}
+                        onBlur={handleBlur}
+                        value={value}
+                        onFocus={handleFocus}>
+                            {other.choices.map((choice)=>{
+                                return <option value={choice}>{choice}</option>
+                            })}
+                    </select>
+                </div>
+            )
+        case "text-area":
+            return (
+                <div style={{ ...containerStyle, height: "auto" }} className={`input-container ${children}`}>
+                    <label
+                        htmlFor={id} style={labelStyle}>{children}</label>
+                    <textarea style={inputStyle} id={id}
+                        onChange={(e) => { setValue(e.target.value) }}
+                        onBlur={handleBlur}
+                        value={value}
+                        onFocus={handleFocus}
+                        name=""
+                        cols="30"
+                        rows="10">
+                    </textarea>
+                </div>
             )
         default:
             return (
 
                 <div style={containerStyle} className={`input-container ${children}`}>
-                    <label ref={labelRef}
+                    <label
                         htmlFor={id} style={labelStyle}>{children}</label>
                     <input style={inputStyle}
                         onBlur={handleBlur}
                         value={value}
                         onFocus={handleFocus}
-                        ref={inputRef}
                         id={id}
                         type={type}
                         onChange={(e) => { setValue(e.target.value) }}

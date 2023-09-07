@@ -1,7 +1,8 @@
 import React from 'react'
 import Input from './Input';
 import "./ReservationForm.css"
-const ReservationForm = ({}) => {
+import Button from './Button/Button';
+const ReservationForm = () => {
   return (
     <div style={{
       display: "flex",
@@ -30,13 +31,16 @@ const ReservationForm = ({}) => {
 
 
       }}>
-        <Input styleContainer={{}} type={"select"}>Persons</Input>
-        <Input styleContainer={{}} type={"date"}>Date</Input>
-        <Input styleContainer={{}} type={"time"}>Time</Input>
+        <Input  min={1} max={10} type={"number"}>Persons</Input>
+        <Input  type={"date"}>Date</Input>
+        <Input  type={"time"}>Time</Input>
+        <Input type={"select"} choices={["Birthday","Aniversary"]}>Occasion</Input>
         <Input >First Name</Input>
         <Input >Last Name</Input>
         <Input type={"email"} >Email</Input>
-        <Input type={"submit"}></Input>
+        <Input type={"password"} >Password</Input>
+        <Input type={"text-area"}>Special Request</Input>
+        <Button type={"filled"} >Make your Reservation</Button>
 
       </form>
     </div>
