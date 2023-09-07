@@ -33,7 +33,7 @@ const ReservationForm = () => {
       }}>
         <Input  min={1} max={10} type={"number"}>Persons</Input>
         <Input  type={"date"}>Date</Input>
-        <Input  type={"time"}>Time</Input>
+        <Input  type={"select"} choices={["7:00","7:30","8:00","8:30","9:00"]}>Time</Input>
         <Input type={"select"} choices={["Birthday","Aniversary"]}>Occasion</Input>
         <Input >First Name</Input>
         <Input >Last Name</Input>
