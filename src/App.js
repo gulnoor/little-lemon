@@ -1,12 +1,13 @@
-import'@material/web/textfield/outlined-text-field'
+import '@material/web/textfield/outlined-text-field'
 
 import "./App.css";
 import Hero from "./Components/Hero";
 import NavigationRail from "./Components/NavigationRail";
-import {  useRef } from "react";
+import { useRef } from "react";
 import TopNav from "./Components/TopNav";
 import AboutUs from "./Components/AboutUs";
 import ReservationForm from "./Components/ReservationForm";
+import BookingPage from './Components/BookingPage';
 
 function App() {
 
@@ -22,7 +23,7 @@ function App() {
   };
 
   return (
-    <div className="App" style={{ height: "100vh", display: "flex",background:"var(--md-sys-color-surface)" }}>
+    <div className="App" style={{ height: "100vh", display: "flex", background: "var(--md-sys-color-surface)" }}>
       <NavigationRail theme={theme.current} toggle={toggleTheme} />
       <main
         className="Content-container"
@@ -31,12 +32,11 @@ function App() {
           overflowY: "scroll",
           width: "100%"
         }}
-        >
-
-          
+      >
         <Hero />
-        <ReservationForm />
         <TopNav></TopNav>
+        <BookingPage>
+        </BookingPage>
         <AboutUs></AboutUs>
       </main>
       <footer></footer>

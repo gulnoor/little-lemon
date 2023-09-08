@@ -1,49 +1,26 @@
 import React from 'react'
 import Input from './Input';
-import "./ReservationForm.css"
 import Button from './Button/Button';
-const ReservationForm = () => {
+
+const ReservationForm = ({bookingState}) => {
   return (
-    <div style={{
-      display: "flex",
-      flexWrap:"wrap",
-      justifyContent: "center",
-      alignItems: "center",
-      // flexDirection: "column",
-      background: "var(--md-sys-color-surface-container)",
-
-
-      margin: "0 8px",
-      // padding: "1rem",
-      borderRadius: "1rem"
-    }} className='booking-form'>
-
-      {/* <div className='booking-Summary'>
-        <h1>Reservation</h1>
-      </div> */}
-
-      <form style={{
+    <form
+      style={{
         display: "flex", flexWrap: "wrap",
-        // background: "var(--md-sys-color-surface-container)",
         maxWidth: "600px",
-        justifyContent:"space-between",
-        padding:"2rem",
-
-
+        justifyContent: "space-between",
+        padding: "2rem",
       }}>
-        <Input  min={1} max={10} type={"number"}>Persons</Input>
-        <Input  type={"date"}>Date</Input>
-        <Input  type={"select"} choices={["7:00","7:30","8:00","8:30","9:00"]}>Time</Input>
-        <Input type={"select"} choices={["Birthday","Aniversary"]}>Occasion</Input>
-        <Input >First Name</Input>
-        <Input >Last Name</Input>
-        <Input type={"email"} >Email</Input>
-        <Input type={"password"} >Password</Input>
-        <Input type={"text-area"}>Special Request</Input>
-        <Button type={"filled"} >Make your Reservation</Button>
-
-      </form>
-    </div>
+      <Input bookingState={bookingState} id={"persons"} value = {bookingState.bookingData.persons} min={1} max={10} type={"number"}>Persons</Input>
+      <Input bookingState={bookingState} id={"date"} value = {bookingState.bookingData.date} type={"date"}>Date</Input>
+      <Input bookingState={bookingState} id={"time"} value = {bookingState.bookingData.time} type={"select"} choices={["7:00", "7:30", "8:00", "8:30", "9:00"]}>Time</Input>
+      <Input bookingState={bookingState} id={"occasion"} value = {bookingState.bookingData.occasion} type={"select"} choices={["Birthday", "Aniversary"]}>Occasion</Input>
+      <Input bookingState={bookingState} id={"firstName"} value = {bookingState.bookingData.firstName} >First Name</Input>
+      <Input bookingState={bookingState} id={"lastName"} value = {bookingState.bookingData.lastName} >Last Name</Input>
+      <Input bookingState={bookingState} id={"email"} value = {bookingState.bookingData.email} type={"email"} >Email</Input>
+      <Input bookingState={bookingState} id={"specialRequest"} value = {bookingState.bookingData.specialRequest} type={"text-area"}>Special Request</Input>
+      <Button type={"filled"} >Make your Reservation</Button>
+    </form>
   )
 }
 

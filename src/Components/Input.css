@@ -12,3 +12,12 @@ input:focus{
 input[type="date"] {
     color: trasparent;
   }
+.input-container{
+    width: 100%;
+}
+
+@media screen  and (min-width: 600px){
+.Date, .Time, .Name {
+        width: 49%;
+    }
+}

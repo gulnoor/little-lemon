@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react"
 import "./Input.css"
 
-const Input = ({ gridArea, children, id, type, styleInput = {}, styleContainer = {}, ...other }) => {
+const Input = ({ value, gridArea, children, id, type, styleInput = {}, styleContainer = {}, bookingState, ...other }) => {
 
-    const [value, setValue] = useState("");
+    // const [value, setValue] = useState("");
     const [isFocused, setIsFocused] = useState(false);
 
     const [inputStyle, setInputStyle] = useState({
@@ -15,7 +15,7 @@ const Input = ({ gridArea, children, id, type, styleInput = {}, styleContainer =
         // margin: "0.65rem",
         fontSize: "1.1rem",
         background: "transparent",
-        color: type === "date" || type === "time"||type==="select" ? "transparent" : "var(--md-sys-color-on-surface)",
+        color: type === "date" || type === "time" || type === "select" ? "transparent" : "var(--md-sys-color-on-surface)",
         outline: "none",
         // transition:" 0.1s",
         width: "100%",
@@ -97,7 +97,7 @@ const Input = ({ gridArea, children, id, type, styleInput = {}, styleContainer =
             setInputStyle(inputStyle => {
                 return {
                     ...inputStyle,
-                    color: type === "date" || type === "time"||type==="select" ? "var(--md-sys-color-on-surface)" : inputStyle.color,
+                    color: type === "date" || type === "time" || type === "select" ? "var(--md-sys-color-on-surface)" : inputStyle.color,
                 }
             })
 
@@ -117,7 +117,7 @@ const Input = ({ gridArea, children, id, type, styleInput = {}, styleContainer =
             setInputStyle(inputStyle => {
                 return {
                     ...inputStyle,
-                    color: type === "date" || type === "time"||type==="select" ? "transparent" : inputStyle.color,
+                    color: type === "date" || type === "time" || type === "select" ? "transparent" : inputStyle.color,
                 }
             })
 
@@ -162,15 +162,22 @@ const Input = ({ gridArea, children, id, type, styleInput = {}, styleContainer =
                 <div style={containerStyle} className={`input-container ${children}`}>
                     <label
                         htmlFor={id} style={labelStyle}>{children}</label>
-                    <select  style={inputStyle} name=""
+                    <select style={inputStyle} name=""
                         id={id}
-                        onChange={(e) => { setValue(e.target.value) }}
+                        onChange={(e) => {
+                            bookingState.setBookingData((prev=bookingState.bookingData)=>{
+                                
+                                 return {...prev,
+                                    [e.target.id]: e.target.value
+                                }
+                            })
+                        }}
                         onBlur={handleBlur}
                         value={value}
                         onFocus={handleFocus}>
-                            {other.choices.map((choice)=>{
-                                return <option value={choice}>{choice}</option>
-                            })}
+                        {other.choices.map((choice) => {
+                            return <option value={choice}>{choice}</option>
+                        })}
                     </select>
                 </div>
             )
@@ -180,7 +187,14 @@ const Input = ({ gridArea, children, id, type, styleInput = {}, styleContainer =
                     <label
                         htmlFor={id} style={labelStyle}>{children}</label>
                     <textarea style={inputStyle} id={id}
-                        onChange={(e) => { setValue(e.target.value) }}
+                       onChange={(e) => {
+                        bookingState.setBookingData((prev=bookingState.bookingData)=>{
+                            
+                             return {...prev,
+                                [e.target.id]: e.target.value
+                            }
+                        })
+                    }}
                         onBlur={handleBlur}
                         value={value}
                         onFocus={handleFocus}
@@ -202,7 +216,14 @@ const Input = ({ gridArea, children, id, type, styleInput = {}, styleContainer =
                         onFocus={handleFocus}
                         id={id}
                         type={type}
-                        onChange={(e) => { setValue(e.target.value) }}
+                        onChange={(e) => {
+                            bookingState.setBookingData((prev=bookingState.bookingData)=>{
+                                
+                                 return {...prev,
+                                    [e.target.id]: e.target.value
+                                }
+                            })
+                        }}
                         {...other} />
                 </div>
 

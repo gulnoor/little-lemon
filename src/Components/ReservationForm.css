@@ -1,9 +1,0 @@
-.booking-form .input-container{
-    width: 100%;
-}
-
-@media screen  and (min-width: 600px){
-    .booking-form .Date, .booking-form .Time, .booking-form .Name {
-        width: 49%;
-    }
-}
