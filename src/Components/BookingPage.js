@@ -1,23 +1,28 @@
-import React, { Children, useState } from 'react'
+import React, { useEffect, useReducer, useState } from 'react'
 import ReservationForm from './ReservationForm';
+import { fetchAPI, submitAPI } from '../availTimesAPI';
 
 
 const BookingSummary = ({ bookingData }) => {
   return (
-  <div className='summary'>
-    {bookingData.persons}
-    {bookingData.date}
-    {bookingData.firstName}
-    {bookingData.lastName}
-    {bookingData.email}
-    {bookingData.occasion}
-    {bookingData.specialRequest}
-    {bookingData.time}
-  </div>)
+    <div style={{}} className='summary'>
+      {bookingData.persons}
+      {bookingData.date}
+      {bookingData.firstName}
+      {bookingData.lastName}
+      {bookingData.email}
+      {bookingData.occasion}
+      {bookingData.specialRequest}
+      {bookingData.time}
+    </div>)
 }
 
 const BookingPage = ({ children }) => {
 
+
+
+
+  const [availTimes, setAvailTimes] = useState([""]);
   const [bookingData, setBookingData] = useState({
     persons: "",
     date: "",
@@ -28,6 +33,24 @@ const BookingPage = ({ children }) => {
     email: "",
     specialRequest: ""
   });
+  useEffect(() => {
+    setAvailTimes([])
+    setBookingData((prev) => {
+      return {
+        ...prev,
+        time: ""
+      }
+    });
+    fetchAPI(bookingData.date)
+      .then(
+        function (value) {
+          setAvailTimes(() => value)
+        }
+      )
+      .catch(function (time) {
+        setAvailTimes(() => time)
+      })
+  }, [bookingData.date])
 
 
   return (
@@ -42,9 +65,10 @@ const BookingPage = ({ children }) => {
         borderRadius: "1rem"
       }}
       className='booking-page'>
-        <BookingSummary bookingData={bookingData} />
+
+      <BookingSummary bookingData={bookingData} />
       <ReservationForm
-        bookingState={{ bookingData, setBookingData }} ></ReservationForm>
+        bookingState={{ bookingData, setBookingData }} availTimes={availTimes} ></ReservationForm>
 
     </div>
   )

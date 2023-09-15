@@ -1,9 +1,8 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import "./Input.css"
 
 const Input = ({ value, gridArea, children, id, type, styleInput = {}, styleContainer = {}, bookingState, ...other }) => {
 
-    // const [value, setValue] = useState("");
     const [isFocused, setIsFocused] = useState(false);
 
     const [inputStyle, setInputStyle] = useState({
@@ -12,27 +11,22 @@ const Input = ({ value, gridArea, children, id, type, styleInput = {}, styleCont
         border: "none",
         borderRadius: "6px",
         padding: "4px",
-        // margin: "0.65rem",
         fontSize: "1.1rem",
         background: "transparent",
         color: type === "date" || type === "time" || type === "select" ? "transparent" : "var(--md-sys-color-on-surface)",
         outline: "none",
-        // transition:" 0.1s",
         width: "100%",
-        // height:"fit-content",
         ...styleInput
     })
     const [containerStyle, setContainerStyle] = useState({
         position: "relative",
         display: "flex",
         alignItems: "center",
-        // justifyContent:"center",
         border: "2px solid var(--md-sys-color-outline)",
         borderRadius: "6px",
         height: "56px",
         padding: "8px",
         margin: "0 0 0.8rem 0",
-        // width:"100%",
         ...styleContainer
     })
 
@@ -61,28 +55,7 @@ const Input = ({ value, gridArea, children, id, type, styleInput = {}, styleCont
 
 
     useEffect(() => {
-        // if (isFocused&&!value) {
-        //     setLabelStyle((labelStyle) => {
-        //         return {
-        //             ...labelStyle,
-        //             top: "-1px",
-        //             margin: "0px 3px",
-        //             fontSize: "16px",
-        //             color: "var(--md-sys-color-primary)",
-        //             zIndex: "43"
-        //         }
-        //     })
-        // }
-        // else if(!isFocused&&value){
-
-        // }
-        // else if (isFocused&&!value){
-
-        // }
-        // else if(!isFocused&&!value){
-
-        // }
-
+      
         if (isFocused || value) {
             setLabelStyle((labelStyle) => {
                 return {
@@ -148,12 +121,6 @@ const Input = ({ value, gridArea, children, id, type, styleInput = {}, styleCont
                     border: "2px solid var(--md-sys-color-outline)"
                 }
             });
-        // setInputStyle(inputStyle => {
-        //     return {
-        //         ...inputStyle,
-        //         color: type === "date" || type === "time" ? "":inputStyle.color,
-        //     }
-        // })
     }, [isFocused])
 
     switch (type) {
@@ -165,8 +132,7 @@ const Input = ({ value, gridArea, children, id, type, styleInput = {}, styleCont
                     <select style={inputStyle} name=""
                         id={id}
                         onChange={(e) => {
-                            bookingState.setBookingData((prev=bookingState.bookingData)=>{
-                                
+                            bookingState.setBookingData((prev)=>{
                                  return {...prev,
                                     [e.target.id]: e.target.value
                                 }
@@ -188,8 +154,7 @@ const Input = ({ value, gridArea, children, id, type, styleInput = {}, styleCont
                         htmlFor={id} style={labelStyle}>{children}</label>
                     <textarea style={inputStyle} id={id}
                        onChange={(e) => {
-                        bookingState.setBookingData((prev=bookingState.bookingData)=>{
-                            
+                        bookingState.setBookingData((prev)=>{
                              return {...prev,
                                 [e.target.id]: e.target.value
                             }
@@ -217,8 +182,7 @@ const Input = ({ value, gridArea, children, id, type, styleInput = {}, styleCont
                         id={id}
                         type={type}
                         onChange={(e) => {
-                            bookingState.setBookingData((prev=bookingState.bookingData)=>{
-                                
+                            bookingState.setBookingData((prev)=>{
                                  return {...prev,
                                     [e.target.id]: e.target.value
                                 }
@@ -226,7 +190,6 @@ const Input = ({ value, gridArea, children, id, type, styleInput = {}, styleCont
                         }}
                         {...other} />
                 </div>
-
             )
     }
 
