@@ -1,11 +1,10 @@
-import React, { useEffect, useReducer, useState } from 'react'
-import ReservationForm from './ReservationForm';
-import { fetchAPI, submitAPI } from '../availTimesAPI';
-
+import React, { useEffect, useState } from "react";
+import ReservationForm from "./ReservationForm";
+import { fetchAPI } from "../availTimesAPI";
 
 const BookingSummary = ({ bookingData }) => {
   return (
-    <div style={{}} className='summary'>
+    <div style={{}} className="summary">
       {bookingData.persons}
       {bookingData.date}
       {bookingData.firstName}
@@ -14,14 +13,11 @@ const BookingSummary = ({ bookingData }) => {
       {bookingData.occasion}
       {bookingData.specialRequest}
       {bookingData.time}
-    </div>)
-}
+    </div>
+  );
+};
 
 const BookingPage = ({ children }) => {
-
-
-
-
   const [availTimes, setAvailTimes] = useState([""]);
   const [bookingData, setBookingData] = useState({
     persons: "",
@@ -31,27 +27,24 @@ const BookingPage = ({ children }) => {
     firstName: "",
     lastName: "",
     email: "",
-    specialRequest: ""
+    specialRequest: "",
   });
   useEffect(() => {
-    setAvailTimes([])
+    setAvailTimes(()=>[]);
     setBookingData((prev) => {
       return {
         ...prev,
         time: ""
-      }
+      };
     });
     fetchAPI(bookingData.date)
-      .then(
-        function (value) {
-          setAvailTimes(() => value)
-        }
-      )
-      .catch(function (time) {
-        setAvailTimes(() => time)
+      .then(function (resolvedValue) {
+        setAvailTimes(() => resolvedValue);
       })
-  }, [bookingData.date])
-
+      .catch(function (rejectValue) {
+        setAvailTimes(() => rejectValue);
+      });
+  }, [bookingData.date]);
 
   return (
     <div
@@ -62,16 +55,17 @@ const BookingPage = ({ children }) => {
         alignItems: "center",
         background: "var(--md-sys-color-surface-container)",
         margin: "0 8px",
-        borderRadius: "1rem"
+        borderRadius: "1rem",
       }}
-      className='booking-page'>
-
+      className="booking-page"
+    >
       <BookingSummary bookingData={bookingData} />
       <ReservationForm
-        bookingState={{ bookingData, setBookingData }} availTimes={availTimes} ></ReservationForm>
-
+        bookingState={{ bookingData, setBookingData }}
+        availTimes={availTimes}
+      ></ReservationForm>
     </div>
-  )
-}
+  );
+};
 
 export default BookingPage;
