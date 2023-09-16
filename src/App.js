@@ -6,8 +6,9 @@ import NavigationRail from "./Components/NavigationRail";
 import { useRef } from "react";
 import TopNav from "./Components/TopNav";
 import AboutUs from "./Components/AboutUs";
-import ReservationForm from "./Components/ReservationForm";
 import BookingPage from './Components/BookingPage';
+import { Route, Routes } from 'react-router-dom';
+import Home from './routes/Home';
 
 function App() {
 
@@ -33,10 +34,10 @@ function App() {
           width: "100%"
         }}
       >
-        <Hero />
-        <TopNav></TopNav>
-        <BookingPage>
-        </BookingPage>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/reservation' element={<BookingPage />} />
+        </Routes>
         <AboutUs></AboutUs>
       </main>
       <footer></footer>
