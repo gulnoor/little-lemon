@@ -11,7 +11,7 @@ const ReservationForm = ({bookingState,availTimes}) => {
     e.preventDefault();
     const data = serialize(e.target,{hash:"true"});
     console.log(data);
-    submitAPI(data).then((value)=>value?console.log("successful"):null).catch((e)=>console.log(e))
+    submitAPI(data).then((status)=>status?console.log("successful"):null).catch((e)=>console.log(e))
   }
   return (
     <form

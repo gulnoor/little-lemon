@@ -144,7 +144,7 @@ const Input = ({ value, gridArea, children, id, type, styleInput = {}, styleCont
                         onFocus={handleFocus}>
                         <option value="">Select {`${children}`}</option>
                         {other.choices.map((choice) => {
-                            return <option value={choice}>{choice}</option>
+                            return <option key={choice} value={choice}>{choice}</option>
                         })}
                     </select>
                 </div>
