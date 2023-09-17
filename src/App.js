@@ -1,7 +1,5 @@
 // import '@material/web/textfield/outlined-text-field'
 
-import "./App.css";
-
 import NavigationRail from "./Components/NavigationRail";
 import { useEffect,  useState } from "react";
 
