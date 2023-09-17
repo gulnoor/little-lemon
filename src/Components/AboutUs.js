@@ -4,7 +4,7 @@ import avatar2 from "../assets/images/3D Avatars/23.png";
 
 const AboutUs = () => {
   return (
-    <section className="AboutUs">
+    <section className="AboutUs" >
       <article>
         <p>
           Based in Chicago, Illinois, Little Lemon is a family-owned

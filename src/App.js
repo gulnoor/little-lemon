@@ -38,7 +38,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/reservation' element={<BookingPage />} />
         </Routes>
-        <AboutUs></AboutUs>
+        
       </main>
       <footer></footer>
     </div>

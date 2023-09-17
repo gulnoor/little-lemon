@@ -55,7 +55,7 @@ const Input = ({ value, gridArea, children, id, type, styleInput = {}, styleCont
 
 
     useEffect(() => {
-      
+
         if (isFocused || value) {
             setLabelStyle((labelStyle) => {
                 return {
@@ -129,11 +129,12 @@ const Input = ({ value, gridArea, children, id, type, styleInput = {}, styleCont
                 <div style={containerStyle} className={`input-container ${children}`}>
                     <label
                         htmlFor={id} style={labelStyle}>{children}</label>
-                    <select style={inputStyle} name=""
+                    <select style={inputStyle} name={id}
                         id={id}
                         onChange={(e) => {
-                            bookingState.setBookingData((prev)=>{
-                                 return {...prev,
+                            bookingState.setBookingData((prev) => {
+                                return {
+                                    ...prev,
                                     [e.target.id]: e.target.value
                                 }
                             })
@@ -141,7 +142,7 @@ const Input = ({ value, gridArea, children, id, type, styleInput = {}, styleCont
                         onBlur={handleBlur}
                         value={value}
                         onFocus={handleFocus}>
-                            <option value="">Select {`${children}`}</option>
+                        <option value="">Select {`${children}`}</option>
                         {other.choices.map((choice) => {
                             return <option value={choice}>{choice}</option>
                         })}
@@ -154,17 +155,18 @@ const Input = ({ value, gridArea, children, id, type, styleInput = {}, styleCont
                     <label
                         htmlFor={id} style={labelStyle}>{children}</label>
                     <textarea style={inputStyle} id={id}
-                       onChange={(e) => {
-                        bookingState.setBookingData((prev)=>{
-                             return {...prev,
-                                [e.target.id]: e.target.value
-                            }
-                        })
-                    }}
+                        onChange={(e) => {
+                            bookingState.setBookingData((prev) => {
+                                return {
+                                    ...prev,
+                                    [e.target.id]: e.target.value
+                                }
+                            })
+                        }}
                         onBlur={handleBlur}
                         value={value}
                         onFocus={handleFocus}
-                        name=""
+                        name={id}
                         cols="30"
                         rows="10">
                     </textarea>
@@ -177,14 +179,16 @@ const Input = ({ value, gridArea, children, id, type, styleInput = {}, styleCont
                     <label
                         htmlFor={id} style={labelStyle}>{children}</label>
                     <input style={inputStyle}
+                        name={id}
                         onBlur={handleBlur}
                         value={value}
                         onFocus={handleFocus}
                         id={id}
                         type={type}
                         onChange={(e) => {
-                            bookingState.setBookingData((prev)=>{
-                                 return {...prev,
+                            bookingState.setBookingData((prev) => {
+                                return {
+                                    ...prev,
                                     [e.target.id]: e.target.value
                                 }
                             })
