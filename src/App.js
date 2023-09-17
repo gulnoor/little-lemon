@@ -9,6 +9,7 @@ import AboutUs from "./Components/AboutUs";
 import BookingPage from './Components/BookingPage';
 import { Route, Routes } from 'react-router-dom';
 import Home from './routes/Home';
+import SubmissionDialogue from './Components/SubmissionDialogue';
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/reservation' element={<BookingPage />} />
+          <Route path='/successful' element={<SubmissionDialogue heading="Submission Successful" message = "Thank You for reserving your table. Looking forward to see you"/>}/>
         </Routes>
         
       </main>
