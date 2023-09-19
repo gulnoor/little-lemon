@@ -19,7 +19,9 @@ const NavigationRail = (/* { toggle, theme } */) => {
     transition: "0.2s",
     cursor: "pointer",
     userSelect: "none",
-    textDecoration: "none"
+    textDecoration: "none",
+    textAlign: "center",
+    fontSize:"0.8rem"
 
   }
   return (
@@ -30,7 +32,7 @@ const NavigationRail = (/* { toggle, theme } */) => {
             <Link
               style={linkStyle}
               to="/">
-              <span className="material-symbols-outlined">home</span>
+              <span  className="material-symbols-outlined">home</span>
               Home
             </Link>
           </li>
@@ -64,7 +66,7 @@ const NavigationRail = (/* { toggle, theme } */) => {
                 ? <span className="material-symbols-outlined">dark_mode</span>
                 : <span className="material-symbols-outlined">light_mode</span>
               }
-              {theme}
+              {theme==="light"?"Night Mode":"Light Mode"}
             </Link>
           </li>
         </ul>
