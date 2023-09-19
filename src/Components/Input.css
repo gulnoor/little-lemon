@@ -15,9 +15,19 @@ input[type="date"] {
 .input-container{
     width: 100%;
 }
-
+.big-container{
+    width: 100%;
+}
 @media screen  and (min-width: 600px){
-.Date, .Time, .Name {
+.big-container.Date, .big-container.Time, .big-container.Name {
         width: 49%;
     }
+
+}
+.form-error{
+    color: var(--md-sys-color-error);
+    font-size: 0.8rem;
+    margin-bottom: 16px;
+    font-weight: 600;
+
 }
