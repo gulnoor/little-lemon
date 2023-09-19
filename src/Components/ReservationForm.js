@@ -8,6 +8,7 @@ import { useState } from "react";
 const ReservationForm = ({ bookingState, availTimes }) => {
   const navigate = useNavigate();
 
+
   const validationSchema = yup.object({
     date: yup.date(),
     persons: yup.number().min(1, "min 1 person").max(10).required(),
@@ -32,16 +33,20 @@ const ReservationForm = ({ bookingState, availTimes }) => {
     specialRequest: "",
   });
 
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = serialize(e.target, { hash: "true" });
     console.log(data);
-    submitAPI(data)
-      .then(function () {
-        console.log("successful");
-        navigate("/successful");
-      })
-      .catch((e) => console.log(e));
+    validationSchema.isValid(data).then(() => {
+      submitAPI(data)
+        .then(function () {
+          console.log("successful");
+          navigate("/successful");
+        })
+        .catch((e) => alert(e));
+    });
   };
 
   return (
@@ -61,7 +66,7 @@ const ReservationForm = ({ bookingState, availTimes }) => {
         id={"persons"}
         value={bookingState.bookingData.persons}
         type={"number"}
-        err={{error,setError}}
+        err={{ error, setError }}
       >
         Persons
       </Input>
@@ -71,8 +76,7 @@ const ReservationForm = ({ bookingState, availTimes }) => {
         id={"date"}
         value={bookingState.bookingData.date}
         type={"date"}
-        err={{error,setError}}
-
+        err={{ error, setError }}
       >
         Date
       </Input>
@@ -83,8 +87,7 @@ const ReservationForm = ({ bookingState, availTimes }) => {
         value={bookingState.bookingData.time}
         type={"select"}
         choices={availTimes}
-        err={{error,setError}}
-
+        err={{ error, setError }}
       >
         Time
       </Input>
@@ -94,8 +97,7 @@ const ReservationForm = ({ bookingState, availTimes }) => {
         id={"occasion"}
         value={bookingState.bookingData.occasion}
         type={"select"}
-
-        err={{error,setError}}
+        err={{ error, setError }}
         choices={["Birthday", "Aniversary"]}
       >
         Occasion
@@ -105,7 +107,7 @@ const ReservationForm = ({ bookingState, availTimes }) => {
         bookingState={bookingState}
         id={"firstName"}
         value={bookingState.bookingData.firstName}
-        err={{error,setError}}
+        err={{ error, setError }}
       >
         First Name
       </Input>
@@ -114,7 +116,7 @@ const ReservationForm = ({ bookingState, availTimes }) => {
         bookingState={bookingState}
         id={"lastName"}
         value={bookingState.bookingData.lastName}
-        err={{error,setError}}
+        err={{ error, setError }}
       >
         Last Name
       </Input>
@@ -124,7 +126,7 @@ const ReservationForm = ({ bookingState, availTimes }) => {
         id={"email"}
         value={bookingState.bookingData.email}
         type={"email"}
-        err={{error,setError}}
+        err={{ error, setError }}
       >
         Email
       </Input>
@@ -134,11 +136,11 @@ const ReservationForm = ({ bookingState, availTimes }) => {
         id={"specialRequest"}
         value={bookingState.bookingData.specialRequest}
         type={"text-area"}
-        err={{error,setError}}
+        err={{ error, setError }}
       >
         Special Request
       </Input>
-      <Button type={"filled"}>Make your Reservation</Button>
+      <Button type={"submit"}>Make your Reservation</Button>
     </form>
   );
 };

@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 import "./NavigationRail.css";
-const NavigationRail = ({ toggle, theme }) => {
+import { useContext } from "react";
+import { themeContext } from "../App";
+const NavigationRail = (/* { toggle, theme } */) => {
+
+  const {theme,toggleTheme} = useContext(themeContext)
+
   const linkStyle = {
     display: "flex",
     padding: "0.8rem",
@@ -54,12 +59,12 @@ const NavigationRail = ({ toggle, theme }) => {
           <li >
             <Link
               style={linkStyle}
-              onClick={toggle}>
+              onClick={toggleTheme}>
               {theme === "light"
                 ? <span className="material-symbols-outlined">dark_mode</span>
                 : <span className="material-symbols-outlined">light_mode</span>
               }
-              Toggle
+              {theme}
             </Link>
           </li>
         </ul>

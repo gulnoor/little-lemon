@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./Input.css";
+import { themeContext } from "../App";
 
 const Input = ({
   value,
-  gridArea,
   children,
   id,
   type,
@@ -14,6 +14,7 @@ const Input = ({
   err,
   ...other
 }) => {
+  const {theme} = useContext(themeContext)
   const [isFocused, setIsFocused] = useState(false);
   //   const [error, setError] = useState("");
   const validationScheme = schema.fields[id];
@@ -37,7 +38,14 @@ const Input = ({
     outline: "none",
     width: "100%",
     ...styleInput,
+
   });
+  useEffect(()=>{
+    setInputStyle((prev)=>{
+      return {...prev,colorScheme:theme}
+    })
+  },[theme])
+
   const [containerStyle, setContainerStyle] = useState({
     position: "relative",
     display: "flex",
@@ -91,6 +99,7 @@ const Input = ({
 
   const handleBlur = () => {
     setIsFocused(false);
+    
     isValid();
   };
 
@@ -243,7 +252,7 @@ const Input = ({
               {...other}
             />
           </div>
-          {err.error[id] ? (
+          {err.error[id] ? (  
             <span
               style={{
                 display: "flex",
