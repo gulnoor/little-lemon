@@ -9,7 +9,7 @@
     margin: 1.5rem auto;
     border-radius: 100vh;
     background: var(--md-sys-color-surface-container);
-    box-shadow: 0px 2px 4px gray;
+    box-shadow: 0px 2px 4px var(--md-sys-color-shadow);
     overflow-y: scroll;
     -ms-overflow-style: none;
     /* IE and Edge */

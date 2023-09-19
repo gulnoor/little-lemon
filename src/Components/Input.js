@@ -15,12 +15,12 @@ const Input = ({
   ...other
 }) => {
   const [isFocused, setIsFocused] = useState(false);
-//   const [error, setError] = useState("");
+  //   const [error, setError] = useState("");
   const validationScheme = schema.fields[id];
   const styleDiv = {
-    display:"flex",
-    flexDirection:"column"
-}
+    display: "flex",
+    flexDirection: "column",
+  };
 
   const [inputStyle, setInputStyle] = useState({
     zIndex: "42",
@@ -63,18 +63,20 @@ const Input = ({
     borderRadius: "3px",
     whiteSpace: "nowrap",
   });
-  
+
   const isValid = () => {
-      console.log("validating "+id)
+    console.log("validating " + id);
     validationScheme
       .validate(value)
       .then(() => {
         err.setError((prev) => {
-            return{...prev,[id]:""}});
+          return { ...prev, [id]: "" };
+        });
       })
       .catch((e) => {
         err.setError((prev) => {
-            return{...prev,[id]:e.message}});
+          return { ...prev, [id]: e.message };
+        });
       });
   };
 
@@ -167,32 +169,30 @@ const Input = ({
   switch (type) {
     case "select":
       return (
-        <div style={styleDiv}
-        className={`big-container ${children}`}>
-
-        <div style={containerStyle} className={`input-container ${children}`}>
-          <label htmlFor={id} style={labelStyle}>
-            {children}
-          </label>
-          <select
-            style={inputStyle}
-            name={id}
-            id={id}
-            onChange={changeHandler}
-            onBlur={handleBlur}
-            value={value}
-            onFocus={handleFocus}
-          >
-            <option value="">Select {`${children}`}</option>
-            {other.choices.map((choice) => {
-              return (
-                <option key={choice} value={choice}>
-                  {choice}
-                </option>
-              );
-            })}
-          </select>
-        </div>
+        <div style={styleDiv} className={`big-container ${children}`}>
+          <div style={containerStyle} className={`input-container ${children}`}>
+            <label htmlFor={id} style={labelStyle}>
+              {children}
+            </label>
+            <select
+              style={inputStyle}
+              name={id}
+              id={id}
+              onChange={changeHandler}
+              onBlur={handleBlur}
+              value={value}
+              onFocus={handleFocus}
+            >
+              <option value="">Select {`${children}`}</option>
+              {other.choices.map((choice) => {
+                return (
+                  <option key={choice} value={choice}>
+                    {choice}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
           {err.error[id] ? (
             <span
               style={{
@@ -203,15 +203,11 @@ const Input = ({
               {err.error[id]}
             </span>
           ) : null}
-
         </div>
       );
     case "text-area":
       return (
-        <div 
-          style={containerStyle}
-          className={`input-container ${children}`}
-        >
+        <div style={containerStyle} className={`input-container ${children}`}>
           <label htmlFor={id} style={labelStyle}>
             {children}
           </label>
@@ -230,10 +226,7 @@ const Input = ({
       );
     default:
       return (
-        <div
-        className={`big-container ${children}`}
-        style={styleDiv}
-        >
+        <div className={`big-container ${children}`} style={styleDiv}>
           <div style={containerStyle} className={`input-container ${children}`}>
             <label htmlFor={id} style={labelStyle}>
               {children}
