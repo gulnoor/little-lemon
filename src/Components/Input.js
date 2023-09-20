@@ -3,20 +3,20 @@ import "./Input.css";
 import { themeContext } from "../App";
 
 const Input = ({
+  // styleInput = {},
+  // styleContainer = {},
   value,
   children,
   id,
   type,
-  styleInput = {},
-  styleContainer = {},
-  bookingState,
+  reservationData,
   schema,
-  err,
+  error,
+  dispatch,
   ...other
 }) => {
-  const {theme} = useContext(themeContext)
+  const { theme } = useContext(themeContext);
   const [isFocused, setIsFocused] = useState(false);
-  //   const [error, setError] = useState("");
   const validationScheme = schema.fields[id];
   const styleDiv = {
     display: "flex",
@@ -37,14 +37,12 @@ const Input = ({
         : "var(--md-sys-color-on-surface)",
     outline: "none",
     width: "100%",
-    ...styleInput,
-
   });
-  useEffect(()=>{
-    setInputStyle((prev)=>{
-      return {...prev,colorScheme:theme}
-    })
-  },[theme])
+  useEffect(() => {
+    setInputStyle((prev) => {
+      return { ...prev, colorScheme: theme };
+    });
+  }, [theme]);
 
   const [containerStyle, setContainerStyle] = useState({
     position: "relative",
@@ -56,7 +54,6 @@ const Input = ({
     // height: "56px",
     padding: "8px",
     margin: "0 0 1rem 0",
-    ...styleContainer,
   });
 
   const [labelStyle, setLabelStyle] = useState({
@@ -72,35 +69,40 @@ const Input = ({
     whiteSpace: "nowrap",
   });
 
-  const isValid = () => {
+  const isValid = (target) => {
     console.log("validating " + id);
     validationScheme
       .validate(value)
       .then(() => {
-        err.setError((prev) => {
-          return { ...prev, [id]: "" };
-        });
+        dispatch({
+          actionType:"updateError",
+          field:target.id,
+          value:""
+        })
+
       })
-      .catch((e) => {
-        err.setError((prev) => {
-          return { ...prev, [id]: e.message };
-        });
+      .catch((err) => {
+        dispatch({
+          actionType:"updateError",
+          field:target.id,
+          value:err.message
+        })
       });
   };
 
   const changeHandler = (e) => {
-    bookingState.setBookingData((prev) => {
-      return {
-        ...prev,
-        [e.target.id]: e.target.value,
-      };
+  
+    dispatch({
+      actionType: "updateInput",
+      value: e.target.value,
+      field:e.target.id
     });
+
   };
 
-  const handleBlur = () => {
+  const handleBlur = (e) => {
     setIsFocused(false);
-    
-    isValid();
+    isValid(e.target);
   };
 
   const handleFocus = () => {
@@ -202,14 +204,14 @@ const Input = ({
               })}
             </select>
           </div>
-          {err.error[id] ? (
+          {error ? (
             <span
               style={{
                 display: "flex",
               }}
               className="form-error"
             >
-              {err.error[id]}
+              {error}
             </span>
           ) : null}
         </div>
@@ -252,14 +254,14 @@ const Input = ({
               {...other}
             />
           </div>
-          {err.error[id] ? (  
+          {error ? (
             <span
               style={{
                 display: "flex",
               }}
               className="form-error"
             >
-              {`* ${err.error[id]}`}
+              {`* ${error}`}
             </span>
           ) : null}
         </div>

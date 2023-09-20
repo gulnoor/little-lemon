@@ -1,50 +1,81 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import ReservationForm from "./ReservationForm";
 import { fetchAPI } from "../availTimesAPI";
 
 const BookingSummary = ({ bookingData }) => {
   return (
     <div style={{}} className="summary">
-      {bookingData.persons}
-      {bookingData.date}
-      {bookingData.firstName}
-      {bookingData.lastName}
-      {bookingData.email}
-      {bookingData.occasion}
-      {bookingData.specialRequest}
-      {bookingData.time}
+      {bookingData.persons.state}
+      {bookingData.date.state}
+      {bookingData.firstName.state}
+      {bookingData.lastName.state}
+      {bookingData.email.state}
+      {bookingData.occasion.state}
+      {bookingData.specialRequest.state}
+      {bookingData.time.state}
     </div>
   );
 };
 
 const BookingPage = ({ children }) => {
-  const [availTimes, setAvailTimes] = useState([""]);
-  const [bookingData, setBookingData] = useState({
-    persons: "",
-    date: "",
-    time: "",
-    occasion: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    specialRequest: "",
+
+  const updateReservationData = (prev, action) => {
+    switch (action.actionType) {
+      case "updateInput":
+        return {
+          ...prev,
+          [action.field]: { ...prev[action.field], state: action.value },
+        };
+      case "updateError":
+        return {
+          ...prev,
+          [action.field]: { ...prev[action.field], error: action.value },
+        };
+      case "resetTime":
+        return { ...prev, time: { state: "", availableTimes: [""] } };
+      case "updateAvailTimes":
+        return {
+          ...prev,
+          time: { ...prev.time, availableTimes: action.value },
+        };
+
+      default:
+        break;
+    }
+  };
+
+  const [reservationData, dispatch] = useReducer(updateReservationData, {
+    persons: { state: "", error: "" },
+    date: { state: "", error: "" },
+    time: { state: "", error: "", availableTimes: [""] },
+    occasion: { state: "", error: "", options: ["Birthday", "Aniversary"] },
+    firstName: { state: "", error: "" },
+    lastName: { state: "", error: "" },
+    email: { state: "", error: "" },
+    specialRequest: { state: "", error: "" },
   });
+
   useEffect(() => {
-    setAvailTimes(()=>[]);
-    setBookingData((prev) => {
-      return {
-        ...prev,
-        time: ""
-      };
+    dispatch({
+      actionType: "resetTime",
     });
-    fetchAPI(bookingData.date)
+
+    fetchAPI(reservationData.date.state)
       .then(function (resolvedValue) {
-        setAvailTimes(() => resolvedValue);
+        dispatch({
+          actionType: "updateAvailTimes",
+
+          value: resolvedValue,
+        });
       })
       .catch(function (rejectValue) {
-        setAvailTimes(() => rejectValue);
+        dispatch({
+          actionType: "updateAvailTimes",
+
+          value: rejectValue,
+        });
       });
-  }, [bookingData.date]);
+  }, [reservationData.date.state]);
 
   return (
     <div
@@ -59,11 +90,8 @@ const BookingPage = ({ children }) => {
       }}
       className="booking-page"
     >
-      <BookingSummary bookingData={bookingData} />
-      <ReservationForm
-        bookingState={{ bookingData, setBookingData }}
-        availTimes={availTimes}
-      ></ReservationForm>
+      <BookingSummary bookingData={reservationData} />
+      <ReservationForm reservationData={reservationData} dispatch={dispatch} />
     </div>
   );
 };

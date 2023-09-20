@@ -5,9 +5,9 @@ import { submitAPI } from "../availTimesAPI";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { useState } from "react";
-const ReservationForm = ({ bookingState, availTimes }) => {
+import { type } from "@testing-library/user-event/dist/type";
+const ReservationForm = ({ reservationData, dispatch }) => {
   const navigate = useNavigate();
-
 
   const validationSchema = yup.object({
     date: yup.date(),
@@ -22,18 +22,16 @@ const ReservationForm = ({ bookingState, availTimes }) => {
     email: yup.string().email(),
     specialRequest: yup.string().optional(),
   });
-  const [error, setError] = useState({
-    persons: "",
-    date: "",
-    time: "",
-    occasion: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    specialRequest: "",
-  });
-
-
+  // const [error, setError] = useState({
+  //   persons: "",
+  //   date: "",
+  //   time: "",
+  //   occasion: "",
+  //   firstName: "",
+  //   lastName: "",
+  //   email: "",
+  //   specialRequest: "",
+  // });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,83 +58,106 @@ const ReservationForm = ({ bookingState, availTimes }) => {
       }}
       onSubmit={handleSubmit}
     >
+      {/* {Object.keys(reservationData).map((key) => {
+        return (
+          <Input
+            schema={validationSchema}
+            reservationData={reservationData}
+            id={key}
+            value={reservationData[key].state}
+            type={"number"}
+            error={reservationData[key].error}
+            dispatch={dispatch}
+            
+          >{key}</Input>
+        );
+      })} */}
       <Input
         schema={validationSchema}
-        bookingState={bookingState}
+        reservationData={reservationData}
         id={"persons"}
-        value={bookingState.bookingData.persons}
+        value={reservationData.persons.state}
         type={"number"}
-        err={{ error, setError }}
+        error={reservationData.persons.error}
+        dispatch={dispatch}
       >
         Persons
       </Input>
       <Input
         schema={validationSchema}
-        bookingState={bookingState}
+        reservationData={reservationData}
         id={"date"}
-        value={bookingState.bookingData.date}
+        value={reservationData.date.state}
         type={"date"}
-        err={{ error, setError }}
+        error={reservationData.date.error}
+        dispatch={dispatch}
+
       >
         Date
       </Input>
       <Input
         schema={validationSchema}
-        bookingState={bookingState}
+        reservationData={reservationData}
         id={"time"}
-        value={bookingState.bookingData.time}
+        value={reservationData.time.state}
         type={"select"}
-        choices={availTimes}
-        err={{ error, setError }}
+        choices={reservationData.time.availableTimes}
+        error={reservationData.time.error}
+        dispatch={dispatch}
       >
         Time
       </Input>
       <Input
         schema={validationSchema}
-        bookingState={bookingState}
+        reservationData={reservationData}
         id={"occasion"}
-        value={bookingState.bookingData.occasion}
+        value={reservationData.occasion.state}
         type={"select"}
-        err={{ error, setError }}
-        choices={["Birthday", "Aniversary"]}
+        error={reservationData.occasion.error}
+        choices={reservationData.occasion.options}
+        dispatch={dispatch}
       >
         Occasion
       </Input>
       <Input
         schema={validationSchema}
-        bookingState={bookingState}
+        reservationData={reservationData}
         id={"firstName"}
-        value={bookingState.bookingData.firstName}
-        err={{ error, setError }}
+        value={reservationData.firstName.state}
+        error={reservationData.firstName.error}
+        dispatch={dispatch}
       >
         First Name
       </Input>
       <Input
         schema={validationSchema}
-        bookingState={bookingState}
+        reservationData={reservationData}
         id={"lastName"}
-        value={bookingState.bookingData.lastName}
-        err={{ error, setError }}
+        value={reservationData.lastName.state}
+        error={reservationData.lastName.error}
+        dispatch={dispatch}
       >
         Last Name
       </Input>
       <Input
         schema={validationSchema}
-        bookingState={bookingState}
+        reservationData={reservationData}
         id={"email"}
-        value={bookingState.bookingData.email}
+        value={reservationData.email.state}
         type={"email"}
-        err={{ error, setError }}
+        error={reservationData.email.error}
+        dispatch={dispatch}
       >
         Email
       </Input>
       <Input
         schema={validationSchema}
-        bookingState={bookingState}
+        reservationData={reservationData}
         id={"specialRequest"}
-        value={bookingState.bookingData.specialRequest}
+        value={reservationData.specialRequest.state}
         type={"text-area"}
-        err={{ error, setError }}
+        error={reservationData.specialRequest.error}
+        dispatch={dispatch}
       >
         Special Request
       </Input>
