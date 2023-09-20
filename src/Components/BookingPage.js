@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useReducer } from "react";
 import ReservationForm from "./ReservationForm";
 import { fetchAPI } from "../availTimesAPI";
 
@@ -32,11 +32,11 @@ const BookingPage = ({ children }) => {
           [action.field]: { ...prev[action.field], error: action.value },
         };
       case "resetTime":
-        return { ...prev, time: { state: "", availableTimes: [""] } };
+        return { ...prev, time: { label:"Time",state: "", options: [""] } };
       case "updateAvailTimes":
         return {
           ...prev,
-          time: { ...prev.time, availableTimes: action.value },
+          time: { ...prev.time, options: action.value },
         };
 
       default:
@@ -45,14 +45,15 @@ const BookingPage = ({ children }) => {
   };
 
   const [reservationData, dispatch] = useReducer(updateReservationData, {
-    persons: { state: "", error: "" },
-    date: { state: "", error: "" },
-    time: { state: "", error: "", availableTimes: [""] },
-    occasion: { state: "", error: "", options: ["Birthday", "Aniversary"] },
-    firstName: { state: "", error: "" },
-    lastName: { state: "", error: "" },
-    email: { state: "", error: "" },
-    specialRequest: { state: "", error: "" },
+    persons: { label:"Persons", state: "", error: "" },
+    date: { label:"Date", state: "", error: "" },
+    time: { label:"Time", state: "", error: "", options: [""] },
+    occasion: { label:"Occasion", state: "", error: "", options: ["Birthday", "Aniversary"] },
+    firstName: { label:"First Name", state: "", error: "" },
+    lastName: { label:"Last Name", state: "", error: "" },
+    email: { label:"Email" ,state: "", error: "" },
+    specialRequest: { label:"Special Request", state: "", error: "" },
+    
   });
 
   useEffect(() => {

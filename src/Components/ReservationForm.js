@@ -1,11 +1,10 @@
-import Input from "./Input";
 import Button from "./Button/Button";
 import serialize from "form-serialize";
 import { submitAPI } from "../availTimesAPI";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
-import { useState } from "react";
-import { type } from "@testing-library/user-event/dist/type";
+import Material3Input from "./Material3Input";
+
 const ReservationForm = ({ reservationData, dispatch }) => {
   const navigate = useNavigate();
 
@@ -20,31 +19,21 @@ const ReservationForm = ({ reservationData, dispatch }) => {
       .min(1, "Name must be at least one character long"),
     lastName: yup.string().optional(),
     email: yup.string().email(),
-    specialRequest: yup.string().optional(),
+    specialRequest: yup.string().optional()
   });
-  // const [error, setError] = useState({
-  //   persons: "",
-  //   date: "",
-  //   time: "",
-  //   occasion: "",
-  //   firstName: "",
-  //   lastName: "",
-  //   email: "",
-  //   specialRequest: "",
-  // });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = serialize(e.target, { hash: "true" });
     console.log(data);
-    validationSchema.isValid(data).then(() => {
+    validationSchema.validate(data).then(() => {
       submitAPI(data)
         .then(function () {
           console.log("successful");
           navigate("/successful");
         })
         .catch((e) => alert(e));
-    });
+    }).catch((e) => alert(e));
   };
 
   return (
@@ -58,21 +47,34 @@ const ReservationForm = ({ reservationData, dispatch }) => {
       }}
       onSubmit={handleSubmit}
     >
-      {/* {Object.keys(reservationData).map((key) => {
+      {Object.keys(reservationData).map((fieldName) => {
         return (
-          <Input
+          <Material3Input
+          key={fieldName}
             schema={validationSchema}
             reservationData={reservationData}
-            id={key}
-            value={reservationData[key].state}
-            type={"number"}
-            error={reservationData[key].error}
+            id={fieldName}
+            value={reservationData[fieldName].state}
+            type={
+              fieldName === "date"
+                ? "date"
+                : fieldName === "time" || fieldName === "occasion"
+                ? "select"
+                : fieldName === "persons"
+                ? "number"
+                : fieldName === "specialRequest"
+                ? "textarea"
+                : "text"
+            }
+            choices={reservationData[fieldName].options}
+            error={reservationData[fieldName].error}
             dispatch={dispatch}
-            
-          >{key}</Input>
+          >
+            {reservationData[fieldName].label}
+          </Material3Input>
         );
-      })} */}
-      <Input
+      })}
+      {/* <Material3Input
         schema={validationSchema}
         reservationData={reservationData}
         id={"persons"}
@@ -82,8 +84,8 @@ const ReservationForm = ({ reservationData, dispatch }) => {
         dispatch={dispatch}
       >
         Persons
-      </Input>
-      <Input
+      </Material3Input>
+      <Material3Input
         schema={validationSchema}
         reservationData={reservationData}
         id={"date"}
@@ -91,11 +93,10 @@ const ReservationForm = ({ reservationData, dispatch }) => {
         type={"date"}
         error={reservationData.date.error}
         dispatch={dispatch}
-
       >
         Date
-      </Input>
-      <Input
+      </Material3Input>
+      <Material3Input
         schema={validationSchema}
         reservationData={reservationData}
         id={"time"}
@@ -106,8 +107,8 @@ const ReservationForm = ({ reservationData, dispatch }) => {
         dispatch={dispatch}
       >
         Time
-      </Input>
-      <Input
+      </Material3Input>
+      <Material3Input
         schema={validationSchema}
         reservationData={reservationData}
         id={"occasion"}
@@ -118,8 +119,8 @@ const ReservationForm = ({ reservationData, dispatch }) => {
         dispatch={dispatch}
       >
         Occasion
-      </Input>
-      <Input
+      </Material3Input>
+      <Material3Input
         schema={validationSchema}
         reservationData={reservationData}
         id={"firstName"}
@@ -128,8 +129,8 @@ const ReservationForm = ({ reservationData, dispatch }) => {
         dispatch={dispatch}
       >
         First Name
-      </Input>
-      <Input
+      </Material3Input>
+      <Material3Input
         schema={validationSchema}
         reservationData={reservationData}
         id={"lastName"}
@@ -138,8 +139,8 @@ const ReservationForm = ({ reservationData, dispatch }) => {
         dispatch={dispatch}
       >
         Last Name
-      </Input>
-      <Input
+      </Material3Input>
+      <Material3Input
         schema={validationSchema}
         reservationData={reservationData}
         id={"email"}
@@ -149,8 +150,8 @@ const ReservationForm = ({ reservationData, dispatch }) => {
         dispatch={dispatch}
       >
         Email
-      </Input>
-      <Input
+      </Material3Input>
+      <Material3Input
         schema={validationSchema}
         reservationData={reservationData}
         id={"specialRequest"}
@@ -160,7 +161,18 @@ const ReservationForm = ({ reservationData, dispatch }) => {
         dispatch={dispatch}
       >
         Special Request
-      </Input>
+      </Material3Input>
+      <Material3Input
+        schema={validationSchema}
+        reservationData={reservationData}
+        id={"test"}
+        value={reservationData.test.state}
+        type={""}
+        error={reservationData.test.error}
+        dispatch={dispatch}
+      >
+        Test
+      </Material3Input> */}
       <Button type={"submit"}>Make your Reservation</Button>
     </form>
   );
