@@ -1,0 +1,91 @@
+.menu-hero {
+    display: flex;
+    min-height: 200px;
+    background-color: var(--md-sys-color-tertiary-container);
+    border-radius: 1rem;
+    margin: 8px;
+
+
+
+}
+
+.menu-container {
+    display: flex;
+    position: relative;
+    color: var(--md-sys-color-on-secondary-container);
+    transition: all 0.2s;
+}
+
+.menu-item {
+    display: flex;
+    border-radius: 1rem;
+    margin: 0 8px 8px 8px;
+    background-color: var(--md-sys-color-surface-container);
+    padding: 1rem;
+    
+
+
+}
+
+.item-content {
+    display: flex;
+    flex-direction: column;
+
+}
+.menu-item img{
+    width: 25%;
+    object-fit: cover;
+    border-radius: 2rem;
+
+}
+
+.menu-list {
+    display: flex;
+    list-style-type: none;
+    flex-direction: column;
+    width: 50%;
+
+}
+
+.menu-card {
+
+    display: flex;
+    justify-content: space-between;
+
+
+    flex-direction: column;
+    background-color: var(--md-sys-color-secondary-container);
+    border-radius: 1rem;
+
+    padding: 2rem;
+
+
+
+
+}
+
+.menu-card-container {
+    position: sticky;
+    display: flex;
+    width: 50%;
+    height: 100vh;
+    top: 0;
+    margin: 0 8px 8px 0;
+    padding: 8px 0px;
+}
+
+.menu-card img {
+    max-width: 100%;
+    border-radius: 1rem;
+}
+
+@media screen and (max-width:600px) {
+    .menu-detail {
+        display: none;
+    }
+
+    .menu-list {
+        width: 100%;
+    }
+
+}

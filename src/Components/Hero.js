@@ -23,14 +23,12 @@ const Hero = () => {
   return (
 
     <div className="Hero">
-
       <div className="hero-content">
         <h1>Little Lemmon</h1>
         <h2>Chicago</h2>
         <span>traditional recipes served with a modern twist</span>
         <Button type="outline" style={buttonStyle}>Order Online</Button>
         <Button id="res" type="filled" style={buttonStyle} onClick={()=>{navigate("/reservation")}}>Reserve a Table</Button>
-
       </div>
       <div
         className="logo-bg"
@@ -39,7 +37,6 @@ const Hero = () => {
         <h1>Little Lemmon</h1>
         <img src={logo} alt="" />
       </div>
-      
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { submitAPI } from "../availTimesAPI";
 import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import Material3Input from "./Material3Input";
+import { BookingSummary } from "./BookingPage";
 
 const ReservationForm = ({ reservationData, dispatch }) => {
   const navigate = useNavigate();
@@ -173,6 +174,7 @@ const ReservationForm = ({ reservationData, dispatch }) => {
       >
         Test
       </Material3Input> */}
+      <BookingSummary bookingData={reservationData}></BookingSummary>
       <Button type={"submit"}>Make your Reservation</Button>
     </form>
   );

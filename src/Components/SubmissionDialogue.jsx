@@ -8,8 +8,6 @@ const SubmissionDialogue = ({heading, message}) => {
             background:"var(--md-sys-color-surface-container)",
             position:'relative',
             top:"40%",
-
-
         }} className="dialogue">
             <h1>{heading}</h1>
             <p>{message}</p>

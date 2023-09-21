@@ -31,4 +31,9 @@ input[type="date"] {
     font-weight: 600;
 
 }
+option{
+    background-color: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+
+}
 

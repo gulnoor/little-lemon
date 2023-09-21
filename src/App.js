@@ -7,6 +7,7 @@ import BookingPage from "./Components/BookingPage";
 import { Route, Routes } from "react-router-dom";
 import Home from "./routes/Home";
 import SubmissionDialogue from "./Components/SubmissionDialogue";
+import Menu from "./Components/Menu";
 
 export const themeContext = createContext();
 
@@ -37,9 +38,16 @@ function App() {
         <main
           className="Content-container"
           style={{
+            position:"relative",
+            display:"flex",
+            flexDirection:"column",
+
+
             height: "100vh",
+            overflow:"hidden",
             overflowY: "scroll",
             width: "100%",
+     
           }}
         >
           <Routes>
@@ -52,10 +60,16 @@ function App() {
                   heading="Submission Successful"
                   message="Thank You for reserving your table. Looking forward to see you"
                 />
+                
               }
             />
+            <Route path="/menu" element={<Menu/>}/>
           </Routes>
-          <footer></footer>
+          <footer>
+            <h1>footer</h1>
+            <h2>footer</h2>
+            <h3>footer</h3>
+          </footer>
         </main>
       </div>
     </themeContext.Provider>

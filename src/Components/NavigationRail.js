@@ -37,7 +37,7 @@ const NavigationRail = (/* { toggle, theme } */) => {
             </Link>
           </li>
           <li>
-            <Link style={linkStyle}>
+            <Link to = "/menu" style={linkStyle}>
               <span className="material-symbols-outlined">restaurant_menu</span>
               Menu
             </Link>

@@ -1,0 +1,38 @@
+.summary-container{
+    display: flex;
+    flex-direction: column;
+    color: var(--md-sys-color-on-tertiary-container);
+    font-size: 3rem;
+    background-color: var(--md-sys-color-tertiary-container);
+    height: 100%;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    
+
+}
+.summary-container span{
+    /* padding: 1rem; */
+}
+.summary{
+    display: flex;
+    flex-direction: row;
+    transition: all 0.2s;
+    align-items: flex-start;
+    
+}
+.summary-date, .summary-details {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem
+}
+.summary-date{
+    justify-content: center;
+    align-items: center;
+}
+
+.summary h1{
+    font-size: 3rem;
+}
+.summary span{
+    font-size: 1.5rem;
+}
