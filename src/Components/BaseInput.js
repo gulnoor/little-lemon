@@ -37,6 +37,7 @@ const BaseInput = ({
         : "var(--md-sys-color-on-surface)",
     outline: "none",
     width: "100%",
+    // minHeight:"38px"
   });
   useEffect(() => {
     setInputStyle((prev) => {

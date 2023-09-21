@@ -20,21 +20,24 @@ const ReservationForm = ({ reservationData, dispatch }) => {
       .min(1, "Name must be at least one character long"),
     lastName: yup.string().optional(),
     email: yup.string().email(),
-    specialRequest: yup.string().optional()
+    specialRequest: yup.string().optional(),
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = serialize(e.target, { hash: "true" });
     console.log(data);
-    validationSchema.validate(data).then(() => {
-      submitAPI(data)
-        .then(function () {
-          console.log("successful");
-          navigate("/successful");
-        })
-        .catch((e) => alert(e));
-    }).catch((e) => alert(e));
+    validationSchema
+      .validate(data)
+      .then(() => {
+        submitAPI(data)
+          .then(function () {
+            console.log("successful");
+            navigate("/successful");
+          })
+          .catch((e) => alert(e));
+      })
+      .catch((e) => alert(e));
   };
 
   return (
@@ -42,39 +45,56 @@ const ReservationForm = ({ reservationData, dispatch }) => {
       style={{
         display: "flex",
         flexWrap: "wrap",
-        maxWidth: "600px",
-        justifyContent: "space-between",
-        padding: "2rem",
+        // maxWidth: "600px",
+        // width: "100%",
+        // justifyContent: "space-between",
+        padding: "8px",
       }}
       onSubmit={handleSubmit}
     >
-      {Object.keys(reservationData).map((fieldName) => {
-        return (
-          <Material3Input
-          key={fieldName}
-            schema={validationSchema}
-            reservationData={reservationData}
-            id={fieldName}
-            value={reservationData[fieldName].state}
-            type={
-              fieldName === "date"
-                ? "date"
-                : fieldName === "time" || fieldName === "occasion"
-                ? "select"
-                : fieldName === "persons"
-                ? "number"
-                : fieldName === "specialRequest"
-                ? "textarea"
-                : "text"
-            }
-            choices={reservationData[fieldName].options}
-            error={reservationData[fieldName].error}
-            dispatch={dispatch}
-          >
-            {reservationData[fieldName].label}
-          </Material3Input>
-        );
-      })}
+      <div
+        className="inputs-div"
+        style={{
+          display: "inline-flex",
+          // width:"100%",
+          // flexDirection:"column",
+          flexWrap: "wrap",
+          background:"var(--md-sys-color-surface-container)",
+          padding:"2rem",
+          borderRadius:"16px"
+        
+          
+          // margin:"8px 8px 0 0"
+        }}
+      >
+        {Object.keys(reservationData).map((fieldName) => {
+          return (
+            <Material3Input
+              key={fieldName}
+              schema={validationSchema}
+              reservationData={reservationData}
+              id={fieldName}
+              value={reservationData[fieldName].state}
+              type={
+                fieldName === "date"
+                  ? "date"
+                  : fieldName === "time" || fieldName === "occasion"
+                  ? "select"
+                  : fieldName === "persons"
+                  ? "number"
+                  : fieldName === "specialRequest"
+                  ? "textarea"
+                  : "text"
+              }
+              choices={reservationData[fieldName].options}
+              error={reservationData[fieldName].error}
+              dispatch={dispatch}
+            >
+              {reservationData[fieldName].label}
+            </Material3Input>
+          );
+        })}
+      </div>
       {/* <Material3Input
         schema={validationSchema}
         reservationData={reservationData}
@@ -174,8 +194,19 @@ const ReservationForm = ({ reservationData, dispatch }) => {
       >
         Test
       </Material3Input> */}
-      <BookingSummary bookingData={reservationData}></BookingSummary>
-      <Button type={"submit"}>Make your Reservation</Button>
+      <div
+        className="summary-box"
+        style={{
+          display: "inline-flex",
+          // width:"100%",
+          flexDirection: "column",
+          // margin:"8px 8px 0 0"
+
+        }}
+      >
+        <BookingSummary bookingData={reservationData}></BookingSummary>
+        {/* <Button type={"submit"}>Make your Reservation</Button> */}
+      </div>
     </form>
   );
 };

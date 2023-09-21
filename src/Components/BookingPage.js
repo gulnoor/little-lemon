@@ -2,32 +2,35 @@ import React, { useEffect, useReducer } from "react";
 import ReservationForm from "./ReservationForm";
 import { fetchAPI } from "../availTimesAPI";
 import "./bookingPage.css";
+import Button from "./Button/Button";
 
 export const BookingSummary = ({ bookingData }) => {
   const date = new Date(bookingData.date.state);
 
   return (
     <div className="summary-container">
-      <span>Your Booking:</span>
+      <h3>Your Booking:</h3>
+      <h6>Summary</h6>
 
       <div className="summary">
         <div className="summary-date">
-          <h1>{date.getDate()}</h1>
+          <h1>{date.getDate()?date.getDate():"No date selected"}</h1>
           <span>
-            {date.toLocaleDateString("en-us", { month: "short" }).toUpperCase()}
+            {date.getDate()?date.toLocaleDateString("en-us", { month: "short" }).toUpperCase():""}
           </span>
         </div>
         <div className="summary-details">
           <h1>
             {bookingData.firstName.state + " " + bookingData.lastName.state}
           </h1>
-          <span>{`${date
-            .toLocaleDateString("en-us", { weekday: "short" })
-            .toUpperCase()} ${bookingData.time.state} for ${
-            bookingData.persons.state
-          } persons`}</span>
+          <span>{date.getDate()?`${date
+            .toLocaleDateString("en-us", { weekday: "long" })
+            .toUpperCase()} ${bookingData.time.state} ${bookingData.persons.state?`for ${bookingData.persons.state} person`:""}`:""}</span>
         </div>
       </div>
+      <Button style={{
+        width:"100%"
+      }} type={"submit"}>Make your Reservation</Button>
     </div>
   );
 };
@@ -96,21 +99,21 @@ const BookingPage = ({ children }) => {
   }, [reservationData.date.state]);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "center",
-        alignItems: "center",
-        background: "var(--md-sys-color-surface-container)",
-        margin: "0 8px",
-        borderRadius: "1rem",
-      }}
-      className="booking-page"
+    <
+      // style={{
+      //   // display: "flex",
+      //   // flexWrap: "wrap",
+      //   // justifyContent: "center",
+      //   // alignItems: "center",
+      //   // background: "var(--md-sys-color-surface-container)",
+      //   // margin: "0 8px",
+      //   // borderRadius: "1rem",
+      // }}
+      // className="booking-page"
     >
       <ReservationForm reservationData={reservationData} dispatch={dispatch} />
-      <BookingSummary bookingData={reservationData} />
-    </div>
+      {/* <BookingSummary bookingData={reservationData} /> */}
+    </>
   );
 };
 

@@ -53,7 +53,7 @@ const Material3Input = ({
       setLabelStyle((labelStyle) => {
         return {
           ...labelStyle,
-          top: "-1px",
+          top: "-4px",
           margin: "0px 3px",
           fontSize: "16px",
           color: "var(--md-sys-color-primary)",

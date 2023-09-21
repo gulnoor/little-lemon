@@ -18,10 +18,16 @@ input[type="date"] {
 .big-container{
     width: 100%;
 }
+.summary-box, .inputs-div{
+    width: 100%;
+}
 @media screen  and (min-width: 600px){
 .big-container.Date, .big-container.Time, .big-container.Name {
-        width: 49%;
+        width: 50%;
     }
+.summary-box, .inputs-div{
+    width: 50%;
+}
 
 }
 .form-error{
