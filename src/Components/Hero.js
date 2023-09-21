@@ -24,9 +24,9 @@ const Hero = () => {
 
     <div className="Hero">
       <div className="hero-content">
-        <h1>Little Lemmon</h1>
+        <h1>Little Lemon</h1>
         <h2>Chicago</h2>
-        <span>traditional recipes served with a modern twist</span>
+        <span>We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist</span>
         <Button type="outline" style={buttonStyle}>Order Online</Button>
         <Button id="res" type="filled" style={buttonStyle} onClick={()=>{navigate("/reservation")}}>Reserve a Table</Button>
       </div>

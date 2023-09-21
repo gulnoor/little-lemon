@@ -1,6 +1,11 @@
 import Button from "./Button/Button";
+
+import bgimg from "../assets/images/bg/top-view-fresh-lemon-slices-table.jpg";
 import "./menu.css";
+import { useContext } from "react";
+import { themeContext } from "../App";
 const Menu = () => {
+  const { theme } = useContext(themeContext);
   const menu = [
     {
       name: "Greek Salad",
@@ -31,7 +36,7 @@ const Menu = () => {
     {
       name: "Bruschetta",
       description:
-      "Freshly baked bread topped with garlic, tomatoes, basil, and olive oil.",
+        "Freshly baked bread topped with garlic, tomatoes, basil, and olive oil.",
       price: 10,
       category: "Appetizer",
       image: "https://i.imgur.com/Bruschetta.jpg",
@@ -124,8 +129,35 @@ const Menu = () => {
   ];
   return (
     <>
-      <div className=" menu-hero">
+      <div
+        style={{
+          backgroundImage:
+            theme === "dark"
+              ? `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${bgimg}) `
+              : `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),url(${bgimg})`,
+        }}
+        className=" menu-hero"
+      >
         <h1>Menu</h1>
+        <p>traditional recipes served with a modern twist</p>
+        <div className="menu-categories">
+          <div className="category-btn">
+            Appetizers
+            <p>Mezze that will tantalize your taste buds</p>
+          </div>
+          <div className="category-btn">
+            Salad
+            <p>Fresh, flavorful salads made with seasonal ingredients</p>
+          </div>
+          <div className="category-btn">
+            Entree
+            <p>Classic Mediterranean dishes with a modern twist</p>
+          </div>
+          <div className="category-btn">
+            Dessert
+            <p>Sweeten your meal with a traditional Mediterranean dessert</p>
+          </div>
+        </div>
       </div>
       <div className="menu-container">
         <ol className="menu-list">
