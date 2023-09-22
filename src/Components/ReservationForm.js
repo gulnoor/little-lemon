@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import Material3Input from "./Material3Input";
 import { BookingSummary } from "./BookingPage";
+import { motion } from "framer-motion";
 
 const ReservationForm = ({ reservationData, dispatch }) => {
   const navigate = useNavigate();
@@ -39,6 +40,15 @@ const ReservationForm = ({ reservationData, dispatch }) => {
       })
       .catch((e) => alert(e));
   };
+  const containerAnimation = {
+    initial: {
+      opacity: 0,
+    },
+    final: {
+      opacity: 1
+
+    },
+  };
 
   return (
     <form
@@ -52,19 +62,25 @@ const ReservationForm = ({ reservationData, dispatch }) => {
       }}
       onSubmit={handleSubmit}
     >
-      <div
+      <motion.div
         className="inputs-div"
         style={{
           display: "inline-flex",
           // width:"100%",
           // flexDirection:"column",
           flexWrap: "wrap",
-          background:"var(--md-sys-color-surface-container)",
-          padding:"2rem",
-          borderRadius:"16px"
-        
-          
+          background: "var(--md-sys-color-surface-container)",
+          padding: "2rem",
+          borderRadius: "16px",
+          justifyContent:"space-between"
+
           // margin:"8px 8px 0 0"
+        }}
+        variants={containerAnimation}
+        initial="initial"
+        animate = "final"
+        transition={{
+          staggerChildren:"0.05"
         }}
       >
         {Object.keys(reservationData).map((fieldName) => {
@@ -94,7 +110,7 @@ const ReservationForm = ({ reservationData, dispatch }) => {
             </Material3Input>
           );
         })}
-      </div>
+      </motion.div>
       {/* <Material3Input
         schema={validationSchema}
         reservationData={reservationData}
@@ -201,7 +217,6 @@ const ReservationForm = ({ reservationData, dispatch }) => {
           // width:"100%",
           flexDirection: "column",
           // margin:"8px 8px 0 0"
-
         }}
       >
         <BookingSummary bookingData={reservationData}></BookingSummary>

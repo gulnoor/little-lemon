@@ -3,6 +3,7 @@ import ReservationForm from "./ReservationForm";
 import { fetchAPI } from "../availTimesAPI";
 import "./bookingPage.css";
 import Button from "./Button/Button";
+import { motion } from "framer-motion";
 
 export const BookingSummary = ({ bookingData }) => {
   const date = new Date(bookingData.date.state);

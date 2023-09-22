@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Input.css";
 import BaseInput from "./BaseInput";
+import { motion, useAnimation } from "framer-motion";
 
 const InputError = ({ children }) => {
   return (
@@ -22,6 +23,7 @@ const Material3Input = ({
   ...other
 }) => {
   const [isFocused, setIsFocused] = useState(false);
+  // const control = useAnimation()
 
   const [boxStyle, setBoxStyle] = useState({
     position: "relative",
@@ -98,13 +100,28 @@ const Material3Input = ({
         });
   }, [isFocused]);
 
+  const inputAnimation = {
+    initial: {
+      y:1000
+    },
+    final:{
+      y:0
+    }
+  };
+
   return (
-    <div
+    <motion.div
       style={{
         display: "flex",
         flexDirection: "column",
       }}
       className={`big-container ${children}`}
+      variants={inputAnimation}
+      transition={{
+        type:"spring",
+        stiffness:120,
+        damping:16
+      }}
     >
       <div style={boxStyle} className={`input-container ${children}`}>
         <label htmlFor={id} style={labelStyle}>
@@ -123,7 +140,7 @@ const Material3Input = ({
         ></BaseInput>
       </div>
       {error ? <InputError>{error}</InputError> : null}
-    </div>
+    </motion.div>
   );
 };
 

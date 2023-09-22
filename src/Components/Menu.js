@@ -1,9 +1,9 @@
 import Button from "./Button/Button";
-
-import bgimg from "../assets/images/bg/top-view-fresh-lemon-slices-table.jpg";
+import bgimg from "../assets/images/bg/93597.jpg";
 import "./menu.css";
 import { useContext } from "react";
 import { themeContext } from "../App";
+
 const Menu = () => {
   const { theme } = useContext(themeContext);
   const menu = [

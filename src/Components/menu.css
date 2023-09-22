@@ -10,8 +10,6 @@
     flex-direction: column;
     background-size: cover;
     background-repeat: no-repeat;
-
-
 }
 
 .menu-hero h1 {
@@ -20,16 +18,24 @@
 
 .menu-hero p {
     font-size: 1.8rem;
+    text-align: center;
+
+
 }
 
 .category-btn {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     font-size: 2rem;
     padding: 1rem;
     border-radius: 1rem;
     background-color: var(--md-sys-color-surface-container);
     color: var(--md-sys-color-on-surface);
+
+    max-width: 450px;
+    width: 35vw;
+
 }
 
 .category-btn:hover {
@@ -39,6 +45,7 @@
 
 .category-btn p {
     font-size: 1.2rem;
+    text-align: left;
 }
 
 .menu-categories {
