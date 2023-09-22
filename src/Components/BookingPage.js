@@ -3,7 +3,6 @@ import ReservationForm from "./ReservationForm";
 import { fetchAPI } from "../availTimesAPI";
 import "./bookingPage.css";
 import Button from "./Button/Button";
-import { motion } from "framer-motion";
 
 export const BookingSummary = ({ bookingData }) => {
   const date = new Date(bookingData.date.state);
@@ -15,23 +14,41 @@ export const BookingSummary = ({ bookingData }) => {
 
       <div className="summary">
         <div className="summary-date">
-          <h1>{date.getDate()?date.getDate():"No date selected"}</h1>
+          <h1>{date.getDate() ? date.getDate() : "No date selected"}</h1>
           <span>
-            {date.getDate()?date.toLocaleDateString("en-us", { month: "short" }).toUpperCase():""}
+            {date.getDate()
+              ? date
+                  .toLocaleDateString("en-us", { month: "short" })
+                  .toUpperCase()
+              : ""}
           </span>
         </div>
         <div className="summary-details">
           <h1>
             {bookingData.firstName.state + " " + bookingData.lastName.state}
           </h1>
-          <span>{date.getDate()?`${date
-            .toLocaleDateString("en-us", { weekday: "long" })
-            .toUpperCase()} ${bookingData.time.state} ${bookingData.persons.state?`for ${bookingData.persons.state} person`:""}`:""}</span>
+          <span>
+            {date.getDate()
+              ? `${date
+                  .toLocaleDateString("en-us", { weekday: "long" })
+                  .toUpperCase()} ${bookingData.time.state} ${
+                  bookingData.persons.state
+                    ? `for ${bookingData.persons.state} person`
+                    : ""
+                }`
+              : ""}
+          </span>
         </div>
       </div>
-      <Button style={{
-        width:"100%"
-      }} type={"submit"}>Make your Reservation</Button>
+      <Button
+        style={{
+          width: "100%",
+        }}
+        htmlType={"submit"}
+        variant={"outlined"}
+      >
+        Make your Reservation
+      </Button>
     </div>
   );
 };

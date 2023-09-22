@@ -23,7 +23,7 @@ input[type="date"] {
 }
 @media screen  and (min-width: 600px){
 .big-container.Date, .big-container.Time, .big-container.Name {
-        width: 48%;
+        width: 49%;
     }
 .summary-box, .inputs-div{
     width: 50%;

@@ -1,4 +1,3 @@
-import Button from "./Button/Button";
 import serialize from "form-serialize";
 import { submitAPI } from "../availTimesAPI";
 import { useNavigate } from "react-router-dom";
@@ -47,7 +46,7 @@ const ReservationForm = ({ reservationData, dispatch }) => {
     final: {
       opacity: 1
 
-    },
+    }
   };
 
   return (
