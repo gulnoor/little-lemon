@@ -8,6 +8,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from "./routes/Home";
 import SubmissionDialogue from "./Components/SubmissionDialogue";
 import Menu from "./Components/Menu";
+import Footer from "./Components/Footer";
 
 export const themeContext = createContext();
 
@@ -39,8 +40,8 @@ function App() {
           className="Content-container"
           style={{
             position:"relative",
-            display:"flex",
-            flexDirection:"column",
+            // display:"flex",
+            // flexDirection:"column",
 
 
             height: "100vh",
@@ -65,11 +66,7 @@ function App() {
             />
             <Route path="/menu" element={<Menu/>}/>
           </Routes>
-          <footer>
-            <h1>footer</h1>
-            <h2>footer</h2>
-            <h3>footer</h3>
-          </footer>
+          <Footer/>
         </main>
       </div>
     </themeContext.Provider>

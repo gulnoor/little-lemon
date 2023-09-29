@@ -1,18 +1,24 @@
-.AboutUs{
+.AboutUs {
     display: flex;
     background: var(--md-sys-color-secondary-container);
     border-radius: 16px;
-    padding: 2rem;
-    margin: 0.5rem;
+    margin: 8px 8px 0 8px;
+    justify-content: center;
+    align-items: center;
+    min-height: 580px;
+    padding: 16px;
+    
+
 }
-.AboutUs article{
-    max-width: 500px;
-    font-size: 1rem;
-    margin: auto;
+
+.AboutUs article {
+    max-width: 60%;
+    font-size: 1.2rem;
+
 }
-.AboutUs .avatars{
-    margin: auto;
-}
-.AboutUs img{
+
+
+
+.AboutUs img {
     width: 200px;
 }

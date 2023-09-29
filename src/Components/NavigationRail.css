@@ -63,7 +63,7 @@
 
 
 @media screen and (min-width:600px) {
-  .App ul {
+  .Nav ul {
     position: relative;
     display: block;
     height: 100%;
