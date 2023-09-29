@@ -3,7 +3,7 @@ import ReservationForm from "./ReservationForm";
 import { fetchAPI } from "../availTimesAPI";
 import "./bookingPage.css";
 import Button from "./Button/Button";
-
+import heroImg from "../assets/images/corporate-memphis/Mesa de trabajo 1.png"
 export const BookingSummary = ({ bookingData }) => {
   const date = new Date(bookingData.date.state);
 
@@ -130,6 +130,24 @@ const BookingPage = ({ children }) => {
 
   return (
     <>
+    <div className="reservation-hero">
+      <h1 style={{
+        display:"flex",
+        justifyContent:"center",
+        alignItems:"center",
+        fontSize:"8vw",
+        fontWeight:"700",
+        // margin:"0 auto"
+
+        
+      
+      }}>Reservation</h1>
+      <img src={heroImg} alt="" style={{
+        maxWidth: "35%",
+        borderRadius: "120px",
+        margin:"8px"
+      }}/>
+    </div>
       <ReservationForm reservationData={reservationData} dispatch={dispatch} />
     </>
   );
