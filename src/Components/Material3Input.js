@@ -114,14 +114,14 @@ const Material3Input = ({
       style={{
         display: "flex",
         flexDirection: "column",
+        transition:"all 0.3s"
       }}
       className={`big-container ${children}`}
       variants={inputAnimation}
       transition={{
-        type:"spring",
-        stiffness:120,
-        damping:16
+        duration:0
       }}
+
     >
       <div style={boxStyle} className={`input-container ${children}`}>
         <label htmlFor={id} style={labelStyle}>

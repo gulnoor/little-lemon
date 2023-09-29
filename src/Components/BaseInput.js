@@ -36,9 +36,9 @@ const BaseInput = ({
         ? "transparent"
         : "var(--md-sys-color-on-surface)",
     outline: "none",
-    width: "100%",
-    // minHeight:"38px"
+    width: "100%"
   });
+  
   useEffect(() => {
     setInputStyle((prev) => {
       return { ...prev, colorScheme: theme };

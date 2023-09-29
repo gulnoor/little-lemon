@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer} from "react";
 import ReservationForm from "./ReservationForm";
 import { fetchAPI } from "../availTimesAPI";
 import "./bookingPage.css";
@@ -8,9 +8,9 @@ export const BookingSummary = ({ bookingData }) => {
   const date = new Date(bookingData.date.state);
 
   return (
-    <div className="summary-container">
-      <h3>Your Booking:</h3>
-      <h6>Summary</h6>
+    <section className="summary-container display-small">
+      <h3 className="headline-large">Your Booking:</h3>
+      <h6 className="headline-medium">Summary</h6>
 
       <div className="summary">
         <div className="summary-date">
@@ -49,7 +49,7 @@ export const BookingSummary = ({ bookingData }) => {
       >
         Make your Reservation
       </Button>
-    </div>
+    </section>
   );
 };
 
@@ -67,7 +67,7 @@ const BookingPage = ({ children }) => {
           [action.field]: { ...prev[action.field], error: action.value },
         };
       case "resetTime":
-        return { ...prev, time: { label: "Time", state: "", options: [""] } };
+        return { ...prev, time: { ...prev["time"], state: "", options: [""] } };
       case "updateAvailTimes":
         return {
           ...prev,
@@ -80,18 +80,30 @@ const BookingPage = ({ children }) => {
 
   const [reservationData, dispatch] = useReducer(updateReservationData, {
     persons: { label: "Persons", state: "", error: "" },
-    date: { label: "Date", state: "", error: "" },
-    time: { label: "Time", state: "", error: "", options: [""] },
+    date: { label: "Date", state: "", error: "", htmlType: "date" },
+    time: {
+      label: "Time",
+      state: "",
+      error: "",
+      options: [""],
+      htmlType: "select",
+    },
     occasion: {
       label: "Occasion",
       state: "",
       error: "",
       options: ["Birthday", "Aniversary"],
+      htmlType: "select",
     },
-    firstName: { label: "First Name", state: "", error: "" },
-    lastName: { label: "Last Name", state: "", error: "" },
-    email: { label: "Email", state: "", error: "" },
-    specialRequest: { label: "Special Request", state: "", error: "" },
+    firstName: { label: "First Name", state: "", error: "", htmlType: "text" },
+    lastName: { label: "Last Name", state: "", error: "", htmlType: "text" },
+    email: { label: "Email", state: "", error: "", htmlType: "email" },
+    specialRequest: {
+      label: "Special Request",
+      state: "",
+      error: "",
+      htmlType: "textarea",
+    },
   });
 
   useEffect(() => {
@@ -117,20 +129,8 @@ const BookingPage = ({ children }) => {
   }, [reservationData.date.state]);
 
   return (
-    <
-      // style={{
-      //   // display: "flex",
-      //   // flexWrap: "wrap",
-      //   // justifyContent: "center",
-      //   // alignItems: "center",
-      //   // background: "var(--md-sys-color-surface-container)",
-      //   // margin: "0 8px",
-      //   // borderRadius: "1rem",
-      // }}
-      // className="booking-page"
-    >
+    <>
       <ReservationForm reservationData={reservationData} dispatch={dispatch} />
-      {/* <BookingSummary bookingData={reservationData} /> */}
     </>
   );
 };

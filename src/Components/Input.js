@@ -95,7 +95,7 @@ const Input = ({
     top: "50%",
     left: "0.5rem",
     transform: "translate(0,-50%)",
-    transition: "0.2s",
+    transition: "0.1s",
     zIndex: "41",
     borderRadius: "3px",
     whiteSpace: "nowrap",

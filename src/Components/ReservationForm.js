@@ -44,9 +44,8 @@ const ReservationForm = ({ reservationData, dispatch }) => {
       opacity: 0,
     },
     final: {
-      opacity: 1
-
-    }
+      opacity: 1,
+    },
   };
 
   return (
@@ -71,15 +70,16 @@ const ReservationForm = ({ reservationData, dispatch }) => {
           background: "var(--md-sys-color-surface-container)",
           padding: "2rem",
           borderRadius: "16px",
-          justifyContent:"space-between"
+          justifyContent: "space-between",
 
           // margin:"8px 8px 0 0"
         }}
         variants={containerAnimation}
         initial="initial"
-        animate = "final"
+        animate="final"
         transition={{
-          staggerChildren:"0.05"
+          staggerChildren: "0.05",
+          duration: 0,
         }}
       >
         {Object.keys(reservationData).map((fieldName) => {
@@ -90,17 +90,7 @@ const ReservationForm = ({ reservationData, dispatch }) => {
               reservationData={reservationData}
               id={fieldName}
               value={reservationData[fieldName].state}
-              type={
-                fieldName === "date"
-                  ? "date"
-                  : fieldName === "time" || fieldName === "occasion"
-                  ? "select"
-                  : fieldName === "persons"
-                  ? "number"
-                  : fieldName === "specialRequest"
-                  ? "textarea"
-                  : "text"
-              }
+              type={reservationData[fieldName].htmlType}
               choices={reservationData[fieldName].options}
               error={reservationData[fieldName].error}
               dispatch={dispatch}

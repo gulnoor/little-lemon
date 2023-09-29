@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     color: var(--md-sys-color-on-tertiary-container);
-    font-size: 3rem;
+    /* font-size: 3rem; */
     background-color: var(--md-sys-color-tertiary-container);
     /* height: 100%; */
     border-radius: 1rem;
@@ -13,9 +13,7 @@
     
 
 }
-.summary-container span{
-    /* padding: 1rem; */
-}
+
 .summary{
     display: flex;
     flex-direction: row;
@@ -31,11 +29,4 @@
 .summary-date{
     justify-content: center;
     align-items: center;
-}
-
-.summary h1{
-    font-size: 3rem;
-}
-.summary span{
-    font-size: 1.5rem;
 }
