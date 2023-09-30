@@ -1,13 +1,14 @@
 import React from 'react'
 import Hero from '../Components/Hero'
-import TopNav from '../Components/TopNav'
 import AboutUs from '../Components/AboutUs'
+import Carousel from '../Components/Carousel'
 
 const Home = () => {
   return (
     <>
     <Hero/>
-    <TopNav/>
+    <Carousel/>
+    
     <AboutUs/>
     </>
   )
