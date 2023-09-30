@@ -7,19 +7,28 @@
     align-items: center;
     min-height: 580px;
     padding: 16px;
+    flex-wrap: wrap-reverse;
     
 
 }
 
 .AboutUs article {
-    max-width: 60%;
+    max-width: 50%;
     font-size: 1.2rem;
+    padding: 3rem;
+    text-align: justify;
+    color: var(--md-sys-color-on-secondary-container);
+
+}
+.AboutUs>article>h1{
+    font-size: 56px;
+    margin-bottom: 1rem;
 
 }
 
 
-
 .AboutUs img {
-    max-width: 30%;
+    max-width: 50%;
     object-fit: contain;
+    border-radius: 120px;
 }

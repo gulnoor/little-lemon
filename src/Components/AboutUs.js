@@ -5,7 +5,7 @@ const AboutUs = () => {
   return (
     <section className="AboutUs" >
       <article>
-        <h1>About Us</h1>
+        <h1 className="headline-large">About Us</h1>
         <p>
           Based in Chicago, Illinois, Little Lemon is a family-owned
           Mediterranean restaurant, focused on traditional recipes served with a
