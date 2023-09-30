@@ -9,10 +9,10 @@ export const BookingSummary = ({ bookingData }) => {
 
   return (
     <section className="summary-container display-small">
-      <h3 className="headline-large">Your Booking:</h3>
+      <h3 >Your Booking:</h3>
       <h6 className="headline-medium">Summary</h6>
 
-      <div className="summary">
+      <div className="summary headline-medium">
         <div className="summary-date">
           <h1>{date.getDate() ? date.getDate() : "No date selected"}</h1>
           <span>

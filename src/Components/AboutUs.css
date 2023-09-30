@@ -20,5 +20,6 @@
 
 
 .AboutUs img {
-    width: 200px;
+    max-width: 30%;
+    object-fit: contain;
 }

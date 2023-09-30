@@ -1,11 +1,11 @@
 import "./AboutUs.css";
-import avatar1 from "../assets/images/3D Avatars/19.png";
-import avatar2 from "../assets/images/3D Avatars/23.png";
+import marioadrian from "../assets/images/Mario and Adrian A.jpg";
 
 const AboutUs = () => {
   return (
     <section className="AboutUs" >
       <article>
+        <h1>About Us</h1>
         <p>
           Based in Chicago, Illinois, Little Lemon is a family-owned
           Mediterranean restaurant, focused on traditional recipes served with a
@@ -26,10 +26,8 @@ const AboutUs = () => {
           region.
         </p>
       </article>
-      <div className="avatars">
-        <img src={avatar1} alt="" />
-        <img src={avatar2} alt="" />
-      </div>
+      <img src={marioadrian} alt="Mario and Adrian" />
+
     </section>
   );
 };
