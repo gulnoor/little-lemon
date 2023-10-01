@@ -3,9 +3,19 @@ import marioadrian from "../assets/images/Mario and Adrian A.jpg";
 
 const AboutUs = () => {
   return (
+    <>
+      <h1
+        className="headline-large"
+        style={{
+          fontSize: "3.5rem",
+          color: "var(--md-sys-color-on-surface)",
+          padding: "2rem",
+        }}
+      >
+        About Us
+      </h1>
     <section className="AboutUs" >
       <article>
-        <h1 className="headline-large">About Us</h1>
         <p>
           Based in Chicago, Illinois, Little Lemon is a family-owned
           Mediterranean restaurant, focused on traditional recipes served with a
@@ -29,6 +39,8 @@ const AboutUs = () => {
       <img src={marioadrian} alt="Mario and Adrian" />
 
     </section>
+    </>
+
   );
 };
 export default AboutUs;

@@ -2,50 +2,28 @@ import { useRef } from "react";
 import useMenu from "../hooks/useMenu";
 import "./Carousel.css";
 
-const CarouselItem = ({ menuItem, style, handleClick }) => {
+const CarouselItem = ({ menuItem, handleClick }) => {
+  const ref = useRef(null);
+
   return (
-    <div onClick={handleClick} style={style}>
-      <img src={menuItem.image} alt="" />
+    <div onClick={handleClick} ref={ref} className="carousel-item">
+      <h1 style={{
+        position:"absolute",
+        zIndex:"99",
+        textAlign:"center",
+        bottom:"16px",
+        width:"100%",
+      }}>{menuItem.name}</h1>
+      <img src={menuItem.image} alt={menuItem.name} />
     </div>
   );
 };
 
 const Carousel = () => {
+  const containerRef = useRef(null);
   const menu = useMenu();
-
-  const p1Style = {
-    width: " 50%",
-    borderRadius: " 32px",
-    overflow: " hidden",
-    marginRight: " 8px",
-    transition: " all 0.3s",
-  };
-  const p2Style = {
-    width: " 30%",
-    borderRadius: " 32px",
-    overflow: " hidden",
-    marginRight: " 8px",
-    transition: " all 0.3s",
-    filter: " brightness(0.8)",
-  };
-  const p3Style = {
-    width: " 20%",
-    borderRadius: " 32px",
-    overflow: " hidden",
-    marginRight: " 0px",
-    transition: " all 0.3s",
-    filter: " brightness(0.7)",
-  };
-  const hiddenStyle = {
-    width: " 0%",
-    borderRadius: " 32px",
-    overflow: " hidden",
-    marginRight: " 0px",
-    transition: " all 0.3s",
-  };
-
-  const handleClick = (e) => {
-    const current = e.currentTarget
+  const resizeItems = (e) => {
+    const current = e.currentTarget;
     const ps1 = e.currentTarget.previousElementSibling
       ? e.currentTarget.previousElementSibling
       : null;
@@ -62,70 +40,80 @@ const Carousel = () => {
         ? ns1.nextElementSibling
         : null
       : null;
-
-    if (ps2&&ns2) {
-      ps2.style.width = "0";
-      ps2.style.marginRight = "0px";
-      ps1.style.width = "0";
-      ps1.style.marginRight = "0px";
+    if (ps2 && ns2) {
       current.style.width = "50%";
-      current.style.marginRight = "8px";
+      current.style.filter = "brightness(1)";
+      // current.style.marginRight = "8px";
       ns1.style.width = "30%";
-      ns1.style.marginRight = "8px";
-
+      ns1.style.filter = "brightness(0.8)";
+      // ns1.style.marginRight = "8px";
       ns2.style.width = "20%";
-      ns2.style.marginRight = "0px";
-
-    }
-    else if (ps1&&ns2) {
-      ps1.style.width = "0";
-      ps1.style.marginRight = "0px";
+      ns2.style.filter = "brightness(0.6)";
+    } else if (ps1 && ns2) {
       current.style.width = "50%";
-      current.style.marginRight = "8px";
+      // current.style.marginRight = "8px";
+      current.style.filter = "brightness(1)";
       ns1.style.width = "30%";
-      ns1.style.marginRight = "8px";
+      ns1.style.filter = "brightness(0.8)";
+      // ns1.style.marginRight = "8px";
       ns2.style.width = "20%";
-      ns2.style.marginRight = "0px";
-
-
-
-    }
-    else if(ps2&&ns1){
-      ps2.style.width = "0";
-      ps1.style.width = "0";
+      ns2.style.filter = "brightness(0.6)";
+    } else if (ps2 && ns1) {
       ps1.style.width = "20%";
-      ps1.style.marginRight = "8px";
+      ps1.style.filter = "brightness(0.6)";
+      // ps1.style.marginRight = "8px";
       current.style.width = "50%";
-      current.style.marginRight = "8px";
+      current.style.filter = "brightness(1)";
+      // current.style.marginRight = "8px";
       ns1.style.width = "30%";
-      ns1.style.marginRight = "0px";
-
-
-
-
-    }   
-    else if(ps2){
+      ns1.style.filter = "brightness(0.8)";
+    } else if (ps2) {
       ps2.style.width = "20%";
-      ps2.style.marginRight = "8px";
+      ps2.style.filter = "brightness(0.6)";
+      // ps2.style.marginRight = "8px";
       ps1.style.width = "30%";
-      ps1.style.marginRight = "8px";
+      ps1.style.filter = "brightness(0.8)";
+      // ps1.style.marginRight = "8px";
       current.style.width = "50%";
-      current.style.marginRight = "0px";
-
-    }
-    else {  
+      // current.style.marginRight = "8px";
+      current.style.filter = "brightness(1)";
+    } else {
       current.style.width = "50%";
-      current.style.marginRight = "8px";
+      current.style.filter = "brightness(1)";
+      // current.style.marginRight = "8px";
       ns1.style.width = "30%";
-      ns1.style.marginRight = "8px";
+      ns1.style.filter = "brightness(0.8)";
+      // ns1.style.marginRight = "8px";
       ns2.style.width = "20%";
-      ns2.style.marginRight = "0px";
-
+      ns2.style.filter = "brightness(0.6)";
     }
+  };
 
+  const handleClick = (e) => {
+    containerRef.current.scrollTo({
+      behavior: "smooth",
+      left: e.currentTarget.offsetLeft - 8,
+    });
+    resizeItems(e);
+    
+  };
 
-  
-  }
+  // useEffect(() => {
+  //   const container = containerRef.current;
+  //   const handleScroll = (e) => {
+  //     console.log(e.target.scrollLeft);
+  //     containerRef.current.childNodes.forEach((node)=>{
+  //       if(node.offsetLeft-containerRef.current.scrollLeft<150){
+  //         handleClick({currentTarget:node})
+  //       }
+  //     })
+  //   };
+  //   container.addEventListener("scroll", handleScroll);
+
+  //   return () => {
+  //     container.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
   return (
     <>
       <h1
@@ -138,46 +126,10 @@ const Carousel = () => {
       >
         Our Specials
       </h1>
-      <div className="carousel-container">
-        {menu.map((item, index) => {
-          if (index === 0) {
-            return (
-              <CarouselItem
-                handleClick={handleClick}
-                style={p1Style}
-                menuItem={item}
-                key={item.name}
-              />
-            );
-          } else if (index === 1) {
-            return (
-              <CarouselItem
-                handleClick={handleClick}
-                style={p2Style}
-                menuItem={item}
-                key={item.name}
-              />
-            );
-          } else if (index === 2) {
-            return (
-              <CarouselItem
-                handleClick={handleClick}
-                style={p3Style}
-                menuItem={item}
-                key={item.name}
-              />
-            );
-          } else {
-            return (
-              <CarouselItem
-                style={hiddenStyle}
-                menuItem={item}
-                key={item.name}
-                handleClick={handleClick}
-              />
-            );
-          }
-        })}
+      <div ref={containerRef} className="carousel-container">
+        {menu.map((item) => (
+          <CarouselItem handleClick={handleClick} menuItem={item} />
+        ))}
       </div>
     </>
   );

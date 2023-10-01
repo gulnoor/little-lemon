@@ -32,7 +32,7 @@ function App() {
         style={{
           height: "100vh",
           display: "flex",
-          background: "var(--md-sys-color-surface)",
+          background: "var(--md-sys-color-background)",
         }}
       >
         <NavigationRail /* theme={activeTheme} toggle={toggleActiveTheme} */ />
