@@ -149,10 +149,10 @@ const Menu = () => {
                 <div className="menu-item">
                   <img alt={item.name} src={item.image}></img>
                   <div className="item-content">
-                    <h2 size={"sm"}>{item.name}</h2>
+                    <h3 >{item.name}</h3>
                     <p>{item.description}</p>
-                    <Button>Add to cart</Button>
                   </div>
+      
                 </div>
               </li>
             );
@@ -160,9 +160,9 @@ const Menu = () => {
         </ol>
         <div className="menu-card-container">
           <div className="menu-card">
-            <img alt="" src={menu[0].image}></img>
-            <h2>{menu[0].name}</h2>
-            <span>{menu[0].description}</span>
+            <img alt="" src={menu[7].image}></img>
+            <h2>{menu[7].name}</h2>
+            <span>{menu[7].description}</span>
             <Button>Add to cart</Button>
           </div>
         </div>
