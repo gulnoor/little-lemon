@@ -92,7 +92,7 @@ const Carousel = () => {
   const handleClick = (e) => {
     containerRef.current.scrollTo({
       behavior: "smooth",
-      left: e.currentTarget.offsetLeft - 8,
+      left: e.currentTarget.offsetLeft - 7,
     });
     resizeItems(e);
     

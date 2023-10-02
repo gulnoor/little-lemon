@@ -3,6 +3,7 @@
   align-items: center;
   border-radius: 16px;
   background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
   margin: 0.5rem;
   padding: 0.5rem;
   height: 560px;
@@ -31,7 +32,7 @@
   display: flex;
   flex-direction: column;
   padding: 2rem 0 2rem 4rem;
-  color: var(--md-sys-color-on-primary-container);
+  /* color: var(--md-sys-color-on-primary-container); */
   width: 70%;
 
 }
