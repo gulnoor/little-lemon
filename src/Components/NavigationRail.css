@@ -17,6 +17,8 @@
 
 .Nav li {
   border-radius: 16px;
+  /* display: flex; */
+  
 
   /* display: flex;
   padding: 0.8rem;
@@ -65,14 +67,19 @@
 @media screen and (min-width:600px) {
   .Nav ul {
     position: relative;
-    display: block;
+    justify-content: flex-start;
+    display: flex;
     height: 100%;
     width: 100px;
     list-style-type: none;
-    padding: 2rem 0.5rem;
+    padding: 16px 0.5rem;
     flex-direction: column;
     box-shadow: none;
 
   }
+  .Nav li:last-child {
+    margin-top: auto;
+  }
+
 
 }

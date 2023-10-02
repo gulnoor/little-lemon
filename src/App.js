@@ -1,8 +1,5 @@
-
-
 import NavigationRail from "./Components/NavigationRail";
 import { createContext, useEffect, useState } from "react";
-
 import BookingPage from "./Components/BookingPage";
 import { Route, Routes } from "react-router-dom";
 import Home from "./routes/Home";
@@ -14,7 +11,7 @@ export const themeContext = createContext();
 
 function App() {
   if (!window.localStorage.getItem("theme")) {
-    window.localStorage.setItem("theme", "light");
+    window.localStorage.setItem("theme", "dark");
   }
   const [theme, setTheme] = useState(window.localStorage.getItem("theme"));
   const toggleTheme = () => {
@@ -35,25 +32,19 @@ function App() {
           background: "var(--md-sys-color-background)",
         }}
       >
-        <NavigationRail /* theme={activeTheme} toggle={toggleActiveTheme} */ />
+        <NavigationRail />
         <main
           className="Content-container"
           style={{
-            position:"relative",
-            // display:"flex",
-            // flexDirection:"column",
-
-
+            position: "relative",
             height: "100vh",
-            overflow:"hidden",
+            overflow: "hidden",
             overflowY: "scroll",
             width: "100%",
-     
+            willChange: "transform",
           }}
         >
-          
           <Routes>
-          
             <Route path="/" element={<Home />} />
             <Route path="/reservation" element={<BookingPage />} />
             <Route
@@ -63,12 +54,11 @@ function App() {
                   heading="Submission Successful"
                   message="Thank You for reserving your table. Looking forward to see you"
                 />
-                
               }
             />
-            <Route path="/menu" element={<Menu/>}/>
+            <Route path="/menu" element={<Menu />} />
           </Routes>
-          <Footer/>
+          <Footer />
         </main>
       </div>
     </themeContext.Provider>

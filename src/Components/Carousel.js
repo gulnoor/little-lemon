@@ -128,7 +128,7 @@ const Carousel = () => {
       </h1>
       <div ref={containerRef} className="carousel-container">
         {menu.map((item) => (
-          <CarouselItem handleClick={handleClick} menuItem={item} />
+          <CarouselItem key={item.name} handleClick={handleClick} menuItem={item} />
         ))}
       </div>
     </>
