@@ -13,7 +13,7 @@ const TopNav = ({ names }) => {
   return (
     <div className="TopNav">
       {names.map((name) => {
-        return <Button style={buttonStyle}>{name}</Button>;
+        return <Button key={name} style={buttonStyle}>{name}</Button>;
       })}
     </div>
   );

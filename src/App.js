@@ -4,10 +4,10 @@ import BookingPage from "./Components/BookingPage";
 import { Route, Routes } from "react-router-dom";
 import Home from "./routes/Home";
 import SubmissionDialogue from "./Components/SubmissionDialogue";
-import Menu, { MenuList } from "./Components/Menu";
+import Menu from "./Components/Menu";
 import Footer from "./Components/Footer";
-import useMenu from "./hooks/useMenu";
 import SignIn from "./Components/SignIn";
+import MenuProvider from "./context/MenuContext";
 
 export const themeContext = createContext();
 
@@ -26,6 +26,8 @@ function App() {
 
   return (
     <themeContext.Provider value={{ theme, toggleTheme }}>
+      <MenuProvider>
+
       <div
         className={`App ${theme}`}
         style={{
@@ -59,18 +61,16 @@ function App() {
                 />
               }
             />
-            <Route path="/menu" element={<Menu />} >
-              <Route path="" element={<MenuList menu={useMenu()} category={"All"}/>}></Route>
-              <Route path="salads" element={<MenuList menu={useMenu()} category={"Salad"}/>}></Route>
-              <Route path="appetizers" element={<MenuList menu={useMenu()} category={"Appetizer"}/>}></Route>
-              <Route path="entree" element={<MenuList menu={useMenu()} category={"Entree"}/>}></Route>
-              <Route path="desserts" element={<MenuList menu={useMenu()} category={"Dessert"}/>}></Route>
+            <Route path="/menu/*" element={<Menu />} >
+              
             </Route>
             
           </Routes>
           <Footer />
         </main>
       </div>
+      </MenuProvider>
+
     </themeContext.Provider>
   );
 }
