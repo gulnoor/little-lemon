@@ -7,13 +7,17 @@ const CarouselItem = ({ menuItem, handleClick }) => {
 
   return (
     <div onClick={handleClick} ref={ref} className="carousel-item">
-      <h1 style={{
-        position:"absolute",
-        zIndex:"99",
-        textAlign:"center",
-        bottom:"16px",
-        width:"100%",
-      }}>{menuItem.name}</h1>
+      <h1
+        style={{
+          position: "absolute",
+          zIndex: "99",
+          textAlign: "center",
+          bottom: "16px",
+          width: "100%",
+        }}
+      >
+        {menuItem.name}
+      </h1>
       <img src={menuItem.image} alt={menuItem.name} />
     </div>
   );
@@ -95,7 +99,6 @@ const Carousel = () => {
       left: e.currentTarget.offsetLeft - 7,
     });
     resizeItems(e);
-    
   };
 
   // useEffect(() => {
@@ -128,7 +131,11 @@ const Carousel = () => {
       </h1>
       <div ref={containerRef} className="carousel-container">
         {menu.map((item) => (
-          <CarouselItem key={item.name} handleClick={handleClick} menuItem={item} />
+          <CarouselItem
+            key={item.name}
+            handleClick={handleClick}
+            menuItem={item}
+          />
         ))}
       </div>
     </>

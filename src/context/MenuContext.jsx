@@ -3,12 +3,12 @@ import { loadMenu } from "../firebase/firebase.utils"
 
 export const MenuContext = createContext([])
 
-const MenuProvider = ({children}) => {
-    const [data,setData] = useState([])
-    useEffect(()=>{
-        loadMenu().then(response=>setData(response))
+const MenuProvider = ({ children }) => {
+    const [data, setData] = useState([])
+    useEffect(() => {
+        loadMenu().then(response => setData(response))
 
-    },[])
+    }, [])
     return (
         <MenuContext.Provider value={data}>
             {children}

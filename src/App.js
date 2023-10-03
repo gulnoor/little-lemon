@@ -27,50 +27,45 @@ function App() {
   return (
     <themeContext.Provider value={{ theme, toggleTheme }}>
       <MenuProvider>
-
-      <div
-        className={`App ${theme}`}
-        style={{
-          height: "100vh",
-          display: "flex",
-          background: "var(--md-sys-color-background)",
-        }}
-      >
-        <NavigationRail />
-        <main
-          className="Content-container"
+        <div
+          className={`App ${theme}`}
           style={{
-            position: "relative",
             height: "100vh",
-            overflow: "hidden",
-            overflowY: "scroll",
-            width: "100%",
-            willChange: "transform",
+            display: "flex",
+            background: "var(--md-sys-color-background)",
           }}
         >
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/sign-in" element={<SignIn />} />
-            <Route path="/reservation" element={<BookingPage />} />
-            <Route
-              path="/successful"
-              element={
-                <SubmissionDialogue
-                  heading="Submission Successful"
-                  message="Thank You for reserving your table. Looking forward to see you"
-                />
-              }
-            />
-            <Route path="/menu/*" element={<Menu />} >
-              
-            </Route>
-            
-          </Routes>
-          <Footer />
-        </main>
-      </div>
+          <NavigationRail />
+          <main
+            className="Content-container"
+            style={{
+              position: "relative",
+              height: "100vh",
+              overflow: "hidden",
+              overflowY: "scroll",
+              width: "100%",
+              willChange: "transform",
+            }}
+          >
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/sign-in" element={<SignIn />} />
+              <Route path="/reservation" element={<BookingPage />} />
+              <Route
+                path="/successful"
+                element={
+                  <SubmissionDialogue
+                    heading="Submission Successful"
+                    message="Thank You for reserving your table. Looking forward to see you"
+                  />
+                }
+              />
+              <Route path="/menu/*" element={<Menu />}></Route>
+            </Routes>
+            <Footer />
+          </main>
+        </div>
       </MenuProvider>
-
     </themeContext.Provider>
   );
 }
