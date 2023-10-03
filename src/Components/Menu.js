@@ -3,6 +3,32 @@ import bgimg from "../assets/images/bg/93597.jpg";
 import "./menu.css";
 import { useContext } from "react";
 import { themeContext } from "../App";
+import { Link, Outlet} from "react-router-dom";
+import TopNav from "./TopNav";
+
+
+export const MenuList = ({ menu, category }) => {
+  return (
+    <ol className="menu-list">
+      {menu.map((item) => {
+        if (item.category === category || category === "All") {
+          return (
+            <li key={item.name}>
+              <div className="menu-item">
+                <img alt={item.name} src={item.image}></img>
+                <div className="item-content">
+                  <h3>{item.name}</h3>
+                  <p>{item.description}</p>
+                </div>
+              </div>
+            </li>
+          );
+        }
+        return null;
+      })}
+    </ol>
+  );
+};
 
 const Menu = () => {
   const { theme } = useContext(themeContext);
@@ -12,6 +38,7 @@ const Menu = () => {
       description:
         "The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons. ",
       image: require("../assets/images/greek salad.jpg"),
+      category: "Salad",
       price: "$12.99",
     },
     {
@@ -109,8 +136,10 @@ const Menu = () => {
       image: require("../assets/images/menu/lemon dessert.jpg"),
     },
   ];
+  
   return (
     <>
+    
       <div
         style={{
           backgroundImage:
@@ -123,10 +152,10 @@ const Menu = () => {
         <h1>Menu</h1>
         <p>traditional recipes served with a modern twist</p>
         <div className="menu-categories">
-          <div className="category-btn">
+          <Link to={"/menu/appetizers"} className="category-btn">
             Appetizers
             <p>Mezze that will tantalize your taste buds</p>
-          </div>
+          </Link>
           <div className="category-btn">
             Salad
             <p>Fresh, flavorful salads made with seasonal ingredients</p>
@@ -141,23 +170,10 @@ const Menu = () => {
           </div>
         </div>
       </div>
+      <TopNav  names={["Appetizer","Salad","Entree","Dessert"]}/>
       <div className="menu-container">
-        <ol className="menu-list">
-          {menu.map((item) => {
-            return (
-              <li key={item.name}>
-                <div className="menu-item">
-                  <img alt={item.name} src={item.image}></img>
-                  <div className="item-content">
-                    <h3 >{item.name}</h3>
-                    <p>{item.description}</p>
-                  </div>
-      
-                </div>
-              </li>
-            );
-          })}
-        </ol>
+        <Outlet />
+
         <div className="menu-card-container">
           <div className="menu-card">
             <img alt="" src={menu[7].image}></img>

@@ -4,8 +4,10 @@ import BookingPage from "./Components/BookingPage";
 import { Route, Routes } from "react-router-dom";
 import Home from "./routes/Home";
 import SubmissionDialogue from "./Components/SubmissionDialogue";
-import Menu from "./Components/Menu";
+import Menu, { MenuList } from "./Components/Menu";
 import Footer from "./Components/Footer";
+import useMenu from "./hooks/useMenu";
+import SignIn from "./Components/SignIn";
 
 export const themeContext = createContext();
 
@@ -46,6 +48,7 @@ function App() {
         >
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/sign-in" element={<SignIn />} />
             <Route path="/reservation" element={<BookingPage />} />
             <Route
               path="/successful"
@@ -56,7 +59,14 @@ function App() {
                 />
               }
             />
-            <Route path="/menu" element={<Menu />} />
+            <Route path="/menu" element={<Menu />} >
+              <Route path="" element={<MenuList menu={useMenu()} category={"All"}/>}></Route>
+              <Route path="salads" element={<MenuList menu={useMenu()} category={"Salad"}/>}></Route>
+              <Route path="appetizers" element={<MenuList menu={useMenu()} category={"Appetizer"}/>}></Route>
+              <Route path="entree" element={<MenuList menu={useMenu()} category={"Entree"}/>}></Route>
+              <Route path="desserts" element={<MenuList menu={useMenu()} category={"Dessert"}/>}></Route>
+            </Route>
+            
           </Routes>
           <Footer />
         </main>

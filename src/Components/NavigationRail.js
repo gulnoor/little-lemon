@@ -50,14 +50,22 @@ const NavigationRail = (/* { toggle, theme } */) => {
               Reservation
             </Link>
           </li>
-          {/* <li>
+          <li>
             <Link
               style={linkStyle}
-              to="#about-us">
-              <span className="material-symbols-outlined">table_restaurant</span>
-              About Us
+              to="cart">
+              <span className="material-symbols-outlined">shopping_cart</span>
+              Cart
             </Link>
-          </li> */}
+          </li>
+          <li>
+            <Link
+              style={linkStyle}
+              to="/sign-in">
+              <span className="material-symbols-outlined">person</span>
+              Sign In
+            </Link>
+          </li>
           <li >
             <Link
               style={linkStyle}

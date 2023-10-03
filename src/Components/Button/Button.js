@@ -36,15 +36,16 @@ const Button = ({ children, id,variant, htmlType, style = {}, ...other }) => {
         {...other}
 
         whileTap={{
-          scaleY:0.95,
-          scaleX:0.98
+          scale:"0.9"
+
         }}
         whileHover={{
-          scaleY:1.1,
-          scaleX:1.02
+          borderRadius:"8px"
+
         }}
         transition={{
-          duration:0.2,
+          
+          duration:0.3,
           type:"spring"
         }}
       >{children}</motion.button>
