@@ -1,5 +1,5 @@
 import NavigationRail from "./Components/NavigationRail";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import BookingPage from "./Components/BookingPage";
 import { Route, Routes } from "react-router-dom";
 import Home from "./routes/Home";
@@ -7,7 +7,8 @@ import SubmissionDialogue from "./Components/SubmissionDialogue";
 import Menu from "./Components/Menu";
 import Footer from "./Components/Footer";
 import SignIn from "./Components/SignIn";
-import MenuProvider from "./context/MenuContext";
+import MenuProvider, { MenuContext } from "./context/MenuContext";
+import MenuList from "./Components/MenuList";
 
 export const themeContext = createContext();
 
@@ -19,6 +20,7 @@ function App() {
   const toggleTheme = () => {
     theme === "light" ? setTheme(() => "dark") : setTheme(() => "light");
   };
+  const menu = useContext(MenuContext);
 
   useEffect(() => {
     window.localStorage.setItem("theme", theme);
@@ -30,7 +32,7 @@ function App() {
         <div
           className={`App ${theme}`}
           style={{
-            height: "100vh",
+            // height: "100vh",
             display: "flex",
             background: "var(--md-sys-color-background)",
           }}
@@ -39,12 +41,13 @@ function App() {
           <main
             className="Content-container"
             style={{
-              position: "relative",
-              height: "100vh",
-              overflow: "hidden",
-              overflowY: "scroll",
+              // position: "relative",
+              // height: "100vh",
+              // overflow: "hidden",
+              // overflowY: "scroll",
               width: "100%",
-              willChange: "transform",
+              marginLeft:"100px"
+              // willChange: "transform",
             }}
           >
             <Routes>
@@ -60,7 +63,9 @@ function App() {
                   />
                 }
               />
-              <Route path="/menu/*" element={<Menu />}></Route>
+              <Route path="/menu/*" element={<Menu />}>
+
+              </Route>
             </Routes>
             <Footer />
           </main>

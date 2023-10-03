@@ -3,32 +3,10 @@ import bgimg from "../assets/images/bg/93597.jpg";
 import "./menu.css";
 import { useContext } from "react";
 import { themeContext } from "../App";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Outlet, Route, Routes } from "react-router-dom";
 import TopNav from "./TopNav";
 import { MenuContext } from "../context/MenuContext";
-
-export const MenuList = ({ menu, category }) => {
-  return (
-    <ol className="menu-list">
-      {menu.map((item) => {
-        if (item.category === category || category === "All") {
-          return (
-            <li key={item.name}>
-              <div className="menu-item">
-                <img alt={item.name} src={item.image}></img>
-                <div className="item-content">
-                  <h3>{item.name}</h3>
-                  <p>{item.description}</p>
-                </div>
-              </div>
-            </li>
-          );
-        }
-        return null;
-      })}
-    </ol>
-  );
-};
+import MenuList from "./MenuList";
 
 const Menu = () => {
   const menu = useContext(MenuContext);

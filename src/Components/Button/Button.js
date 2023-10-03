@@ -31,14 +31,12 @@ const Button = ({ children, id, variant, htmlType, style = {}, ...other }) => {
         type={htmlType}
         {...other}
         whileTap={{
-          scale: "0.9",
+          filter:"brightness(0.6)"
         }}
         whileHover={{
           borderRadius: "8px",
         }}
-        transition={{
-          duration: "0.3s",
-        }}
+        
       >
         {children}
       </motion.button>

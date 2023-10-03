@@ -1,6 +1,7 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import useMenu from "../hooks/useMenu";
 import "./Carousel.css";
+import { MenuContext } from "../context/MenuContext";
 
 const CarouselItem = ({ menuItem, handleClick }) => {
   const ref = useRef(null);
@@ -25,7 +26,7 @@ const CarouselItem = ({ menuItem, handleClick }) => {
 
 const Carousel = () => {
   const containerRef = useRef(null);
-  const menu = useMenu();
+  const menu = useContext(MenuContext)
   const resizeItems = (e) => {
     const current = e.currentTarget;
     const ps1 = e.currentTarget.previousElementSibling
