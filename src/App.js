@@ -11,6 +11,7 @@ import MenuProvider from "./context/MenuContext";
 import "./App.css";
 import UserProvider from "./context/UserContext";
 import { ThemeContext } from "./context/ThemeContext";
+import Cart from "./Components/Cart";
 
 export const themeContext = createContext();
 
@@ -23,21 +24,20 @@ function App() {
         <div
           className={`App ${theme}`}
           style={{
-            // height: "100vh",
             display: "flex",
             background: "var(--md-sys-color-background)",
+            width:"100%",
+            
           }}
         >
           <NavigationRail />
+
           <main
             className="Content-container"
             style={{
-              // position: "relative",
-              // height: "100vh",
-              // overflow: "hidden",
-              // overflowY: "scroll",
-              width: "100%",
-              // willChange: "transform",
+            
+              width: "calc(100% - 300px)",
+              flex:"1"
             }}
           >
             <Routes>
@@ -57,6 +57,7 @@ function App() {
             </Routes>
             <Footer />
           </main>
+         
         </div>
       </MenuProvider>
     </UserProvider>

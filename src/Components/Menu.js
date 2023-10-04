@@ -3,7 +3,7 @@ import bgimg from "../assets/images/bg/93597.jpg";
 import "./menu.css";
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
-import { Link, Route, Routes } from "react-router-dom";
+import {  Route, Routes } from "react-router-dom";
 import TopNav from "./TopNav";
 import { MenuContext } from "../context/MenuContext";
 import MenuList from "./MenuList";
@@ -130,7 +130,7 @@ const Menu = () => {
       >
         <h1>Menu</h1>
         <p>traditional recipes served with a modern twist</p>
-        <div className="menu-categories">
+        {/* <div className="menu-categories">
           <Link to={"/menu/appetizers"} className="category-btn">
             Appetizers
             <p>Mezze that will tantalize your taste buds</p>
@@ -147,7 +147,7 @@ const Menu = () => {
             Dessert
             <p>Sweeten your meal with a traditional Mediterranean dessert</p>
           </div>
-        </div>
+        </div> */}
       </div>
       <TopNav names={["Appetizer", "Salad", "Entree", "Dessert"]} />
       <div className="menu-container">
@@ -157,19 +157,19 @@ const Menu = () => {
             element={<MenuList menu={menu} category={"All"} />}
           ></Route>
           <Route
-            path="salads"
+            path="Salad"
             element={<MenuList menu={menu} category={"Salad"} />}
           ></Route>
           <Route
-            path="appetizers"
+            path="Appetizer"
             element={<MenuList menu={menu} category={"Appetizer"} />}
           ></Route>
           <Route
-            path="entree"
+            path="Entree"
             element={<MenuList menu={menu} category={"Entree"} />}
           ></Route>
           <Route
-            path="desserts"
+            path="Dessert"
             element={<MenuList menu={menu} category={"Dessert"} />}
           ></Route>
         </Routes>

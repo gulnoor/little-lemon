@@ -8,21 +8,37 @@
     /* width: fit-content; */
     margin: 1.5rem auto;
     border-radius: 100vh;
-    background: var(--md-sys-color-surface-container);
+    background: var(--md-sys-color-secondary-container);
     box-shadow: 0px 2px 4px var(--md-sys-color-shadow);
 
     -ms-overflow-style: none;
     /* IE and Edge */
     scrollbar-width: none;
+    
     z-index: 99;
  
+}
+
+.navbtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--md-sys-color-on-secondary-container);
+    text-decoration: none;
+    border-radius: 100px;
+    transition: all 0.2s;
+}
+.navbtn:hover{
+    background-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary);
 }
 ::-webkit-scrollbar {
     display: none;
 }
 @media screen and (max-width:600px) {
-    .TopNav Button{
+    .navbtn{
         min-height: 90px;
     }
     
 }
+

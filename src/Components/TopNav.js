@@ -1,9 +1,12 @@
-import Button from "./Button/Button";
-import "./TopNav.css";
+import { Link, useNavigate } from "react-router-dom";
+import styles from "./TopNav.module.css";
 
 const TopNav = ({ names }) => {
+
+  const navigate = useNavigate();
+
   const buttonStyle = {
-    border: "none",
+    
     padding: "1rem 3.5rem",
     fontSize: "1.5rem",
     minHeight: window.screen.width > 600 ? "70px" : "52px",
@@ -11,12 +14,12 @@ const TopNav = ({ names }) => {
     whiteSpace: "nowrap",
   };
   return (
-    <div className="TopNav">
+    <div className={styles.TopNav}>
       {names.map((name) => {
         return (
-          <Button key={name} style={buttonStyle}>
+          <Link className={styles.navbtn} to={`/menu/${name}`}  key={name} style={buttonStyle}>
             {name}
-          </Button>
+          </Link>
         );
       })}
     </div>

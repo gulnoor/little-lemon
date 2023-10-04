@@ -1,0 +1,23 @@
+.container{
+    height: 100%;
+    background-color: var(--md-sys-color-surface-container-high);
+    width: 200px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+
+    margin-left: 100px;
+
+    z-index: 99;
+    transition: all 0.3s;
+    border-right: 1px solid;
+    border-color: var(--md-sys-color-outline);
+    overflow: hidden;
+}
+
+@media screen and (max-width:600px) {
+    .container{
+        display: none;
+    }
+    
+}

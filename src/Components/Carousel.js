@@ -8,10 +8,9 @@ const CarouselItem = ({ menuItem, handleClick }) => {
 
   return (
     <div onClick={handleClick} ref={ref} className="carousel-item">
+      <img src={menuItem.image} alt={menuItem.name} />
       <h1
         style={{
-          position: "absolute",
-          zIndex: "99",
           textAlign: "center",
           bottom: "16px",
           width: "100%",
@@ -19,14 +18,25 @@ const CarouselItem = ({ menuItem, handleClick }) => {
       >
         {menuItem.name}
       </h1>
-      <img src={menuItem.image} alt={menuItem.name} />
+      <p
+        style={{
+          width: "93%",
+          // height:"60px",
+          overflow:"hidden",
+          textOverflow: "ellipsis",
+          // whiteSpace:"nowrap",
+          // textAlign: "center",
+        }}
+      >
+        {menuItem.description}
+      </p>
     </div>
   );
 };
 
 const Carousel = () => {
   const containerRef = useRef(null);
-  const menu = useContext(MenuContext)
+  const menu = useContext(MenuContext);
   const resizeItems = (e) => {
     const current = e.currentTarget;
     const ps1 = e.currentTarget.previousElementSibling
@@ -125,7 +135,7 @@ const Carousel = () => {
         style={{
           fontSize: "3.5rem",
           color: "var(--md-sys-color-on-surface)",
-          padding: "2rem",
+          padding: "2rem 82px",
         }}
       >
         Our Specials

@@ -2,12 +2,11 @@
     display: flex;
 
     /* background: var(--md-sys-color-secondary-container); */
-    border-radius: 16px;
-    margin: 8px 8px 0 8px;
+    margin: 8px 82px 0 82px;
     justify-content: center;
     align-items: center;
     min-height: 750px;
-    padding: 16px;
+    /* padding: 16px; */
     flex-wrap: wrap-reverse;
     
 
@@ -17,7 +16,7 @@
     max-width: 50%;
    
     font-size: 1.2rem;
-    padding: 3rem;
+    padding-right: 3rem;
     text-align: justify;
     color: var(--md-sys-color-on-background);
 

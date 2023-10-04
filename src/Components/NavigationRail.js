@@ -1,11 +1,22 @@
 import { Link } from "react-router-dom";
 import "./NavigationRail.css";
-import { useContext } from "react";
+import { useContext, useRef, useState } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import { UserContext } from "../context/UserContext";
+import Cart from "./Cart";
 const NavigationRail = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { user } = useContext(UserContext);
+
+  const [cartStyle, setCartStyle] = useState({width:"200px"});
+
+  const handleCartClick = () => {
+    setCartStyle((prev) => {
+      return { ...prev ,
+      marginLeft:prev.marginLeft==="-100px"?"100px":"-100px"};
+    });
+    // document.querySelector("main").style.width = "calc(100% - 300px)"
+  };
 
   const linkStyle = {
     display: "flex",
@@ -49,19 +60,27 @@ const NavigationRail = () => {
             </Link>
           </li>
           <li>
-            <Link style={linkStyle} to="cart">
+            <div onClick={handleCartClick} style={linkStyle} to="cart">
               <span className="material-symbols-outlined">shopping_cart</span>
               Cart
-            </Link>
+            </div>
           </li>
           {user ? (
             <li>
-              <Link style={linkStyle} to="/userprofile">
-                <img style={{
-                  borderRadius:"100vh",
-                  width:"90%",
-                  marginBottom:"8px"
-                }} alt="user profile" src={user.photoURL}></img>
+              <Link
+                onClick={handleCartClick}
+                style={linkStyle}
+                to="/userprofile"
+              >
+                <img
+                  style={{
+                    borderRadius: "100vh",
+                    width: "90%",
+                    marginBottom: "8px",
+                  }}
+                  alt="user profile"
+                  src={user.photoURL}
+                ></img>
                 {user.displayName}
               </Link>
             </li>
@@ -85,6 +104,7 @@ const NavigationRail = () => {
             </Link>
           </li>
         </ul>
+        <Cart style={cartStyle} />
       </nav>
     </>
   );
