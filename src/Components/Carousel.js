@@ -135,7 +135,7 @@ const Carousel = () => {
         style={{
           fontSize: "3.5rem",
           color: "var(--md-sys-color-on-surface)",
-          padding: "2rem 82px",
+          padding: "2rem 10%",
         }}
       >
         Our Specials

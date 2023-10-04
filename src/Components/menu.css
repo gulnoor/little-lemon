@@ -60,6 +60,7 @@
   position: relative;
   color: var(--md-sys-color-on-secondary-container);
   transition: all 0.2s;
+  width: 100%;
 }
 
 .menu-item {
@@ -115,10 +116,10 @@
   position: sticky;
   display: flex;
   width: 50%;
-  height:calc(100vh - 100px) ;
-  top: 96px;
+  height:calc(100vh - 92px) ;
+  top: 90px;
   margin: 0 8px 8px 0;
-  padding: 0px 0px;
+  padding: 8px 0px;
 }
 
 .menu-card img {

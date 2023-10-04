@@ -21,6 +21,7 @@
 
 .navbtn{
     display: flex;
+    overflow-x: scroll;
     justify-content: center;
     align-items: center;
     color: var(--md-sys-color-on-secondary-container);

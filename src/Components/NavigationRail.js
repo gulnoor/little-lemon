@@ -8,12 +8,14 @@ const NavigationRail = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { user } = useContext(UserContext);
 
-  const [cartStyle, setCartStyle] = useState({width:"200px"});
+  const [cartStyle, setCartStyle] = useState({marginLeft:"-250px"});
 
   const handleCartClick = () => {
     setCartStyle((prev) => {
-      return { ...prev ,
-      marginLeft:prev.marginLeft==="-100px"?"100px":"-100px"};
+      return {
+        ...prev,
+        marginLeft: prev.marginLeft === "-250px" ? "100px" : "-250px",
+      };
     });
     // document.querySelector("main").style.width = "calc(100% - 300px)"
   };

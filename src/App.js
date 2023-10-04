@@ -36,8 +36,9 @@ function App() {
             className="Content-container"
             style={{
             
-              width: "calc(100% - 300px)",
-              flex:"1"
+              width: "calc(100% - 450px)",
+              flex:"1",
+              // overflowX:"hidden"
             }}
           >
             <Routes>
