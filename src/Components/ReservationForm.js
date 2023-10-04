@@ -60,7 +60,7 @@ const ReservationForm = ({ reservationData, dispatch }) => {
       }}
       onSubmit={handleSubmit}
     >
-      <motion.div
+      <div
         className="inputs-div"
         style={{
           display: "inline-flex",
@@ -74,13 +74,7 @@ const ReservationForm = ({ reservationData, dispatch }) => {
 
           // margin:"8px 8px 0 0"
         }}
-        variants={containerAnimation}
-        initial="initial"
-        animate="final"
-        transition={{
-          staggerChildren: "0.05",
-          duration: 0,
-        }}
+        
       >
         {Object.keys(reservationData).map((fieldName) => {
           return (
@@ -99,7 +93,7 @@ const ReservationForm = ({ reservationData, dispatch }) => {
             </Material3Input>
           );
         })}
-      </motion.div>
+      </div>
       {/* <Material3Input
         schema={validationSchema}
         reservationData={reservationData}

@@ -6,7 +6,7 @@
   color: var(--md-sys-color-on-primary-container);
   margin: 0.5rem;
   padding: 0.5rem;
-  height: 560px;
+  min-height: 560px;
 
   transition: 0.2s;
 }

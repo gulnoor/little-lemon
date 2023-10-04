@@ -59,6 +59,10 @@ const Cart = ({ style }) => {
             <ol className={styles.itemcontainer}>
             {cartList.map((item) => { return <CartItem item={item} /> })}
             </ol>
+            <div className={styles.total}>
+                <h1>Total</h1>
+                <h2>$42.69</h2>
+            </div>
         </div>
     )
 }
