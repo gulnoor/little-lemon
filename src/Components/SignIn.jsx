@@ -16,7 +16,7 @@ const SignIn = () => {
         addUserToDatabase(usercreds.user);
         setUser(()=>{
             console.log("settingUser")
-            return usercreds.user.displayName
+            return usercreds.user
         })
 
     }
