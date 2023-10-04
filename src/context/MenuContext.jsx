@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react"
-import { loadMenu } from "../firebase/firebase.utils"
+import { loadMenu } from "../firebase/firebase_utils"
 
 export const MenuContext = createContext([])
 

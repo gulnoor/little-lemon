@@ -3,7 +3,7 @@ import bgimg from "../assets/images/bg/93597.jpg";
 import "./menu.css";
 import { useContext } from "react";
 import { themeContext } from "../App";
-import { Link, Outlet, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import TopNav from "./TopNav";
 import { MenuContext } from "../context/MenuContext";
 import MenuList from "./MenuList";
@@ -13,7 +13,7 @@ const Menu = () => {
 
   const { theme } = useContext(themeContext);
 
-  //   {
+  //  const menuu= [{
   //     name: "Greek Salad",
   //     description:
   //       "The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons. ",

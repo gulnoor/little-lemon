@@ -9,6 +9,7 @@ import Footer from "./Components/Footer";
 import SignIn from "./Components/SignIn";
 import MenuProvider, { MenuContext } from "./context/MenuContext";
 import MenuList from "./Components/MenuList";
+import "./App.css";
 
 export const themeContext = createContext();
 
@@ -20,7 +21,6 @@ function App() {
   const toggleTheme = () => {
     theme === "light" ? setTheme(() => "dark") : setTheme(() => "light");
   };
-  const menu = useContext(MenuContext);
 
   useEffect(() => {
     window.localStorage.setItem("theme", theme);
@@ -46,7 +46,6 @@ function App() {
               // overflow: "hidden",
               // overflowY: "scroll",
               width: "100%",
-              marginLeft:"100px"
               // willChange: "transform",
             }}
           >
@@ -63,9 +62,7 @@ function App() {
                   />
                 }
               />
-              <Route path="/menu/*" element={<Menu />}>
-
-              </Route>
+              <Route path="/menu/*" element={<Menu />}></Route>
             </Routes>
             <Footer />
           </main>

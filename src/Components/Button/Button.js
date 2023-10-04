@@ -29,13 +29,14 @@ const Button = ({ children, id, variant, htmlType, style = {}, ...other }) => {
         className={id}
         style={variant === "filled" ? filled : outlined}
         type={htmlType}
-        {...other}
         whileTap={{
           filter:"brightness(0.6)"
         }}
         whileHover={{
           borderRadius: "8px",
         }}
+        
+        {...other}
         
       >
         {children}
