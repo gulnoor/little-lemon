@@ -2,7 +2,7 @@ import Button from "./Button/Button";
 import bgimg from "../assets/images/bg/93597.jpg";
 import "./menu.css";
 import { useContext } from "react";
-import { themeContext } from "../App";
+import { ThemeContext } from "../context/ThemeContext";
 import { Link, Route, Routes } from "react-router-dom";
 import TopNav from "./TopNav";
 import { MenuContext } from "../context/MenuContext";
@@ -11,7 +11,7 @@ import MenuList from "./MenuList";
 const Menu = () => {
   const menu = useContext(MenuContext);
 
-  const { theme } = useContext(themeContext);
+  const { theme } = useContext(ThemeContext);
 
   //  const menuu= [{
   //     name: "Greek Salad",

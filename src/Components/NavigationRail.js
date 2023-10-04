@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import "./NavigationRail.css";
 import { useContext } from "react";
-import { themeContext } from "../App";
-const NavigationRail = (/* { toggle, theme } */) => {
+import { ThemeContext } from "../context/ThemeContext";
+const NavigationRail = () => {
 
-  const {theme,toggleTheme} = useContext(themeContext)
+  const {theme,toggleTheme} = useContext(ThemeContext)
 
   const linkStyle = {
     display: "flex",

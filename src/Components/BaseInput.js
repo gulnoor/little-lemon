@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import "./Input.css";
-import { themeContext } from "../App";
+import { ThemeContext } from "../context/ThemeContext";
 
 
 
@@ -19,7 +19,7 @@ const BaseInput = ({
   setIsFocused,
   ...other
 }) => {
-  const { theme } = useContext(themeContext);
+  const { theme } = useContext(ThemeContext);
   const validationScheme = schema.fields[id];
 
 

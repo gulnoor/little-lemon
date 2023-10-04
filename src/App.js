@@ -1,5 +1,5 @@
 import NavigationRail from "./Components/NavigationRail";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext } from "react";
 import BookingPage from "./Components/BookingPage";
 import { Route, Routes } from "react-router-dom";
 import Home from "./routes/Home";
@@ -7,27 +7,18 @@ import SubmissionDialogue from "./Components/SubmissionDialogue";
 import Menu from "./Components/Menu";
 import Footer from "./Components/Footer";
 import SignIn from "./Components/SignIn";
-import MenuProvider, { MenuContext } from "./context/MenuContext";
-import MenuList from "./Components/MenuList";
+import MenuProvider from "./context/MenuContext";
 import "./App.css";
+import UserProvider from "./context/UserContext";
+import { ThemeContext } from "./context/ThemeContext";
 
 export const themeContext = createContext();
 
 function App() {
-  if (!window.localStorage.getItem("theme")) {
-    window.localStorage.setItem("theme", "dark");
-  }
-  const [theme, setTheme] = useState(window.localStorage.getItem("theme"));
-  const toggleTheme = () => {
-    theme === "light" ? setTheme(() => "dark") : setTheme(() => "light");
-  };
-
-  useEffect(() => {
-    window.localStorage.setItem("theme", theme);
-  }, [theme]);
+  const { theme } = useContext(ThemeContext);
 
   return (
-    <themeContext.Provider value={{ theme, toggleTheme }}>
+    <UserProvider>
       <MenuProvider>
         <div
           className={`App ${theme}`}
@@ -68,7 +59,7 @@ function App() {
           </main>
         </div>
       </MenuProvider>
-    </themeContext.Provider>
+    </UserProvider>
   );
 }
 export default App;
