@@ -74,17 +74,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="footer-bottom">
-        <img
-          style={{
-            width: "200px",
-            objectFit: "contain",
-            marginBottom: "16px",
-          }}
-          src={logo}
-          alt=""
-        />
-      </div>
+      
     </footer>
   );
 };
