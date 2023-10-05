@@ -1,68 +1,65 @@
+import { useContext } from "react"
 import Button from "./Button/Button"
 import styles from "./cart.module.css"
+import { CartContext } from "../context/CartContext"
+
+
 
 const CartItem = ({ item }) => {
+    const { dispatch } = useContext(CartContext)
+    function handleClick(action) {
+
+        return () => dispatch({ type: action, item })
+
+    }
 
     return (
         <li className={styles.cartItem}>
             <img className={styles.cartItemImg} alt={item.name} src={item.image}></img>
-
             <div className={styles.itemDescription}>
                 <p>{item.name}</p>
                 <span>{item.price}</span>
             </div>
-            <div className={styles.btncontainer}>
-            <Button style={{
-                width:"48px",
-                height:"48px",
-                padding:"none"
-            }} className={styles.btn}>+</Button>
-            <p className={styles.quant}>2</p>
+            <div className={styles.btncontainer} >
+                <Button onClick={handleClick("increment")} style={{
+                    width: "48px",
+                    height: "48px",
+                    padding: "none"
+                }} className={styles.btn}>+</Button>
+                <span className={styles.quant}>{item.quantity}</span>
 
-            <Button style={{
-                width:"48px",
-                height:"48px",
-                padding:"none"
-            }}className={styles.btn}>-</Button>
+                <Button onClick={handleClick("decrement")} style={{
+                    width: "48px",
+                    height: "48px",
+                    padding: "none"
+                }} className={styles.btn}>-</Button>
             </div>
-
-
         </li>
     )
 
 }
 const Cart = ({ style }) => {
-    const cartList = [
-        {
-            name: "Lamb Chops",
-            description:
-                "Grilled lamb chops served with a mint yogurt sauce and roasted potatoes.",
-            price: 24,
-            category: "Entree",
-            image: require("../assets/images/menu/Lamb-Chops-ONE-1.jpg"),
-        },
-        {
-            name: "Pasta Primavera",
-            description:
-                "Fresh pasta with seasonal vegetables and a creamy tomato sauce.",
-            price: 26,
-            category: "Entree",
-            image: require("../assets/images/menu/pasta-primavera-1-768x1152.jpg"),
-        },
-    ]
 
 
 
-
+    const { cart, dispatch } = useContext(CartContext)
     return (
         <div style={style} className={styles.container}>
+            <h1 style={{
+                textAlign: "center",
+                padding: "16px"
+            }}>Your Cart</h1>
+            <Button onClick={() => { dispatch({ type: "clearCart" }) }} >Remove All Items</Button>
             <ol className={styles.itemcontainer}>
-            {cartList.map((item) => { return <CartItem item={item} /> })}
+                {cart.items ? cart.items.map((item) => { return <CartItem item={item} /> }) : <li>No Items In Cart</li>}
             </ol>
             <div className={styles.total}>
-                <h1>Total</h1>
-                <h2>$42.69</h2>
+                <p>subtotal</p>
+                <p>42.69 PKR</p>
+                <p>total</p>
+                <p>68 PKR</p>
             </div>
+            <Button>Review Payment and Address</Button>
         </div>
     )
 }

@@ -8,7 +8,7 @@ const NavigationRail = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { user } = useContext(UserContext);
 
-  const [cartStyle, setCartStyle] = useState({marginLeft:"-250px"});
+  const [cartStyle, setCartStyle] = useState({marginLeft:"100px"});
 
   const handleCartClick = () => {
     setCartStyle((prev) => {

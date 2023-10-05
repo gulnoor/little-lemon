@@ -110,17 +110,14 @@ const Material3Input = ({
   };
 
   return (
-    <motion.div
+    <div
       style={{
         display: "flex",
         flexDirection: "column",
         transition:"all 0.3s"
       }}
       className={`big-container ${children}`}
-      variants={inputAnimation}
-      transition={{
-        duration:0
-      }}
+
 
     >
       <div style={boxStyle} className={`input-container ${children}`}>
@@ -140,7 +137,7 @@ const Material3Input = ({
         ></BaseInput>
       </div>
       {error ? <InputError>{error}</InputError> : null}
-    </motion.div>
+    </div>
   );
 };
 
