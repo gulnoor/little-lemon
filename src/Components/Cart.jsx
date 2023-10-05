@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import Button from "./Button/Button"
 import styles from "./cart.module.css"
 import { CartContext } from "../context/CartContext"
@@ -18,7 +18,7 @@ const CartItem = ({ item }) => {
             <img className={styles.cartItemImg} alt={item.name} src={item.image}></img>
             <div className={styles.itemDescription}>
                 <p>{item.name}</p>
-                <span>{item.price}</span>
+                <span>{`$${item.price} x ${item.quantity} = $${item.price*item.quantity}`}</span>
             </div>
             <div className={styles.btncontainer} >
                 <Button onClick={handleClick("increment")} style={{
@@ -43,6 +43,19 @@ const Cart = ({ style }) => {
 
 
     const { cart, dispatch } = useContext(CartContext)
+    const [total,setTotal] = useState(0)
+    const quantsDependency = JSON.stringify(cart)
+ 
+    
+
+    useEffect(()=>{
+        let acc = 0
+        Object.values(cart["items"]).forEach((item)=>{
+            acc+=item.price*item.quantity;
+        })
+        setTotal(acc)
+    },[cart])
+
     return (
         <div style={style} className={styles.container}>
             <h1 style={{
@@ -51,13 +64,13 @@ const Cart = ({ style }) => {
             }}>Your Cart</h1>
             <Button onClick={() => { dispatch({ type: "clearCart" }) }} >Remove All Items</Button>
             <ol className={styles.itemcontainer}>
-                {cart.items ? cart.items.map((item) => { return <CartItem item={item} /> }) : <li>No Items In Cart</li>}
+                {cart.items ? Object.values(cart.items).map((item) => { return <CartItem item={item} /> }) : <li>No Items In Cart</li>}
             </ol>
             <div className={styles.total}>
                 <p>subtotal</p>
                 <p>42.69 PKR</p>
                 <p>total</p>
-                <p>68 PKR</p>
+                <p>{total}</p>
             </div>
             <Button>Review Payment and Address</Button>
         </div>

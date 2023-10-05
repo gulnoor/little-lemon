@@ -23,7 +23,7 @@ const ListItem = ({item})=>{
           padding: "none"
         }} >+</Button>
         <span>{quantity}</span>
-        <Button onClick={()=>setQuantity((prev)=>prev===0?0:prev-1)}style={{
+        <Button onClick={()=>setQuantity((prev)=>prev===1?1:prev-1)}style={{
           width: "48px",
           height: "48px",
           padding: "none"

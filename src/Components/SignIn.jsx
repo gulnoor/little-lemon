@@ -6,7 +6,7 @@ import Button from "./Button/Button";
 import { addUserToDatabase, signInWithGoogle } from "../firebase/firebase_utils";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
-import { ErrorMessage, Field, Form, Formik, yupToFormErrors } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 
 const SignIn = () => {
 
