@@ -12,6 +12,7 @@ import "./App.css";
 import UserProvider from "./context/UserContext";
 import { ThemeContext } from "./context/ThemeContext";
 import CartProvider from "./context/CartContext";
+import Checkout from "./Components/Checkout";
 
 export const themeContext = createContext();
 
@@ -54,6 +55,7 @@ function App() {
                   }
                 />
                 <Route path="/menu/*" element={<Menu />}></Route>
+                <Route path="/checkout" element={<Checkout></Checkout>}></Route>
               </Routes>
               <Footer />
             </main>

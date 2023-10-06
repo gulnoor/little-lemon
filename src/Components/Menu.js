@@ -175,9 +175,9 @@ const Menu = () => {
         </Routes>
 
         <div className="menu-card-container">
-          <div className="menu-card">
+          <div className="menu-card p-4">
             <img alt="" src={menu[7] ? menu[7].image : null}></img>
-            <h2>{menu[7] ? menu[7].name : null}</h2>
+            <h2 className="text-4xl">{menu[7] ? menu[7].name : null}</h2>
             <span>{menu[7] ? menu[7].description : null}</span>
             <Button>Add to cart</Button>
           </div>

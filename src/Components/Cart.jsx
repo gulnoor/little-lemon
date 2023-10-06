@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react"
 import Button from "./Button/Button"
 import styles from "./cart.module.css"
 import { CartContext } from "../context/CartContext"
+import { useNavigate } from "react-router-dom"
 
 
 
@@ -44,7 +45,7 @@ const Cart = ({ style }) => {
 
     const { cart, dispatch } = useContext(CartContext)
     const [total,setTotal] = useState(0)
-    const quantsDependency = JSON.stringify(cart)
+
  
     
 
@@ -55,6 +56,7 @@ const Cart = ({ style }) => {
         })
         setTotal(acc)
     },[cart])
+    const navigate = useNavigate()
 
     return (
         <div style={style} className={styles.container}>
@@ -72,7 +74,7 @@ const Cart = ({ style }) => {
                 <p>total</p>
                 <p>{total}</p>
             </div>
-            <Button>Review Payment and Address</Button>
+            <Button onClick={()=>navigate("/checkout")}>Review Payment and Address</Button>
         </div>
     )
 }
