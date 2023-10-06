@@ -33,7 +33,7 @@ const SignIn = () => {
         <div className={styles.pagecontainer}>
 
 
-            <img className={styles.logo} src={logo} alt="little lemon logo" />
+            <img  className={styles.logo} src={logo} alt="little lemon logo" />
             <div className={styles.formcontainer}>
             <Formik
             
