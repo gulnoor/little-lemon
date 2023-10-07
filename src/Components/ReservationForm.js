@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import Material3Input from "./Material3Input";
 import { BookingSummary } from "./BookingPage";
-import { motion } from "framer-motion";
 
 const ReservationForm = ({ reservationData, dispatch }) => {
   const navigate = useNavigate();

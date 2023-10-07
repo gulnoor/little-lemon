@@ -7,7 +7,7 @@ import { addUserToDatabase, signInWithGoogle } from "../firebase/firebase_utils"
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { Input, TextField } from "@mui/material";
+import { Input} from "@mui/material";
 
 const SignIn = () => {
 
