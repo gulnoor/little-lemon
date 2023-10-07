@@ -7,6 +7,7 @@ import { addUserToDatabase, signInWithGoogle } from "../firebase/firebase_utils"
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import { Input, TextField } from "@mui/material";
 
 const SignIn = () => {
 
@@ -46,7 +47,8 @@ const SignIn = () => {
                 onSubmit={handleSubmit}>
                 <Form className={styles.formik}>
                     <label className={styles.label} htmlFor="email">Email</label>
-                    <Field className="" name="email" type="text"></Field>
+                    <Input className="" name="email" type="text" color={"var(--md-sys-color-outline)"}>Email</Input>
+                    {/* <Field className="" name="email" type="text"></Field> */}
                     <ErrorMessage name="email"></ErrorMessage>
 
                     <label htmlFor="password">Password</label>

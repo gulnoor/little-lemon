@@ -36,7 +36,7 @@ function App() {
             <main
               className="Content-container"
               style={{
-                width: "calc(100% - 450px)",
+                width: "100%",
                 flex: "1",
                 // overflowX:"hidden"
               }}

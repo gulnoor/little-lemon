@@ -1,6 +1,6 @@
-@media screen and (min-width:600px) {
+@media screen and (min-width:600px) and (max-width:1200px){
     
     main{
-        /* padding-left: 100px; */
+        padding-left: 100px;
     }
 }

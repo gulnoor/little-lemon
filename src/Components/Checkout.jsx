@@ -1,6 +1,7 @@
 import * as Yup from "yup"
 import { ErrorMessage, Field, Form, Formik } from "formik"
 import Button from "./Button/Button"
+import Material3Input from "./Material3Input"
 
 const Checkout = () => {
 
@@ -9,12 +10,25 @@ const Checkout = () => {
 
     }
     return (
-        <div className="checkoutContainer flex flex-col">
-            <div className="address w-1/2 min-" >
+        <div className="checkoutContainer text-on-surface flex flex-wrap  gap-2 m-2" >
+            <div className="address p-8 min-w-[300px] flex-auto rounded-2xl bg-surface-container-highest" >
                 <h1>Address</h1>
                 <p>123 A2 BETA Town, Alphaland</p>
             </div>
-            <div className="payment w-1/2">
+           
+            <div className="order-summary  p-8 min-w-[300px]  flex-auto grid grid-cols-2 rounded-2xl bg-surface-container-highest">
+                <h1 className="col-span-2">Your Order</h1>
+                <span> 2 x burgers</span>
+                <span>price</span>
+                <div className="divider col-span-2 border-b mx-4"></div>
+                <span>subtotal</span>
+                <span>98 rs</span>
+                <span>Delivey Fee</span>
+                <span>89rs</span>
+                <span>Total</span>
+                <span>Rs. 8954.646</span>
+            </div>
+            <div className="payment p-8 min-w-[50%] flex-auto rounded-2xl bg-surface-container-highest">
                 <h1>Select Payment</h1>
                 <Formik
                     initialValues={{ payment: "" }
@@ -27,12 +41,12 @@ const Checkout = () => {
                     <Form>
                         <fieldset className="flex flex-col" name="payment" >
                             <label>
-                                <Field name="payment" value="cod" type="radio"></Field>
+                                <Field className="m-4" name="payment" value="cod" type="radio"></Field>
                                 Cash on Delivery
                             </label>
 
                             <label>
-                                <Field name="payment" value="card" type="radio"></Field>
+                                <Field className="m-4" name="payment" value="card" type="radio"></Field>
                                 Credit Card
                             </label>
                             <ErrorMessage name="payment"></ErrorMessage>
@@ -41,18 +55,6 @@ const Checkout = () => {
                         <Button htmlType={"submit"}>Confirm</Button>
                     </Form>
                 </Formik>
-            </div>
-            <div className="order-summary w-1/2 grid grid-cols-2">
-                <h1 className="col-span-2">Your Order</h1>
-                <span> 2 x burgers</span>
-                <span>price</span>
-                <div className="divider col-span-2 border-b mx-4"></div>
-                <span>subtotal</span>
-                <span>98 rs</span>
-                <span>Delivey Fee</span>
-                <span>89rs</span>
-                <span>Total</span>
-                <span>Rs. 8954.646</span>
             </div>
         </div>
     )

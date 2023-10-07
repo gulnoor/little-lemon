@@ -57,8 +57,20 @@
 
   padding: 16px;
 }
+@media screen and (max-width: 1200px) {
+  .container {
+    position: fixed; 
+    z-index: 998;
+    margin-left: 0;
+    /* height:100vh; */
+    /* height: 80%; */
+
+    overflow-y: scroll; 
+  }
+}
 @media screen and (max-width: 600px) {
   .container {
-    display: none;
+   display: none;
+   
   }
 }

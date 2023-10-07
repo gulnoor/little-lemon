@@ -60,11 +60,11 @@ const Cart = ({ style }) => {
 
     return (
         <div style={style} className={styles.container}>
-            <h1 style={{
+            <h1 className="text-xl font-bold " style={{
                 textAlign: "center",
                 padding: "16px"
             }}>Your Cart</h1>
-            <Button onClick={() => { dispatch({ type: "clearCart" }) }} >Remove All Items</Button>
+            <Button className="m-4" onClick={() => { dispatch({ type: "clearCart" }) }} >Remove All Items</Button>
             <ol className={styles.itemcontainer}>
                 {cart.items ? Object.values(cart.items).map((item) => { return <CartItem item={item} /> }) : <li>No Items In Cart</li>}
             </ol>
@@ -74,7 +74,7 @@ const Cart = ({ style }) => {
                 <p>total</p>
                 <p>{total}</p>
             </div>
-            <Button onClick={()=>navigate("/checkout")}>Review Payment and Address</Button>
+            <Button variant={"filled"} className="m-4" onClick={()=>navigate("/checkout")}>Review Payment and Address</Button>
         </div>
     )
 }
