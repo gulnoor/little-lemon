@@ -38,14 +38,7 @@ const ReservationForm = ({ reservationData, dispatch }) => {
       })
       .catch((e) => alert(e));
   };
-  const containerAnimation = {
-    initial: {
-      opacity: 0,
-    },
-    final: {
-      opacity: 1,
-    },
-  };
+  
 
   return (
     <form

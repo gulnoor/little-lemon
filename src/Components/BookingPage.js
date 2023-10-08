@@ -1,15 +1,16 @@
-import React, { useEffect, useReducer} from "react";
-import ReservationForm from "./ReservationForm";
+import React, { useContext, useEffect, useReducer } from "react";
 import { fetchAPI } from "../availTimesAPI";
 import "./bookingPage.css";
 import Button from "./Button/Button";
-import heroImg from "../assets/images/corporate-memphis/Mesa de trabajo 1.png"
+import heroImg from "../assets/images/corporate-memphis/Mesa de trabajo 1.png";
+import BookingForm from "./BookingForm";
+import { ThemeContext } from "@emotion/react";
 export const BookingSummary = ({ bookingData }) => {
   const date = new Date(bookingData.date.state);
 
   return (
     <section className="summary-container display-small">
-      <h3 >Your Booking:</h3>
+      <h3>Your Booking:</h3>
       <h6 className="headline-medium">Summary</h6>
 
       <div className="summary headline-medium">
@@ -77,6 +78,7 @@ const BookingPage = ({ children }) => {
         break;
     }
   };
+  const {theme} = useContext(ThemeContext);
 
   const [reservationData, dispatch] = useReducer(updateReservationData, {
     persons: { label: "Persons", state: "", error: "" },
@@ -130,25 +132,33 @@ const BookingPage = ({ children }) => {
 
   return (
     <>
-    <div className="reservation-hero">
-      <h1 style={{
-        display:"flex",
-        justifyContent:"center",
-        alignItems:"center",
-        fontSize:"8vw",
-        fontWeight:"700",
-        // margin:"0 auto"
+      <div className="reservation-hero">
+        <h1
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            fontSize: "8vw",
+            fontWeight: "700",
+            // margin:"0 auto"
+          }}
+        >
+          Reservation
+        </h1>
+        <img
+          src={heroImg}
+          alt=""
+          style={{
+            maxWidth: "35%",
+            borderRadius: "120px",
+            margin: "8px",
+          }}
+        />
+      </div>
+      {/* <ReservationForm reservationData={reservationData} dispatch={dispatch} /> */}
 
-        
-      
-      }}>Reservation</h1>
-      <img src={heroImg} alt="" style={{
-        maxWidth: "35%",
-        borderRadius: "120px",
-        margin:"8px"
-      }}/>
-    </div>
-      <ReservationForm reservationData={reservationData} dispatch={dispatch} />
+      <BookingForm />
+      {theme}
     </>
   );
 };

@@ -1,5 +1,5 @@
 import NavigationRail from "./Components/NavigationRail";
-import { createContext, useContext } from "react";
+import { createContext, useContext, useMemo } from "react";
 import BookingPage from "./Components/BookingPage";
 import { Route, Routes } from "react-router-dom";
 import Home from "./routes/Home";
@@ -13,15 +13,72 @@ import UserProvider from "./context/UserContext";
 import { ThemeContext } from "./context/ThemeContext";
 import CartProvider from "./context/CartContext";
 import Checkout from "./Components/Checkout";
-import MUIThemeProvider from "./context/MUITheme";
+import { ThemeProvider, createTheme } from "@mui/material";
 
 export const themeContext = createContext();
 
 function App() {
   const { theme } = useContext(ThemeContext);
+  const MUItheme = useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode: theme,
+          primary: {
+            main:theme==='light'?'#705d00':"#e9c400",
+            // light: will be calculated from palette.primary.main,
+            // dark: will be calculated from palette.primary.main,
+            // contrastText: will be calculated to contrast with palette.primary.main
+          },
+          secondary:{
+            main:theme==='light'?"#675e40":"#d2c6a1",
+          },
+          error:{
+            main:theme==='light'?'#ba1a1a':"#ffb4ab",
+          }
+        },
+        components: {
+          MuiButton: {
+              variants: [{
+                  props: {
+                      variant: "contained"
+                  },
+                  style: {
+                     
+                    
+                      borderRadius: "100vh",
+                      minHeight: "48px",
+                    
+
+                  }
+              },
+              {
+                  props: {
+                      variant: "outlined"
+                  },
+                  style: {
+                      background: "transparent",
+                      color: "var(--md-sys-color-on-primary-container)",
+                      borderRadius: "100vh",
+                      border: "2px solid var(--md-sys-color-primary)",
+                      minHeight: "48px",
+                      "&:hover ": {
+                          background: "transparent",
+                          color: "var(--md-sys-color-on-primary-container)",
+                          border: "2px solid var(--md-sys-color-primary)",
+                          filter: "brightness(1.2)"
+                      }
+                  }
+              },
+              ]
+          }
+        },
+      }),
+    [theme]
+  );
 
   return (
-    <MUIThemeProvider>
+    <ThemeProvider theme={MUItheme}>
       <UserProvider>
         <MenuProvider>
           <CartProvider>
@@ -68,7 +125,7 @@ function App() {
           </CartProvider>
         </MenuProvider>
       </UserProvider>
-    </MUIThemeProvider>
+    </ThemeProvider>
   );
 }
 export default App;

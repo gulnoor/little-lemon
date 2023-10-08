@@ -4,9 +4,14 @@ input:-webkit-autofill {
         -webkit-text-fill-color: var(--md-sys-color-on-secondary-container) ;
     }
 
+.dark input:-webkit-autofill {
+        -webkit-box-shadow: 0 0 0px 1000px var(--md-sys-color-secondary-container) inset;
+        -webkit-text-fill-color: var(--md-sys-color-on-secondary-container) ;
+    }
+
 input:focus{
-    outline: none;
-    border: 3px solid var(--md-sys-color-primary);
+    /* outline: none;
+    border: 3px solid var(--md-sys-color-primary); */
 }
 
 input[type="date"] {
