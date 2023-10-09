@@ -1,10 +1,10 @@
-import React, { useContext, useEffect, useReducer } from "react";
+import React, {  useEffect, useReducer } from "react";
 import { fetchAPI } from "../availTimesAPI";
 import "./bookingPage.css";
 import Button from "./Button/Button";
 import heroImg from "../assets/images/corporate-memphis/Mesa de trabajo 1.png";
 import BookingForm from "./BookingForm";
-import { ThemeContext } from "@emotion/react";
+
 export const BookingSummary = ({ bookingData }) => {
   const date = new Date(bookingData.date.state);
 
@@ -78,7 +78,8 @@ const BookingPage = ({ children }) => {
         break;
     }
   };
-  const {theme} = useContext(ThemeContext);
+
+
 
   const [reservationData, dispatch] = useReducer(updateReservationData, {
     persons: { label: "Persons", state: "", error: "" },
@@ -158,7 +159,7 @@ const BookingPage = ({ children }) => {
       {/* <ReservationForm reservationData={reservationData} dispatch={dispatch} /> */}
 
       <BookingForm />
-      {theme}
+
     </>
   );
 };

@@ -5,7 +5,6 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import "./Footer.css";
-import logo from "../assets/images/Asset 14@4x.png";
 import { Link } from "react-router-dom";
 const Footer = () => {
   return (
@@ -21,19 +20,19 @@ const Footer = () => {
           </h2>
           <ul className="socials">
             <li>
-              <a href="">
+              <a href="/">
                 <FontAwesomeIcon icon={faFacebook} size={"3x"} />
                 Facebook
               </a>
             </li>
             <li>
-              <a href="">
+              <a href="/">
                 <FontAwesomeIcon icon={faInstagram} size={"3x"} />
                 Instagram
               </a>
             </li>
             <li>
-              <a href="">
+              <a href="/">
                 <FontAwesomeIcon icon={faTwitter} size={"3x"} />
                 Twitter
               </a>

@@ -25,53 +25,42 @@ function App() {
         palette: {
           mode: theme,
           primary: {
-            main:theme==='light'?'#705d00':"#e9c400",
+            main: theme === "light" ? "#705d00" : "#e9c400",
             // light: will be calculated from palette.primary.main,
             // dark: will be calculated from palette.primary.main,
             // contrastText: will be calculated to contrast with palette.primary.main
           },
-          secondary:{
-            main:theme==='light'?"#675e40":"#d2c6a1",
+          secondary: {
+            main: theme === "light" ? "#675e40" : "#d2c6a1",
           },
-          error:{
-            main:theme==='light'?'#ba1a1a':"#ffb4ab",
-          }
+          error: {
+            main: theme === "light" ? "#ba1a1a" : "#ffb4ab",
+          },
         },
         components: {
           MuiButton: {
-              variants: [{
-                  props: {
-                      variant: "contained"
-                  },
-                  style: {
-                     
-                    
-                      borderRadius: "100vh",
-                      minHeight: "48px",
-                    
 
-                  }
+            variants: [
+              {
+                props: {
+                  variant: "contained",
+                },
+                style: {
+                  borderRadius: "100vh",
+                  minHeight: "48px",
+                },
               },
               {
-                  props: {
-                      variant: "outlined"
-                  },
-                  style: {
-                      background: "transparent",
-                      color: "var(--md-sys-color-on-primary-container)",
-                      borderRadius: "100vh",
-                      border: "2px solid var(--md-sys-color-primary)",
-                      minHeight: "48px",
-                      "&:hover ": {
-                          background: "transparent",
-                          color: "var(--md-sys-color-on-primary-container)",
-                          border: "2px solid var(--md-sys-color-primary)",
-                          filter: "brightness(1.2)"
-                      }
-                  }
+                props: {
+                  variant: "outlined",
+                },
+                style: {
+                  borderRadius: "100vh",
+                  minHeight: "48px",
+                },
               },
-              ]
-          }
+            ],
+          },
         },
       }),
     [theme]

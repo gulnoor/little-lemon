@@ -1,11 +1,48 @@
-import { TextField, styled } from "@mui/material"
+import { ThemeContext } from "../context/ThemeContext"
+
+import { TextField } from "@mui/material"
 import { useFormik } from "formik"
+import { useContext } from "react"
 import * as yup from "yup"
+
+export const MyTextInput = ({ label, formik, type }) => {
+
+    const { theme } = useContext(ThemeContext)
+
+
+
+    function camelCase(str) {
+        return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
+            return index === 0 ? word.toLowerCase() : word.toUpperCase();
+        }).replace(/\s+/g, '');
+    }
+
+    return (<TextField
+        sx={{
+            "& .MuiOutlinedInput-root": {
+                "& > fieldset": {
+                    borderWidth: "2px"
+                },
+            },
+            "& input": {
+                colorScheme: theme === "light" ? "light" : "dark"
+            }
+        }}
+        id={label}
+        label={label}
+        error={formik.touched[label] && Boolean(formik.errors[label])}
+        helperText={formik.touched[label] && formik.errors[label]}
+        type={type}
+        name={camelCase(label)} {...formik.getFieldProps(label)}></TextField>)
+}
 
 const BookingForm = () => {
 
 
-    const handleSubmit = () => {
+
+
+    const handleSubmit = (values) => {
+        console.log(values)
 
     }
     const formik = useFormik({
@@ -36,68 +73,43 @@ const BookingForm = () => {
 
     return (
         <form onSubmit={formik.handleSubmit}>
-            <TextField
-                id="persons"
-                sx={{
-                    margin: "1rem 0"
-                }}
+        <addressContainer></addressContainer>
+            <MyTextInput
+            className="kk"
                 label="Persons"
-                error={formik.touched.persons && Boolean(formik.errors.persons)}
-                helperText={formik.touched.persons && formik.errors.persons} type="number" name="persons" {...formik.getFieldProps("persons")}></TextField>
-            <TextField
-                id="date"
-                sx={{
-                    margin: "1rem 0",
-                    color: "var(--md-sys-color-primary)"
-                }}
+                type="number"
+                formik={formik}
+            ></MyTextInput>
+            <MyTextInput
                 label="Date"
-                variant="outlined"
-                error={formik.touched.date && Boolean(formik.errors.date)}
-                helperText={formik.touched.date && formik.errors.date} type="date" name="date" {...formik.getFieldProps("date")}></TextField>
-            <TextField
-                id="time"
-                sx={{
-                    margin: "1rem 0"
-                }}
+                formik={formik}
+                type="date"
+            ></MyTextInput>
+            <MyTextInput
+                formik={formik}
                 label="Time"
-                error={formik.touched.time && Boolean(formik.errors.time)}
-                helperText={formik.touched.time && formik.errors.time} type="select" name="time" {...formik.getFieldProps("time")}></TextField>
-            <TextField
-                id="firstName"
-                sx={{
-                    margin: "1rem 0"
-                }}
+                type="select"
+            ></MyTextInput>
+            <MyTextInput
+                formik={formik}
                 label="First Name"
-                error={formik.touched.firstName && Boolean(formik.errors.firstName)}
-                helperText={formik.touched.firstName && formik.errors.firstName} type="text" name="firstName" {...formik.getFieldProps("firstName")}></TextField>
-            <TextField
-                id="lastName"
-                sx={{
-                    margin: "1rem 0"
-                }}
+                type="text"
+            ></MyTextInput>
+            <MyTextInput
                 label="Last Name"
-                error={formik.touched.lastName && Boolean(formik.errors.lastName)}
-                helperText={formik.touched.lastName && formik.errors.lastName} type="text" name="lastName" {...formik.getFieldProps("lastName")}></TextField>
-            <TextField
-                id="email"
-                sx={{
-                    margin: "1rem 0"
-                }}
+                formik={formik}
+                type="text"
+            ></MyTextInput>
+            <MyTextInput
                 label="Email"
-                error={formik.touched.email && Boolean(formik.errors.email)}
-                helperText={formik.touched.email && formik.errors.email} type="email" name="email" {...formik.getFieldProps("email")}></TextField>
-            <TextField
-                id="specialRequest"
-                sx={{
-                    "& .MuiOutlinedInput-root.Mui-focused > fieldset": {
-
-
-
-                    }
-                }}
+                formik={formik}
+                type="email"
+            ></MyTextInput>
+            <MyTextInput
                 label="Special Request"
-                error={formik.touched.specialRequest && Boolean(formik.errors.specialRequest)}
-                helperText={formik.touched.specialRequest && formik.errors.specialRequest} type="textarea" name="specialRequest" {...formik.getFieldProps("specialRequest")}></TextField>
+                formik={formik}
+                type="textarea"
+            ></MyTextInput>
 
         </form>
     )

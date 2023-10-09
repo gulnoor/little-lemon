@@ -1,18 +1,18 @@
-import *  as Yup from "yup"
+import *  as yup from "yup"
 import logo from "../assets/images/Asset 20@4x.png"
 
 import styles from "./signin.module.css"
-import Button from "./Button/Button";
+
 import { addUserToDatabase, signInWithGoogle } from "../firebase/firebase_utils";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
-import { ErrorMessage, Field, Form, Formik } from "formik";
-import { Input} from "@mui/material";
+import { useFormik } from "formik";
+import { Button } from "@mui/material";
+import { MyTextInput } from "./BookingForm";
 
 const SignIn = () => {
 
     const { setUser } = useContext(UserContext)
-
     const handleSignIn = async () => {
         const usercreds = await signInWithGoogle();
         addUserToDatabase(usercreds.user);
@@ -22,47 +22,38 @@ const SignIn = () => {
         })
 
     }
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-
-
+    const handleSubmit = (values) => {
+        console.log(values)
     }
+    const formik = useFormik({
+        initialValues: {
+            email: "",
+            password: ""
+        },
+        onSubmit: handleSubmit,
+        validationSchema: yup.object({
+        })
+    })
 
     return (
-
         <div className={styles.pagecontainer}>
-
-
-            <img  className={styles.logo} src={logo} alt="little lemon logo" />
+            <img className={styles.logo} src={logo} alt="little lemon logo" />
             <div className={styles.formcontainer}>
-            <Formik
-            
-                initialValues={{ email: "", password: "" }
-                }
-                validationSchema={Yup.object({
-                    email: Yup.string().email("Email is invalid").required(),
-                    password: Yup.string().min(8).max(16).required()
-                })}
-                onSubmit={handleSubmit}>
-                <Form className={styles.formik}>
-                    <label className={styles.label} htmlFor="email">Email</label>
-                    <Input className="" name="email" type="text" color={"var(--md-sys-color-outline)"}>Email</Input>
-                    {/* <Field className="" name="email" type="text"></Field> */}
-                    <ErrorMessage name="email"></ErrorMessage>
-
-                    <label htmlFor="password">Password</label>
-                    <Field name="password" type="text"></Field>
-                    <ErrorMessage name="password"></ErrorMessage>
-                    <Button type="submit">Sign In</Button>
-                </Form>
-            </Formik>
-                <Button onClick={handleSignIn} htmlType={"Button"} variant={"filled"}>Sign In with Google</Button>
+                <form className={styles.formik} onSubmit={formik.handleSubmit}>
+                    <MyTextInput
+                        label={"Email"}
+                        type={"email"}
+                        formik={formik}
+                    />
+                    <MyTextInput
+                        label={"Password"}
+                        type={"password"}
+                        formik={formik} />
+                    <Button onClick={formik.handleSubmit} variant={"outlined"}>Sign In</Button>
+                </form>
+                <Button onClick={handleSignIn}>Sign In with Google</Button>
             </div>
         </div>
-
-
-
     )
 }
 

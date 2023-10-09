@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./NavigationRail.css";
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import { UserContext } from "../context/UserContext";
 import Cart from "./Cart";

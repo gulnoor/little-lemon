@@ -1,5 +1,4 @@
 import { useContext, useRef } from "react";
-import useMenu from "../hooks/useMenu";
 import "./Carousel.css";
 import { MenuContext } from "../context/MenuContext";
 

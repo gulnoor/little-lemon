@@ -106,7 +106,7 @@ const BaseInput = ({
         };
       });
     }
-  }, [isFocused, value]);
+  }, [isFocused, value,type]);
 
 
   switch (type) {

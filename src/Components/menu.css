@@ -71,9 +71,9 @@
   padding: 1rem;
   transition: all 0.1s;
 }
-.menu-item:hover{
-    background-color: var(--md-sys-color-secondary-container);
-    color: var(--md-sys-color-on-secondary-container);
+.menu-item:hover {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
 }
 
 .item-content {
@@ -107,15 +107,13 @@
   flex-direction: column;
   background-color: var(--md-sys-color-primary-container);
   color: var(--md-sys-color-on-primary-container);
-
 }
-
 
 .menu-card-container {
   position: sticky;
   display: flex;
   width: 50%;
-  height:calc(100vh - 92px) ;
+  height: calc(100vh - 92px);
   top: 90px;
   margin: 0 8px 8px 0;
   padding: 8px 0px;

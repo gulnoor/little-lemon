@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Input.css";
 import BaseInput from "./BaseInput";
-import { motion} from "framer-motion";
 
 const InputError = ({ children }) => {
   return (
@@ -100,14 +99,6 @@ const Material3Input = ({
         });
   }, [isFocused]);
 
-  const inputAnimation = {
-    initial: {
-      y:1000
-    },
-    final:{
-      y:0
-    }
-  };
 
   return (
     <div

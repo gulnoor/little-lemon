@@ -7,7 +7,6 @@ import { BookingSummary } from "./BookingPage";
 
 const ReservationForm = ({ reservationData, dispatch }) => {
   const navigate = useNavigate();
-
   const validationSchema = yup.object({
     date: yup.date(),
     persons: yup.number().min(1, "min 1 person").max(10).required(),
@@ -45,9 +44,6 @@ const ReservationForm = ({ reservationData, dispatch }) => {
       style={{
         display: "flex",
         flexWrap: "wrap",
-        // maxWidth: "600px",
-        // width: "100%",
-        // justifyContent: "space-between",
         padding: "8px",
       }}
       onSubmit={handleSubmit}
@@ -56,17 +52,12 @@ const ReservationForm = ({ reservationData, dispatch }) => {
         className="inputs-div"
         style={{
           display: "inline-flex",
-          // width:"100%",
-          // flexDirection:"column",
           flexWrap: "wrap",
           background: "var(--md-sys-color-surface-container)",
           padding: "2rem",
           borderRadius: "16px",
           justifyContent: "space-between",
-
-          // margin:"8px 8px 0 0"
         }}
-        
       >
         {Object.keys(reservationData).map((fieldName) => {
           return (
