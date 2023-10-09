@@ -4,20 +4,20 @@ import marioadrian from "../assets/images/Mario and Adrian A.jpg";
 const AboutUs = () => {
   return (
     <>
-
-    <section className="AboutUs" >
-      
-      <article>
       <h1
         className="headline-large"
         style={{
           fontSize: "3.5rem",
           color: "var(--md-sys-color-on-surface)",
-          marginBottom: "1rem"
+          padding: "2rem 7%",
         }}
       >
         About Us
       </h1>
+    <section className="AboutUs" >
+    
+      <article>
+      
         <p>
           Based in Chicago, Illinois, Little Lemon is a family-owned
           Mediterranean restaurant, focused on traditional recipes served with a

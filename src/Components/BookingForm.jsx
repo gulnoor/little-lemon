@@ -3,7 +3,7 @@ import { ThemeContext } from "../context/ThemeContext";
 
 import { Button, TextField } from "@mui/material";
 import { useFormik } from "formik";
-import { useContext } from "react";
+import { useContext} from "react";
 import * as yup from "yup";
 
 function camelCase(str) {
@@ -18,7 +18,7 @@ const MyForm = styled.form`
 display: flex;
 flex-wrap: wrap;
 margin: auto;
-padding:  0 15%;
+padding: 32px 15%;
 justify-content: space-between;
 width: 100%;
 }`;
@@ -31,6 +31,8 @@ const StyledTextField = styled(TextField)`
   & .MuiOutlinedInput-root > fieldset {
     border-width: 2px;
   }
+  
+  
   & Input {
     color: var(--md-sys-color-on-surface);
     color-scheme: ${(props) => (props.theme === "light" ? "light" : "dark")};
@@ -39,7 +41,12 @@ const StyledTextField = styled(TextField)`
         inset;
       -webkit-text-fill-color: var(--md-sys-color-on-secondary-container);
     }
+
+
   }
+  ${'' /* & Input[name=date] {
+    color: transparent;
+  } */}
 `;
 
 export const MyTextInput = ({ label, formik, type }) => {
@@ -56,11 +63,14 @@ export const MyTextInput = ({ label, formik, type }) => {
       name={name}
       theme={theme}
       {...formik.getFieldProps(name)}
+      InputLabelProps= {label==="Date" && { shrink: true }}
+      
     ></StyledTextField>
   );
 };
 
 const BookingForm = () => {
+    
   const handleSubmit = (values) => {};
   const formik = useFormik({
     initialValues: {
@@ -88,10 +98,12 @@ const BookingForm = () => {
     }),
   });
 
+
+
   return (
     <MyForm onSubmit={formik.handleSubmit}>
       <MyTextInput label="Persons" type="number" formik={formik}></MyTextInput>
-      <MyTextInput label="Date" formik={formik} type="date"></MyTextInput>
+      <MyTextInput   label="Date" formik={formik} type="date"></MyTextInput>
       <MyTextInput formik={formik} label="Time" type="select"></MyTextInput>
       <MyTextInput formik={formik} label="First Name" type="text"></MyTextInput>
       <MyTextInput label="Last Name" formik={formik} type="text"></MyTextInput>

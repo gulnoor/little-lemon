@@ -2,7 +2,7 @@
     display: flex;
 
     /* background: var(--md-sys-color-secondary-container); */
-    margin: 8px 10%;
+    margin: 8px 10% 32px 10%;
     justify-content: center;
     align-items: center;
     min-height: 750px;
@@ -12,8 +12,10 @@
 
 }
 
+
 .AboutUs article {
     max-width: 50%;
+    min-width: 500px;
    
     font-size: 1.2rem;
     padding-right: 3rem;
@@ -28,4 +30,17 @@
     max-width: 50%;
     object-fit: contain;
     border-radius: 120px;
+}
+@media screen and (max-width:1300px) {
+    .AboutUs article {
+        width: 100%;
+        max-width: 100%;
+        padding-right:0 ;
+        min-width: 100%;    
+    }
+    .AboutUs img {
+        max-width: 100%;
+        width: 100%;}
+
+    
 }

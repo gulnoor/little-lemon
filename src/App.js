@@ -86,7 +86,7 @@ function App() {
                 style={{
                   width: "100%",
                   flex: "1",
-                  // overflowX:"hidden"
+                  overflow:"clip"
                 }}
               >
                 <Routes>
