@@ -5,7 +5,7 @@ const CartProvider = ({ children }) => {
 
 
     if (!window.localStorage.getItem("cart")) {
-        window.localStorage.setItem("cart", '{"items":{}},"totalPrice:0')
+        window.localStorage.setItem("cart", '{"items":{}z,"totalPrice:0}')
     }
 
     const updateCart = (prev, action) => {
@@ -47,7 +47,7 @@ const CartProvider = ({ children }) => {
         }
 
     }
-    const [cart, dispatch] = useReducer(updateCart, JSON.parse(window.localStorage.getItem("cart")))
+    const [cart, dispatch] = useReducer(updateCart, JSON.parse(window.localStorage.getItem("cart")));
     useEffect(() => {
         window.localStorage.setItem("cart", JSON.stringify(cart))
     }, [cart])
