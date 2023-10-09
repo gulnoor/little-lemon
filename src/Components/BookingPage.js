@@ -6,7 +6,7 @@ import heroImg from "../assets/images/corporate-memphis/Mesa de trabajo 1.png";
 import BookingForm from "./BookingForm";
 
 export const BookingSummary = ({ bookingData }) => {
-  const date = new Date(bookingData.date.state);
+  const date = new Date(bookingData.date);
 
   return (
     <section className="summary-container display-small">
@@ -26,15 +26,15 @@ export const BookingSummary = ({ bookingData }) => {
         </div>
         <div className="summary-details">
           <h1>
-            {bookingData.firstName.state + " " + bookingData.lastName.state}
+            {bookingData.firstName + " " + bookingData.lastName}
           </h1>
           <span>
             {date.getDate()
               ? `${date
                   .toLocaleDateString("en-us", { weekday: "long" })
-                  .toUpperCase()} ${bookingData.time.state} ${
-                  bookingData.persons.state
-                    ? `for ${bookingData.persons.state} person`
+                  .toUpperCase()} ${bookingData.time} ${
+                  bookingData.persons
+                    ? `for ${bookingData.persons} person`
                     : ""
                 }`
               : ""}
