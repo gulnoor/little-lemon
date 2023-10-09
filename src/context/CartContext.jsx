@@ -5,7 +5,7 @@ const CartProvider = ({ children }) => {
 
 
     if (!window.localStorage.getItem("cart")) {
-        window.localStorage.setItem("cart", '{"items":{}z,"totalPrice:0}')
+        window.localStorage.setItem("cart", '{"items":{},"totalPrice":0}')
     }
 
     const updateCart = (prev, action) => {
