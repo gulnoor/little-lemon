@@ -1,4 +1,3 @@
-
 import "./menu.css";
 import { useContext, useState } from "react";
 import { ThemeContext } from "../context/ThemeContext";
@@ -10,7 +9,7 @@ import { Box, Button, Card, Rating, Typography, styled } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLemon } from "@fortawesome/free-regular-svg-icons";
 import { faLemon as faLemonSolid } from "@fortawesome/free-solid-svg-icons";
-import bgimg2 from "../assets/images/bing image creator/_2df1a955-eecb-400d-bae8-38d4dfd2ffaa.jpeg"
+import bgimg2 from "../assets/images/bing image creator/_2df1a955-eecb-400d-bae8-38d4dfd2ffaa.jpeg";
 const Menu = () => {
   const menu = useContext(MenuContext);
   const [rating, setRating] = useState(4.5);
@@ -138,31 +137,32 @@ const Menu = () => {
   ];
   const MenuHeroImg = styled("img")`
   display: flex;
-  ${'' /* margin-left: auto; */}
+  ${"" /* margin-left: auto; */}
   height: 550px;
   width: 50%;
   object-fit: cover;
   border-radius: 16px;
-  flex: 01 auto
-  filter: ${theme==="dark"?'brightness(0.75)':'none'};
+  ${'' /* flex: 0 1 auto; */}
+  filter: ${theme === "dark" ? "brightness(0.75)" : "none"};
   @media screen and (max-width: 839px) {
         width: 100%;
         height: 400px;
       }
+      @media screen and (max-width: 600px) {
+        width: 100%;
+        height: 250px;
+      }
+  
 
-  `
+  `;
 
   return (
     <>
-      <div
-        
-        className=" menu-hero"
-      >
-      <div className="menu-title">
-        <h1>Menu</h1>
-        <p>traditional recipes served with a modern twist</p>
-
-      </div>
+      <div className=" menu-hero">
+        <div className="menu-title">
+          <h1 className="display-large">Menu</h1>
+          <p className="display-small">traditional recipes served with a modern twist</p>
+        </div>
         {/* <div className="menu-categories">
           <Link to={"/menu/appetizers"} className="category-btn">
             Appetizers
@@ -181,8 +181,7 @@ const Menu = () => {
             <p>Sweeten your meal with a traditional Mediterranean dessert</p>
           </div>
         </div> */}
-      <MenuHeroImg src = {bgimg2}/>
-
+        <MenuHeroImg src={bgimg2} />
       </div>
       <TopNav names={["Appetizer", "Salad", "Entree", "Dessert"]} />
       <div className="menu-container">
@@ -233,8 +232,7 @@ const Menu = () => {
               {menuu[7].name}
             </Typography>
             <img className="menu-card-img" alt="" src={menuu[7].image}></img>
-            <Box sx={{display:"flex",
-          justifyContent: "space-between"}}>
+            <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               <LemonRating
                 icon={
                   <FontAwesomeIcon
@@ -263,7 +261,7 @@ const Menu = () => {
                 }}
                 component={"span"}
               >
-                {`${rating} / 5 lemmons` }
+                {`${rating} / 5 lemmons`}
               </Typography>
             </Box>
 

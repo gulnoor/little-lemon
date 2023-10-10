@@ -1,19 +1,12 @@
 .menu-hero {
   display: flex;
-  /* flex-wrap: wrap; */
-  /* width:50%; */
   color: black;
-  /* background-color: var(--md-sys-color-primary-container); */
   border-radius: 1rem;
   margin: 8px;
   justify-content: center;
   align-items: center;
   min-height: 450px;
   gap: 8px;
-  /* padding: 8px; */
-  /* flex-direction: column; */
-  /* background-size: cover; */
-  /* background-repeat: no-repeat; */
 }
 
 .menu-hero h1 {
@@ -22,7 +15,6 @@
 
 .menu-hero p {
   font-size: 1.9rem;
-  /* text-align: center; */
 }
 
 .category-btn {
@@ -34,7 +26,6 @@
   border-radius: 1rem;
   background-color: var(--md-sys-color-surface-container);
   color: var(--md-sys-color-on-surface);
-
   max-width: 450px;
   width: 35vw;
 }
@@ -133,8 +124,8 @@
   display: flex;
   flex-direction: column;
   padding: 48px;
-  background: var(--md-sys-color-primary-container);
-  color: var(--md-sys-color-on-primary-container);
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
   height: 550px;
   width: 50%;
   flex: 0 1 auto;
@@ -142,7 +133,7 @@
   justify-content: center;
 }
 @media screen and (max-width: 839px) {
-  .menu-hero{
+  .menu-hero {
     flex-direction: column;
   }
   .menu-title {
@@ -163,5 +154,10 @@
   }
   .menu-title > p {
     font-size: 20px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .menu-title {
+    padding: 24px;
   }
 }
