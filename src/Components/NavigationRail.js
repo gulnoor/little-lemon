@@ -22,6 +22,7 @@ const NavigationRail = () => {
 
   const linkStyle = {
     display: "flex",
+    // flex:"1",
     padding: "0.8rem",
     flexDirection: "column",
     borderRadius: "16px",
@@ -68,7 +69,7 @@ const NavigationRail = () => {
             </div>
           </li>
           {user ? (
-            <li>
+            <li className="signin-navrail">
               <Link
                 onClick={handleCartClick}
                 style={linkStyle}
@@ -87,7 +88,7 @@ const NavigationRail = () => {
               </Link>
             </li>
           ) : (
-            <li>
+            <li className="user-navrail">
               <Link style={linkStyle} to="/sign-in">
                 <span className="material-symbols-outlined">person</span>
                 Sign In
@@ -95,7 +96,7 @@ const NavigationRail = () => {
             </li>
           )}
 
-          <li>
+          <li className="theme-navrail">
             <Link style={linkStyle} onClick={toggleTheme}>
               {theme === "light" ? (
                 <span className="material-symbols-outlined">dark_mode</span>

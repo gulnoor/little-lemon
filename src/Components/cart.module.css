@@ -68,7 +68,7 @@
     overflow-y: scroll; 
   }
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 840px) {
   .container {
    display: none;
    

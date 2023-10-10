@@ -150,10 +150,7 @@
     height: auto;
     /* margin-bottom: 8px; */
   }
-  .menu-title > h1 {
-  }
-  .menu-title > p {
-  }
+
   .menu-card-container {
     display: none;
   }
@@ -161,8 +158,6 @@
   .menu-list {
     width: 100%;
   }
-}
-@media screen and (max-width: 839px) {
   .menu-title > h1 {
     font-size: 56px;
   }
