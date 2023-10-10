@@ -10,7 +10,7 @@ const TopNav = ({ names }) => {
     padding: "1rem",
     fontSize: "1.5rem",
     minHeight: window.screen.width > 600 ? "70px" : "52px",
-    flex: "1",
+    flex: "1 0 auto",
     whiteSpace: "nowrap",
   };
   return (
