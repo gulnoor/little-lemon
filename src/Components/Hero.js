@@ -1,13 +1,24 @@
 import "./Hero.css";
+import bgimg from "../assets/images/bing image creator/_45aecf35-331c-46ac-8c95-1739ccfd7c28.jpeg"
 import logo from "../assets/images/Asset 9@4x.png";
 import Button from "./Button/Button";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { ThemeContext } from "../context/ThemeContext";
 const Hero = () => {
+  const {theme} = useContext(ThemeContext)
   const navigate = useNavigate();
   const buttonStyle = { height: "52px", fontSize: "1.2rem" };
 
   return (
-    <div className="Hero">
+    <div
+    style={{
+          backgroundImage:
+            theme === "dark"
+              ? `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${bgimg}) `
+              : `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)),url(${bgimg})`,
+        }}
+     className="Hero">
       <div className="hero-content">
         <h1>Little Lemon</h1>
         <h2>Chicago</h2>

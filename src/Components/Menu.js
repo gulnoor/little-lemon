@@ -1,4 +1,4 @@
-import bgimg from "../assets/images/bg/93597.jpg";
+
 import "./menu.css";
 import { useContext, useState } from "react";
 import { ThemeContext } from "../context/ThemeContext";
@@ -10,7 +10,7 @@ import { Box, Button, Card, Rating, Typography, styled } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLemon } from "@fortawesome/free-regular-svg-icons";
 import { faLemon as faLemonSolid } from "@fortawesome/free-solid-svg-icons";
-
+import bgimg2 from "../assets/images/bing image creator/_91d74413-57d7-41c3-99a3-adc4c9db9858.jpeg"
 const Menu = () => {
   const menu = useContext(MenuContext);
   const [rating, setRating] = useState(4.5);
@@ -136,20 +136,41 @@ const Menu = () => {
       image: require("../assets/images/menu/lemon dessert.jpg"),
     },
   ];
+  const MenuHeroImg = styled("img")`
+  display: flex;
+  margin-left: auto;
+  height: 550px;
+  width: 50%;
+  width: 50%;
+  object-fit: cover;
+  border-radius: 16px;
+  filter: ${theme==="dark"?'brightness(0.75)':'none'}
+
+  `
 
   return (
     <>
       <div
-        style={{
-          backgroundImage:
-            theme === "dark"
-              ? `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${bgimg}) `
-              : `linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),url(${bgimg})`,
-        }}
+        
         className=" menu-hero"
       >
+      <div style={{
+        display:"flex",
+        flexDirection:"column",
+        padding:"48px",
+        background:"var(--md-sys-color-surface-container-high)",
+        color:"var(--md-sys-color-on-surface)",
+        height:"550px",
+        width:"49%",
+        borderRadius:"16px",
+        justifyContent:"center"
+
+
+      }}>
         <h1>Menu</h1>
         <p>traditional recipes served with a modern twist</p>
+
+      </div>
         {/* <div className="menu-categories">
           <Link to={"/menu/appetizers"} className="category-btn">
             Appetizers
@@ -168,6 +189,8 @@ const Menu = () => {
             <p>Sweeten your meal with a traditional Mediterranean dessert</p>
           </div>
         </div> */}
+      <MenuHeroImg src = {bgimg2}/>
+
       </div>
       <TopNav names={["Appetizer", "Salad", "Entree", "Dessert"]} />
       <div className="menu-container">

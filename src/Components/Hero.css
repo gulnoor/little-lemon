@@ -2,11 +2,16 @@
   display: flex;
   align-items: center;
   border-radius: 16px;
-  background-color: var(--md-sys-color-primary-container);
+  /* min-height: 560px; */
+  /* background-color: var(--md-sys-color-primary-container); */
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /* color: black; */
   color: var(--md-sys-color-on-primary-container);
   margin: 0.5rem;
   padding: 0.5rem;
-  /* min-height: 560px; */
+
 
   transition: 0.2s;
 }
