@@ -141,10 +141,13 @@ const Menu = () => {
   margin-left: auto;
   height: 550px;
   width: 50%;
-  width: 50%;
   object-fit: cover;
   border-radius: 16px;
-  filter: ${theme==="dark"?'brightness(0.75)':'none'}
+  filter: ${theme==="dark"?'brightness(0.75)':'none'};
+  @media screen and (max-width: 839px) {
+        width: 100%;
+        height: 400px;
+      }
 
   `
 
@@ -154,19 +157,7 @@ const Menu = () => {
         
         className=" menu-hero"
       >
-      <div style={{
-        display:"flex",
-        flexDirection:"column",
-        padding:"48px",
-        background:"var(--md-sys-color-surface-container-high)",
-        color:"var(--md-sys-color-on-surface)",
-        height:"550px",
-        width:"49%",
-        borderRadius:"16px",
-        justifyContent:"center"
-
-
-      }}>
+      <div className="menu-title">
         <h1>Menu</h1>
         <p>traditional recipes served with a modern twist</p>
 

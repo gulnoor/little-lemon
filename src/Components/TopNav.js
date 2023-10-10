@@ -7,7 +7,7 @@ const TopNav = ({ names }) => {
 
   const buttonStyle = {
     
-    padding: "1rem 3.5rem",
+    padding: "1rem",
     fontSize: "1.5rem",
     minHeight: window.screen.width > 600 ? "70px" : "52px",
     flex: "1",

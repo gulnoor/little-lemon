@@ -1,5 +1,6 @@
 .menu-hero {
   display: flex;
+  flex-wrap: wrap;
   /* width:50%; */
   color: black;
   /* background-color: var(--md-sys-color-primary-container); */
@@ -126,13 +127,40 @@
   object-fit: cover;
   border-radius: 32px;
 }
-
-@media screen and (max-width: 840px) {
+.menu-title {
+  display: flex;
+  flex-direction: column;
+  padding: 48px;
+  background: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  height: 550px;
+  width: 49%;
+  border-radius: 16px;
+  justify-content: center;
+}
+@media screen and (max-width: 839px) {
+  .menu-title {
+    width: 100%;
+    height: auto;
+    margin-bottom: 8px;
+  }
+  .menu-title > h1 {
+  }
+  .menu-title > p {
+  }
   .menu-card-container {
     display: none;
   }
 
   .menu-list {
     width: 100%;
+  }
+}
+@media screen and (max-width: 839px) {
+  .menu-title > h1 {
+    font-size: 56px;
+  }
+  .menu-title > p {
+    font-size: 20px;
   }
 }
