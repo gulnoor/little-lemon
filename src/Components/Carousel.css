@@ -49,10 +49,21 @@
   border-radius: 32px;
 }
 
-.carousel-item>p{
+.carousel-item > p {
   display: -webkit-box;
   /* max-width: 200px; */
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
 
+@media screen and (max-width: 600px) {
+  .carousel-container {
+    height: 50vh;
+    width: 90%;
+  }
+}
+@media screen and (max-width: 840) {
+  .carousel-container{
+    width: 85%;
+  }
+}

@@ -1,27 +1,29 @@
 import { useContext, useRef } from "react";
 import "./Carousel.css";
 import { MenuContext } from "../context/MenuContext";
+import styled from "@emotion/styled";
 
+export const StyledHeading = styled.h1`
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--md-sys-color-on-surface);
+  padding: 2rem 7%;
+  @media screen and (min-width: 600px) {
+    font-size:3.8rem;
+  }
+`;
 const CarouselItem = ({ menuItem, handleClick }) => {
   const ref = useRef(null);
 
   return (
     <div onClick={handleClick} ref={ref} className="carousel-item">
       <img src={menuItem.image} alt={menuItem.name} />
-      <h1
-        style={{
-          textAlign: "center",
-          bottom: "16px",
-          width: "100%",
-        }}
-      >
-        {menuItem.name}
-      </h1>
+      <h1>{menuItem.name}</h1>
       <p
         style={{
           width: "93%",
           // height:"60px",
-          overflow:"hidden",
+          overflow: "hidden",
           textOverflow: "ellipsis",
           // whiteSpace:"nowrap",
           // textAlign: "center",
@@ -129,16 +131,7 @@ const Carousel = () => {
   // }, []);
   return (
     <>
-      <h1
-        className="headline-large"
-        style={{
-          fontSize: "3.5rem",
-          color: "var(--md-sys-color-on-surface)",
-          padding: "2rem 7%",
-        }}
-      >
-        Our Specials
-      </h1>
+      <StyledHeading>Our Specials</StyledHeading>
       <div ref={containerRef} className="carousel-container">
         {menu.map((item) => (
           <CarouselItem
