@@ -10,37 +10,87 @@ export const StyledHeading = styled.h1`
   color: var(--md-sys-color-on-surface);
   padding: 2rem 7%;
   @media screen and (min-width: 600px) {
-    font-size:3.8rem;
+    font-size: 3.8rem;
+  }
+`;
+
+const StyledP = styled.p`
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  width: 90%;
+  transform: translate(-50%, -50%);
+  display: -webkit-box;
+  ${"" /* -webkit-line-clamp: 2; */}
+  -webkit-box-orient: vertical;
+  color: white;
+
+  overflow: hidden;
+  textoverflow: ellipsis;
+  display: none;
+`;
+const StyledItem = styled.div`
+  width: 20%;
+  position: relative;
+  max-height: 100%;
+  overflow: hidden;
+  margin-right: 8px;
+  flex: 0 0 auto;
+  transition: all 0.3s;
+  color: var(--md-sys-color-on-surface);
+
+  & > img {
+    width: 100%;
+    height: 75%;
+    object-fit: cover;
+    border-radius: 32px;
+    transition: all 0.3s;
+  }
+  &:hover {
+    & > p {
+      display: block;
+      display: -webkit-box;
+    }
+    & > img {
+      filter: brightness(0.2);
+    }
+  }
+  &:nth-child(1) {
+    width: 50%;
+  }
+  &:nth-child(2) {
+    width: 30%;
+  }
+  &:nth-child(3) {
+    width: 20%;
   }
 `;
 const CarouselItem = ({ menuItem, handleClick }) => {
   const ref = useRef(null);
 
   return (
-    <div onClick={handleClick} ref={ref} className="carousel-item">
+    <StyledItem onClick={handleClick} ref={ref}>
       <img src={menuItem.image} alt={menuItem.name} />
-      <h1 className="title-large" style={{
-        whiteSpace:"nowrap",
-        textOverflow:"ellipsis"
-      }}>{menuItem.name}</h1>
-      <p
+      <h1
+        className="title-large"
         style={{
-          width: "93%",
-          overflow: "hidden",
+          whiteSpace: "nowrap",
           textOverflow: "ellipsis",
+          textAlign: "center",
         }}
       >
+        {menuItem.name}
+      </h1>
+      <StyledP className="" style={{}}>
         {menuItem.description}
-      </p>
-    </div>
+      </StyledP>
+    </StyledItem>
   );
 };
 
 const Carousel = () => {
   const containerRef = useRef(null);
   const menu = [
-   
-
     {
       name: "Baklava",
       description:
@@ -49,12 +99,6 @@ const Carousel = () => {
       category: "Dessert",
       image: require("../assets/images/menu/105a4e88dca44f4a81dbaf6ccb7b83bc.jpg"),
     },
-
-   
-
-
-
-
 
     {
       name: "Lamb Chops",
@@ -80,11 +124,7 @@ const Carousel = () => {
       category: "Entree",
       image: require("../assets/images/menu/pasta-primavera-1-768x1152.jpg"),
     },
-
-
-
-
-  ]
+  ];
   const resizeItems = (e) => {
     const current = e.currentTarget;
     const ps1 = e.currentTarget.previousElementSibling
@@ -106,7 +146,7 @@ const Carousel = () => {
     if (ps2 && ns2) {
       current.style.width = "50%";
       ns1.style.width = "30%";
-      
+
       ns2.style.width = "20%";
     } else if (ps1 && ns2) {
       current.style.width = "50%";
@@ -134,7 +174,6 @@ const Carousel = () => {
     });
     resizeItems(e);
   };
-
 
   return (
     <>
