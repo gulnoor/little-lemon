@@ -2,6 +2,7 @@ import { useContext, useRef } from "react";
 import "./Carousel.css";
 import { MenuContext } from "../context/MenuContext";
 import styled from "@emotion/styled";
+import useMenu from "../hooks/useMenu";
 
 export const StyledHeading = styled.h1`
   font-size: 3rem;
@@ -37,7 +38,7 @@ const CarouselItem = ({ menuItem, handleClick }) => {
 
 const Carousel = () => {
   const containerRef = useRef(null);
-  const menu = useContext(MenuContext);
+  const menu = useMenu();
   const resizeItems = (e) => {
     const current = e.currentTarget;
     const ps1 = e.currentTarget.previousElementSibling
