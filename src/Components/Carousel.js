@@ -9,6 +9,7 @@ export const StyledHeading = styled.h1`
   font-weight: 600;
   color: var(--md-sys-color-on-surface);
   padding: 2rem 7%;
+
   @media screen and (min-width: 600px) {
     font-size: 3.8rem;
   }
@@ -21,7 +22,7 @@ const StyledP = styled.p`
   width: 90%;
   transform: translate(-50%, -50%);
   display: -webkit-box;
-  ${"" /* -webkit-line-clamp: 2; */}
+  -webkit-line-clamp: 5; 
   -webkit-box-orient: vertical;
   color: white;
 
@@ -75,6 +76,7 @@ const CarouselItem = ({ menuItem, handleClick }) => {
         className="title-large"
         style={{
           whiteSpace: "nowrap",
+          overflow:"hidden",
           textOverflow: "ellipsis",
           textAlign: "center",
         }}
