@@ -2,6 +2,7 @@ import { useContext, useRef } from "react";
 import "./Carousel.css";
 import { MenuContext } from "../context/MenuContext";
 import styled from "@emotion/styled";
+import useMenu from "../hooks/useMenu";
 
 export const StyledHeading = styled.h1`
   font-size: 3rem;
@@ -9,7 +10,7 @@ export const StyledHeading = styled.h1`
   color: var(--md-sys-color-on-surface);
   padding: 2rem 7%;
   @media screen and (min-width: 600px) {
-    font-size:3.8rem;
+    font-size: 3.8rem;
   }
 `;
 const CarouselItem = ({ menuItem, handleClick }) => {
@@ -22,11 +23,8 @@ const CarouselItem = ({ menuItem, handleClick }) => {
       <p
         style={{
           width: "93%",
-          // height:"60px",
           overflow: "hidden",
           textOverflow: "ellipsis",
-          // whiteSpace:"nowrap",
-          // textAlign: "center",
         }}
       >
         {menuItem.description}
@@ -37,8 +35,38 @@ const CarouselItem = ({ menuItem, handleClick }) => {
 
 const Carousel = () => {
   const containerRef = useRef(null);
-  const menu = useContext(MenuContext);
-  const resizeItems = (e) => {
+
+  // function step(timeStamp) {
+  //   if (start === undefined) {
+  //     start = timeStamp;
+  //   }
+  //   const elapsed = timeStamp - start;
+
+  //   if (previousTimeStamp !== timeStamp) {
+  //     // Math.min() is used here to make sure the element stops at exactly 200px
+  //     const count = Math.min(0.1 * elapsed, 200);
+  //     element.style.transform = `translateX(${count}px)`;
+  //     if (count === 200) done = true;
+  //   }
+
+  //   if (elapsed < 2000) {
+  //     // Stop the animation after 2 seconds
+  //     previousTimeStamp = timeStamp;
+  //     if (!done) {
+  //       window.requestAnimationFrame(step);
+  //     }
+  //   }
+  // }
+
+  const menu = useMenu();
+
+  const handleClick = (e) => {
+    // done = false;
+    let start, previousTimeStamp;
+    let done = false;
+    const elementOffset = e.currentTarget.offsetLeft - 7;
+    const scrollStartPosition = containerRef.current.scrollLeft;
+    const distanceToCover = elementOffset - scrollStartPosition;
     const current = e.currentTarget;
     const ps1 = e.currentTarget.previousElementSibling
       ? e.currentTarget.previousElementSibling
@@ -56,79 +84,63 @@ const Carousel = () => {
         ? ns1.nextElementSibling
         : null
       : null;
-    if (ps2 && ns2) {
-      current.style.width = "50%";
-      current.style.filter = "brightness(1)";
-      // current.style.marginRight = "8px";
-      ns1.style.width = "30%";
-      ns1.style.filter = "brightness(0.8)";
-      // ns1.style.marginRight = "8px";
-      ns2.style.width = "20%";
-      ns2.style.filter = "brightness(0.6)";
-    } else if (ps1 && ns2) {
-      current.style.width = "50%";
-      // current.style.marginRight = "8px";
-      current.style.filter = "brightness(1)";
-      ns1.style.width = "30%";
-      ns1.style.filter = "brightness(0.8)";
-      // ns1.style.marginRight = "8px";
-      ns2.style.width = "20%";
-      ns2.style.filter = "brightness(0.6)";
-    } else if (ps2 && ns1) {
-      ps1.style.width = "20%";
-      ps1.style.filter = "brightness(0.6)";
-      // ps1.style.marginRight = "8px";
-      current.style.width = "50%";
-      current.style.filter = "brightness(1)";
-      // current.style.marginRight = "8px";
-      ns1.style.width = "30%";
-      ns1.style.filter = "brightness(0.8)";
-    } else if (ps2) {
-      ps2.style.width = "20%";
-      ps2.style.filter = "brightness(0.6)";
-      // ps2.style.marginRight = "8px";
-      ps1.style.width = "30%";
-      ps1.style.filter = "brightness(0.8)";
-      // ps1.style.marginRight = "8px";
-      current.style.width = "50%";
-      // current.style.marginRight = "8px";
-      current.style.filter = "brightness(1)";
-    } else {
-      current.style.width = "50%";
-      current.style.filter = "brightness(1)";
-      // current.style.marginRight = "8px";
-      ns1.style.width = "30%";
-      ns1.style.filter = "brightness(0.8)";
-      // ns1.style.marginRight = "8px";
-      ns2.style.width = "20%";
-      ns2.style.filter = "brightness(0.6)";
-    }
-  };
+    const resizeItems = (e) => {
+      if (ps2 && ns2) {
+        current.style.width = "50%";
+        ns1.style.width = "30%";
+        ns2.style.width = "20%";
+      } else if (ps1 && ns2) {
+        current.style.width = "50%";
+        ns1.style.width = "30%";
+        ns2.style.width = "20%";
+      } else if (ps2 && ns1) {
+        ps1.style.width = "20%";
+        current.style.width = "50%";
+        ns1.style.width = "30%";
+      } else if (ps2) {
+        ps2.style.width = "20%";
+        ps1.style.width = "30%";
+        current.style.width = "50%";
+      } else {
+        current.style.width = "50%";
+        ns1.style.width = "30%";
+        ns2.style.width = "20%";
+      }
+    };
 
-  const handleClick = (e) => {
-    containerRef.current.scrollTo({
-      behavior: "smooth",
-      left: e.currentTarget.offsetLeft - 7,
-    });
+    const scrollStep = (timeStamp) => {
+      if (start === undefined) {
+        start = timeStamp;
+      }
+      const elapsed = timeStamp - start;
+
+      if (previousTimeStamp !== timeStamp) {
+        // Math.min() is used here to make sure the element stops at exactly 200px
+        const count = Math.min(elapsed * 1.6, Math.abs(distanceToCover));
+        if (distanceToCover > 0) {
+          containerRef.current.scrollTo(scrollStartPosition + count, 0);
+        } else if (distanceToCover < 0) {
+          containerRef.current.scrollTo(scrollStartPosition - count, 0);
+        }
+
+        if (count === Math.abs(distanceToCover)) {
+          done = true;
+        }
+      }
+
+      if (elapsed < 10000) {
+        // Stop the animation after 2 seconds
+        previousTimeStamp = timeStamp;
+        if (!done) {
+          window.requestAnimationFrame(scrollStep);
+        }
+      }
+    };
     resizeItems(e);
+    window.requestAnimationFrame(scrollStep);
+
   };
 
-  // useEffect(() => {
-  //   const container = containerRef.current;
-  //   const handleScroll = (e) => {
-  //     console.log(e.target.scrollLeft);
-  //     containerRef.current.childNodes.forEach((node)=>{
-  //       if(node.offsetLeft-containerRef.current.scrollLeft<150){
-  //         handleClick({currentTarget:node})
-  //       }
-  //     })
-  //   };
-  //   container.addEventListener("scroll", handleScroll);
-
-  //   return () => {
-  //     container.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
   return (
     <>
       <StyledHeading>Our Specials</StyledHeading>
