@@ -193,10 +193,14 @@ const BookingForm = () => {
         type="textarea"
       ></MyTextInput>
       {/* <BookingSummary bookingData={formik.values}/> */}
-      <Button variant="contained" sx={{
-        width:"80%",
-        margin:"auto"
-      }} type="submit">
+      <Button
+        variant="contained"
+        sx={{
+          width: "80%",
+          margin: "auto",
+        }}
+        type="submit"
+      >
         Submit
       </Button>
     </MyForm>

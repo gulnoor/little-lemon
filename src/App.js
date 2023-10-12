@@ -14,6 +14,7 @@ import { ThemeContext } from "./context/ThemeContext";
 import CartProvider from "./context/CartContext";
 import Checkout from "./Components/Checkout";
 import { ThemeProvider, createTheme } from "@mui/material";
+import NavBarTop from "./Components/NavBarTop";
 
 export const themeContext = createContext();
 
@@ -39,7 +40,6 @@ function App() {
         },
         components: {
           MuiButton: {
-
             variants: [
               {
                 props: {
@@ -86,9 +86,10 @@ function App() {
                 style={{
                   width: "100%",
                   flex: "1",
-                  overflow:"clip"
+                  overflow: "clip",
                 }}
               >
+              <NavBarTop></NavBarTop>
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/sign-in" element={<SignIn />} />
