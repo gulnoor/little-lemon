@@ -37,7 +37,6 @@ const ReservationForm = ({ reservationData, dispatch }) => {
       })
       .catch((e) => alert(e));
   };
-  
 
   return (
     <form

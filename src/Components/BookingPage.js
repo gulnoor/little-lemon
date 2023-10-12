@@ -1,9 +1,10 @@
-import React, {  useEffect, useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import { fetchAPI } from "../availTimesAPI";
 import "./bookingPage.css";
 import Button from "./Button/Button";
 import heroImg from "../assets/images/corporate-memphis/Mesa de trabajo 1.png";
 import BookingForm from "./BookingForm";
+import styled from "@emotion/styled";
 
 export const BookingSummary = ({ bookingData }) => {
   const date = new Date(bookingData.date);
@@ -25,17 +26,13 @@ export const BookingSummary = ({ bookingData }) => {
           </span>
         </div>
         <div className="summary-details">
-          <h1>
-            {bookingData.firstName + " " + bookingData.lastName}
-          </h1>
+          <h1>{bookingData.firstName + " " + bookingData.lastName}</h1>
           <span>
             {date.getDate()
               ? `${date
                   .toLocaleDateString("en-us", { weekday: "long" })
                   .toUpperCase()} ${bookingData.time} ${
-                  bookingData.persons
-                    ? `for ${bookingData.persons} person`
-                    : ""
+                  bookingData.persons ? `for ${bookingData.persons} person` : ""
                 }`
               : ""}
           </span>
@@ -53,7 +50,37 @@ export const BookingSummary = ({ bookingData }) => {
     </section>
   );
 };
+const StyledHero = styled.div`
+  display: flex;
+  background: var(--md-sys-color-tertiary-container);
+  margin: 8px 8px 0 8px;
+  border-radius: 16px;
+  justify-content: center;
+  align-items: center;
+  ${'' /* width: 100%; */}
+  color: var(--md-sys-color-on-tertiary-container);
+  @media screen and (max-width: 601px) {
+    &>img{
+      display: none
+    }
 
+  }
+
+    
+    
+  }
+`;
+const Styledh1 = styled.h1`
+  font-size: 2.5rem;
+  font-weight: 600;
+  padding: 24px;
+  @media screen and (min-width: 601px) {
+    font-size: 4rem;
+  }
+  @media screen and (min-width: 841px) {
+    font-size: 7vw;
+  }
+`;
 const BookingPage = ({ children }) => {
   const updateReservationData = (prev, action) => {
     switch (action.actionType) {
@@ -78,9 +105,6 @@ const BookingPage = ({ children }) => {
         break;
     }
   };
-
-
-
   const [reservationData, dispatch] = useReducer(updateReservationData, {
     persons: { label: "Persons", state: "", error: "" },
     date: { label: "Date", state: "", error: "", htmlType: "date" },
@@ -133,19 +157,8 @@ const BookingPage = ({ children }) => {
 
   return (
     <>
-      <div className="reservation-hero">
-        <h1
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            fontSize: "8vw",
-            fontWeight: "700",
-            // margin:"0 auto"
-          }}
-        >
-          Reservation
-        </h1>
+      <StyledHero>
+        <Styledh1>Reservation</Styledh1>
         <img
           src={heroImg}
           alt=""
@@ -155,11 +168,10 @@ const BookingPage = ({ children }) => {
             margin: "8px",
           }}
         />
-      </div>
+      </StyledHero>
       {/* <ReservationForm reservationData={reservationData} dispatch={dispatch} /> */}
 
       <BookingForm />
-
     </>
   );
 };
