@@ -12,14 +12,14 @@ const StyledBar = styled.div`
   width: 100%;
   position: sticky;
   top: 0;
-  background: var(--md-sys-color-surface-container-high);
+  background: var(--md-sys-color-surface-container);
   z-index: 1200;
   & > .navbar-top-logo {
     height: 54px;
     margin: 12px;
   }
   & > .navbar-top-hamburger {
-    padding: 16px;
+    padding: 24px;
     color: var(--md-sys-color-on-surface);
     filter: ${(props) =>
       props.theme === "dark"
@@ -41,6 +41,11 @@ const NavBarTop = () => {
         src={hamburger}
       ></img>
       <img className="navbar-top-logo" alt="logo" src={logo}></img>
+      <span className="material-symbols-outlined" style={{
+        padding:"24px",
+        color:"var(--md-sys-color-on-surface)",
+        fontSize:"32px"
+      }}>person</span>
     </StyledBar>
   );
 };
