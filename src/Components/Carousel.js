@@ -67,46 +67,46 @@ const Carousel = () => {
     const elementOffset = e.currentTarget.offsetLeft - 7;
     const scrollStartPosition = containerRef.current.scrollLeft;
     const distanceToCover = elementOffset - scrollStartPosition;
-    const current = e.currentTarget;
-    const ps1 = e.currentTarget.previousElementSibling
-      ? e.currentTarget.previousElementSibling
-      : null;
-    const ps2 = ps1
-      ? ps1.previousElementSibling
-        ? ps1.previousElementSibling
-        : null
-      : null;
-    const ns1 = e.currentTarget.nextElementSibling
-      ? e.currentTarget.nextElementSibling
-      : null;
-    const ns2 = ns1
-      ? ns1.nextElementSibling
-        ? ns1.nextElementSibling
-        : null
-      : null;
-    const resizeItems = (e) => {
-      if (ps2 && ns2) {
-        current.style.width = "50%";
-        ns1.style.width = "30%";
-        ns2.style.width = "20%";
-      } else if (ps1 && ns2) {
-        current.style.width = "50%";
-        ns1.style.width = "30%";
-        ns2.style.width = "20%";
-      } else if (ps2 && ns1) {
-        ps1.style.width = "20%";
-        current.style.width = "50%";
-        ns1.style.width = "30%";
-      } else if (ps2) {
-        ps2.style.width = "20%";
-        ps1.style.width = "30%";
-        current.style.width = "50%";
-      } else {
-        current.style.width = "50%";
-        ns1.style.width = "30%";
-        ns2.style.width = "20%";
-      }
-    };
+    // const current = e.currentTarget;
+    // const ps1 = e.currentTarget.previousElementSibling
+    //   ? e.currentTarget.previousElementSibling
+    //   : null;
+    // const ps2 = ps1
+    //   ? ps1.previousElementSibling
+    //     ? ps1.previousElementSibling
+    //     : null
+    //   : null;
+    // const ns1 = e.currentTarget.nextElementSibling
+    //   ? e.currentTarget.nextElementSibling
+    //   : null;
+    // const ns2 = ns1
+    //   ? ns1.nextElementSibling
+    //     ? ns1.nextElementSibling
+    //     : null
+    //   : null;
+    // const resizeItems = (e) => {
+    //   if (ps2 && ns2) {
+    //     current.style.width = "50%";
+    //     ns1.style.width = "30%";
+    //     ns2.style.width = "20%";
+    //   } else if (ps1 && ns2) {
+    //     current.style.width = "50%";
+    //     ns1.style.width = "30%";
+    //     ns2.style.width = "20%";
+    //   } else if (ps2 && ns1) {
+    //     ps1.style.width = "20%";
+    //     current.style.width = "50%";
+    //     ns1.style.width = "30%";
+    //   } else if (ps2) {
+    //     ps2.style.width = "20%";
+    //     ps1.style.width = "30%";
+    //     current.style.width = "50%";
+    //   } else {
+    //     current.style.width = "50%";
+    //     ns1.style.width = "30%";
+    //     ns2.style.width = "20%";
+    //   }
+    // };
 
     const scrollStep = (timeStamp) => {
       if (start === undefined) {
@@ -116,7 +116,7 @@ const Carousel = () => {
 
       if (previousTimeStamp !== timeStamp) {
         // Math.min() is used here to make sure the element stops at exactly 200px
-        const count = Math.min(elapsed * 1.6, Math.abs(distanceToCover));
+        const count = Math.min(elapsed * 1.2, Math.abs(distanceToCover));
         if (distanceToCover > 0) {
           containerRef.current.scrollTo(scrollStartPosition + count, 0);
         } else if (distanceToCover < 0) {
@@ -136,7 +136,7 @@ const Carousel = () => {
         }
       }
     };
-    resizeItems(e);
+    // resizeItems(e);
     window.requestAnimationFrame(scrollStep);
 
   };
