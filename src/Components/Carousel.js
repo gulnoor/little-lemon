@@ -19,15 +19,15 @@ const CarouselItem = ({ menuItem, handleClick }) => {
   return (
     <div onClick={handleClick} ref={ref} className="carousel-item">
       <img src={menuItem.image} alt={menuItem.name} />
-      <h1>{menuItem.name}</h1>
+      <h1 className="title-large" style={{
+        whiteSpace:"nowrap",
+        textOverflow:"ellipsis"
+      }}>{menuItem.name}</h1>
       <p
         style={{
           width: "93%",
-          // height:"60px",
           overflow: "hidden",
           textOverflow: "ellipsis",
-          // whiteSpace:"nowrap",
-          // textAlign: "center",
         }}
       >
         {menuItem.description}
@@ -38,7 +38,53 @@ const CarouselItem = ({ menuItem, handleClick }) => {
 
 const Carousel = () => {
   const containerRef = useRef(null);
-  const menu = useMenu();
+  const menu = [
+   
+
+    {
+      name: "Baklava",
+      description:
+        "Traditional Greek dessert with flaky phyllo dough filled with nuts and honey.",
+      price: 12,
+      category: "Dessert",
+      image: require("../assets/images/menu/105a4e88dca44f4a81dbaf6ccb7b83bc.jpg"),
+    },
+
+   
+
+
+
+
+
+    {
+      name: "Lamb Chops",
+      description:
+        "Grilled lamb chops served with a mint yogurt sauce and roasted potatoes.",
+      price: 24,
+      category: "Entree",
+      image: require("../assets/images/menu/Lamb-Chops-ONE-1.jpg"),
+    },
+    {
+      name: "Brushetta",
+      description:
+        "Our Bruschetta is made from grilled bread that has been smeared with garlic and seasoned with salt and olive oil. Toppings of tomato, veggies, beans, cured pork, or cheese are examples of variations.",
+      image: require("../assets/images/menu/54165-balsamic-bruschetta-DDMFS-4x3-e2b55b5ca39b4c1783e524a2461634ea.webp"),
+      price: "$7.99",
+      category: "Appetizer",
+    },
+    {
+      name: "Pasta Primavera",
+      description:
+        "Fresh pasta with seasonal vegetables and a creamy tomato sauce.",
+      price: 26,
+      category: "Entree",
+      image: require("../assets/images/menu/pasta-primavera-1-768x1152.jpg"),
+    },
+
+
+
+
+  ]
   const resizeItems = (e) => {
     const current = e.currentTarget;
     const ps1 = e.currentTarget.previousElementSibling
@@ -59,50 +105,25 @@ const Carousel = () => {
       : null;
     if (ps2 && ns2) {
       current.style.width = "50%";
-      current.style.filter = "brightness(1)";
-      // current.style.marginRight = "8px";
       ns1.style.width = "30%";
-      ns1.style.filter = "brightness(0.8)";
-      // ns1.style.marginRight = "8px";
+      
       ns2.style.width = "20%";
-      ns2.style.filter = "brightness(0.6)";
     } else if (ps1 && ns2) {
       current.style.width = "50%";
-      // current.style.marginRight = "8px";
-      current.style.filter = "brightness(1)";
       ns1.style.width = "30%";
-      ns1.style.filter = "brightness(0.8)";
-      // ns1.style.marginRight = "8px";
       ns2.style.width = "20%";
-      ns2.style.filter = "brightness(0.6)";
     } else if (ps2 && ns1) {
       ps1.style.width = "20%";
-      ps1.style.filter = "brightness(0.6)";
-      // ps1.style.marginRight = "8px";
       current.style.width = "50%";
-      current.style.filter = "brightness(1)";
-      // current.style.marginRight = "8px";
       ns1.style.width = "30%";
-      ns1.style.filter = "brightness(0.8)";
     } else if (ps2) {
       ps2.style.width = "20%";
-      ps2.style.filter = "brightness(0.6)";
-      // ps2.style.marginRight = "8px";
       ps1.style.width = "30%";
-      ps1.style.filter = "brightness(0.8)";
-      // ps1.style.marginRight = "8px";
       current.style.width = "50%";
-      // current.style.marginRight = "8px";
-      current.style.filter = "brightness(1)";
     } else {
       current.style.width = "50%";
-      current.style.filter = "brightness(1)";
-      // current.style.marginRight = "8px";
       ns1.style.width = "30%";
-      ns1.style.filter = "brightness(0.8)";
-      // ns1.style.marginRight = "8px";
       ns2.style.width = "20%";
-      ns2.style.filter = "brightness(0.6)";
     }
   };
 
@@ -114,22 +135,7 @@ const Carousel = () => {
     resizeItems(e);
   };
 
-  // useEffect(() => {
-  //   const container = containerRef.current;
-  //   const handleScroll = (e) => {
-  //     console.log(e.target.scrollLeft);
-  //     containerRef.current.childNodes.forEach((node)=>{
-  //       if(node.offsetLeft-containerRef.current.scrollLeft<150){
-  //         handleClick({currentTarget:node})
-  //       }
-  //     })
-  //   };
-  //   container.addEventListener("scroll", handleScroll);
 
-  //   return () => {
-  //     container.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
   return (
     <>
       <StyledHeading>Our Specials</StyledHeading>
