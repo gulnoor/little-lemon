@@ -9,9 +9,9 @@ import { Box, Button, Card, Rating, Typography, styled } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLemon } from "@fortawesome/free-regular-svg-icons";
 import { faLemon as faLemonSolid } from "@fortawesome/free-solid-svg-icons";
-import bgimg2 from "../assets/images/bing image creator/_2df1a955-eecb-400d-bae8-38d4dfd2ffaa.jpeg";
+import bgimg2 from "../assets/images/restauranfood.jpg";
 const Menu = () => {
-  const menu = useContext(MenuContext);
+  // const menu = useContext(MenuContext);
   const [rating, setRating] = useState(4.5);
   const LemonRating = styled(Rating)({
     display: "inline-flex",
@@ -31,12 +31,12 @@ const Menu = () => {
 
   const { theme } = useContext(ThemeContext);
 
-  const menuu = [
+  const menu = [
     {
       name: "Greek Salad",
       description:
         "The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons. ",
-      image: require("../assets/images/greek salad.jpg"),
+      image: require("../assets/images/menu/greek salad.jpg"),
       category: "Salad",
       price: "$12.99",
     },
@@ -143,7 +143,7 @@ const Menu = () => {
   object-fit: cover;
   border-radius: 16px;
   ${'' /* flex: 0 1 auto; */}
-  filter: ${theme === "dark" ? "brightness(0.75)" : "none"};
+  filter: ${theme === "dark" ? "brightness(0.9)" : "none"};
   @media screen and (max-width: 839px) {
         width: 100%;
         height: 400px;
@@ -229,9 +229,9 @@ const Menu = () => {
             }}
           >
             <Typography variant="h3" sx={{ fontWeight: "500" }}>
-              {menuu[7].name}
+              {menu[7].name}
             </Typography>
-            <img className="menu-card-img" alt="" src={menuu[7].image}></img>
+            <img className="menu-card-img" alt="" src={menu[7].image}></img>
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
               <LemonRating
                 icon={
@@ -266,7 +266,7 @@ const Menu = () => {
             </Box>
 
             <Typography variant="body1" component={"p"}>
-              {menuu[7].description}
+              {menu[7].description}
             </Typography>
 
             <Button variant="contained">add to cart</Button>
