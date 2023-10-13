@@ -10,7 +10,7 @@ import {
 import { useFormik } from "formik";
 import { useContext, useEffect, useRef, useState } from "react";
 import * as yup from "yup";
-import { MyForm, StyledSelect, StyledTextField } from "./BookingForm.styles";
+import { MyForm,  StyledTextField } from "./BookingForm.styles";
 import { fetchAPI } from "../availTimesAPI";
 
 function camelCase(str) {
