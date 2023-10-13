@@ -1,16 +1,11 @@
 import styled from "@emotion/styled";
 import { ThemeContext } from "../context/ThemeContext";
 
-import {
-  Button,
-
-  MenuItem,
-
-} from "@mui/material";
+import { Button, MenuItem } from "@mui/material";
 import { useFormik } from "formik";
 import { useContext, useEffect, useRef, useState } from "react";
 import * as yup from "yup";
-import { MyForm,  StyledTextField } from "./BookingForm.styles";
+import { MyForm, StyledTextField } from "./BookingForm.styles";
 import { fetchAPI } from "../availTimesAPI";
 
 function camelCase(str) {
@@ -43,7 +38,6 @@ const StyledChip = styled.div`
   border-radius: 12px;
   background-color: var(--md-sys-color-surface-container-highest);
   color: var(--md-sys-color-on-surface);
-
   &:hover {
     background-color: var(--md-sys-color-secondary-container);
     color: var(--md-sys-color-on-secondary-container);
@@ -115,7 +109,7 @@ const BookingForm = () => {
       .catch(function (rejectValue) {
         setAvailTimes(rejectValue);
       });
-  }, [formik.values.date,formik]);
+  }, [formik.values.date]);
 
   const handleChipClick = (time, i) => {
     return () => {

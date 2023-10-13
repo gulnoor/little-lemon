@@ -57,17 +57,11 @@ const StyledHero = styled.div`
   border-radius: 16px;
   justify-content: center;
   align-items: center;
-  ${'' /* width: 100%; */}
   color: var(--md-sys-color-on-tertiary-container);
   @media screen and (max-width: 601px) {
     &>img{
-      display: none
+      display: none;
     }
-
-  }
-
-    
-    
   }
 `;
 const Styledh1 = styled.h1`
@@ -82,78 +76,78 @@ const Styledh1 = styled.h1`
   }
 `;
 const BookingPage = ({ children }) => {
-  const updateReservationData = (prev, action) => {
-    switch (action.actionType) {
-      case "updateInput":
-        return {
-          ...prev,
-          [action.field]: { ...prev[action.field], state: action.value },
-        };
-      case "updateError":
-        return {
-          ...prev,
-          [action.field]: { ...prev[action.field], error: action.value },
-        };
-      case "resetTime":
-        return { ...prev, time: { ...prev["time"], state: "", options: [""] } };
-      case "updateAvailTimes":
-        return {
-          ...prev,
-          time: { ...prev.time, options: action.value },
-        };
-      default:
-        break;
-    }
-  };
-  const [reservationData, dispatch] = useReducer(updateReservationData, {
-    persons: { label: "Persons", state: "", error: "" },
-    date: { label: "Date", state: "", error: "", htmlType: "date" },
-    time: {
-      label: "Time",
-      state: "",
-      error: "",
-      options: [""],
-      htmlType: "select",
-    },
-    occasion: {
-      label: "Occasion",
-      state: "",
-      error: "",
-      options: ["Birthday", "Aniversary"],
-      htmlType: "select",
-    },
-    firstName: { label: "First Name", state: "", error: "", htmlType: "text" },
-    lastName: { label: "Last Name", state: "", error: "", htmlType: "text" },
-    email: { label: "Email", state: "", error: "", htmlType: "email" },
-    specialRequest: {
-      label: "Special Request",
-      state: "",
-      error: "",
-      htmlType: "textarea",
-    },
-  });
+  // const updateReservationData = (prev, action) => {
+  //   switch (action.actionType) {
+  //     case "updateInput":
+  //       return {
+  //         ...prev,
+  //         [action.field]: { ...prev[action.field], state: action.value },
+  //       };
+  //     case "updateError":
+  //       return {
+  //         ...prev,
+  //         [action.field]: { ...prev[action.field], error: action.value },
+  //       };
+  //     case "resetTime":
+  //       return { ...prev, time: { ...prev["time"], state: "", options: [""] } };
+  //     case "updateAvailTimes":
+  //       return {
+  //         ...prev,
+  //         time: { ...prev.time, options: action.value },
+  //       };
+  //     default:
+  //       break;
+  //   }
+  // };
+  // const [reservationData, dispatch] = useReducer(updateReservationData, {
+  //   persons: { label: "Persons", state: "", error: "" },
+  //   date: { label: "Date", state: "", error: "", htmlType: "date" },
+  //   time: {
+  //     label: "Time",
+  //     state: "",
+  //     error: "",
+  //     options: [""],
+  //     htmlType: "select",
+  //   },
+  //   occasion: {
+  //     label: "Occasion",
+  //     state: "",
+  //     error: "",
+  //     options: ["Birthday", "Aniversary"],
+  //     htmlType: "select",
+  //   },
+  //   firstName: { label: "First Name", state: "", error: "", htmlType: "text" },
+  //   lastName: { label: "Last Name", state: "", error: "", htmlType: "text" },
+  //   email: { label: "Email", state: "", error: "", htmlType: "email" },
+  //   specialRequest: {
+  //     label: "Special Request",
+  //     state: "",
+  //     error: "",
+  //     htmlType: "textarea",
+  //   },
+  // });
 
-  useEffect(() => {
-    dispatch({
-      actionType: "resetTime",
-    });
+  // useEffect(() => {
+  //   dispatch({
+  //     actionType: "resetTime",
+  //   });
 
-    fetchAPI(reservationData.date.state)
-      .then(function (resolvedValue) {
-        dispatch({
-          actionType: "updateAvailTimes",
+  //   fetchAPI(reservationData.date.state)
+  //     .then(function (resolvedValue) {
+  //       dispatch({
+  //         actionType: "updateAvailTimes",
 
-          value: resolvedValue,
-        });
-      })
-      .catch(function (rejectValue) {
-        dispatch({
-          actionType: "updateAvailTimes",
+  //         value: resolvedValue,
+  //       });
+  //     })
+  //     .catch(function (rejectValue) {
+  //       dispatch({
+  //         actionType: "updateAvailTimes",
 
-          value: rejectValue,
-        });
-      });
-  }, [reservationData.date.state]);
+  //         value: rejectValue,
+  //       });
+  //     });
+  // }, [reservationData.date.state]);
 
   return (
     <>
