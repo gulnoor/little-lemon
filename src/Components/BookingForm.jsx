@@ -3,11 +3,9 @@ import { ThemeContext } from "../context/ThemeContext";
 
 import {
   Button,
-  Chip,
+
   MenuItem,
-  Select,
-  TextField,
-  dividerClasses,
+
 } from "@mui/material";
 import { useFormik } from "formik";
 import { useContext, useEffect, useRef, useState } from "react";
@@ -117,7 +115,7 @@ const BookingForm = () => {
       .catch(function (rejectValue) {
         setAvailTimes(rejectValue);
       });
-  }, [formik.values.date]);
+  }, [formik.values.date,formik]);
 
   const handleChipClick = (time, i) => {
     return () => {

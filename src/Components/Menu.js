@@ -3,7 +3,6 @@ import { useContext, useState } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import { Route, Routes } from "react-router-dom";
 import TopNav from "./TopNav";
-import { MenuContext } from "../context/MenuContext";
 import MenuList from "./MenuList";
 import { Box, Button, Card, Rating, Typography, styled } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

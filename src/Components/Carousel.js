@@ -1,8 +1,6 @@
-import { useContext, useRef } from "react";
+import {  useRef } from "react";
 import "./Carousel.css";
-import { MenuContext } from "../context/MenuContext";
 import styled from "@emotion/styled";
-import useMenu from "../hooks/useMenu";
 
 export const StyledHeading = styled.h1`
   font-size: 3rem;
