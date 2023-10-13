@@ -1,5 +1,3 @@
-import React, { useEffect, useReducer } from "react";
-import { fetchAPI } from "../availTimesAPI";
 import "./bookingPage.css";
 import Button from "./Button/Button";
 import heroImg from "../assets/images/corporate-memphis/Mesa de trabajo 1.png";

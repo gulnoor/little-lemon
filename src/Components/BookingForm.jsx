@@ -100,6 +100,7 @@ const BookingForm = () => {
     // dispatch({
     //   actionType: "resetTime",
     // });
+
     formik.setFieldValue("time", "");
 
     fetchAPI(formik.values.date)
@@ -109,6 +110,7 @@ const BookingForm = () => {
       .catch(function (rejectValue) {
         setAvailTimes(rejectValue);
       });
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formik.values.date]);
 
   const handleChipClick = (time, i) => {
