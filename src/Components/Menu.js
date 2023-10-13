@@ -8,7 +8,7 @@ import { Box, Button, Card, Rating, Typography, styled } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLemon } from "@fortawesome/free-regular-svg-icons";
 import { faLemon as faLemonSolid } from "@fortawesome/free-solid-svg-icons";
-import bgimg2 from "../assets/images/restauranfood.jpg";
+import bgimg2 from "../assets/images/restauranfood.webp";
 const Menu = () => {
   // const menu = useContext(MenuContext);
   const [rating, setRating] = useState(4.5);

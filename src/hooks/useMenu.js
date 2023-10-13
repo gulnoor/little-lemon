@@ -4,7 +4,7 @@ const useMenu = () => {
       name: "Greek Salad",
       description:
         "The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons. ",
-      image: require("../assets/images/menu/greek salad.jpg"),
+      image: require("../assets/images/menu/greek salad.webp"),
       price: "$12.99",
     },
     {
@@ -38,7 +38,7 @@ const useMenu = () => {
         "Fresh arugula salad with shaved Parmesan cheese, pine nuts, and a balsamic vinaigrette dressing.",
       price: 18,
       category: "Salad",
-      image: require("../assets/images/menu/Best-Arugula-Salad.jpg"),
+      image: require("../assets/images/menu/Best-Arugula-Salad.webp"),
     },
     {
       name: "Caesar Salad",
@@ -46,14 +46,14 @@ const useMenu = () => {
         "Classic Caesar salad with romaine lettuce, Parmesan cheese, croutons, and a creamy Caesar dressing.",
       price: 20,
       category: "Salad",
-      image: require("../assets/images/menu/Caesar-Salad-Recipe-3.jpg"),
+      image: require("../assets/images/menu/Caesar-Salad-Recipe-3.webp"),
     },
     {
       name: "Chicken Souvlaki",
       description: "Grilled chicken skewers served with rice and vegetables.",
       price: 22,
       category: "Entree",
-      image: require("../assets/images/menu/greek-chicken-souvlaki-recipe-photo-tablefortwoblog-7-936x1200.jpg.webp"),
+      image: require("../assets/images/menu/greek-chicken-souvlaki-recipe-photo-tablefortwoblog-7-936x1200.webp.webp"),
     },
     {
       name: "Lamb Chops",
@@ -61,7 +61,7 @@ const useMenu = () => {
         "Grilled lamb chops served with a mint yogurt sauce and roasted potatoes.",
       price: 24,
       category: "Entree",
-      image: require("../assets/images/menu/Lamb-Chops-ONE-1.jpg"),
+      image: require("../assets/images/menu/Lamb-Chops-ONE-1.webp"),
     },
     {
       name: "Pasta Primavera",
@@ -69,14 +69,14 @@ const useMenu = () => {
         "Fresh pasta with seasonal vegetables and a creamy tomato sauce.",
       price: 26,
       category: "Entree",
-      image: require("../assets/images/menu/pasta-primavera-1-768x1152.jpg"),
+      image: require("../assets/images/menu/pasta-primavera-1-768x1152.webp"),
     },
     {
       name: "Rigatoni Bolognese",
       description: "Rigatoni pasta with a classic Bolognese sauce.",
       price: 28,
       category: "Entree",
-      image: require("../assets/images/menu/rigatoni-bolognese-4.jpg.webp"),
+      image: require("../assets/images/menu/rigatoni-bolognese-4.webp.webp"),
     },
     {
       name: "Tiramisu",
@@ -84,7 +84,7 @@ const useMenu = () => {
         "Classic Italian dessert with ladyfingers dipped in espresso and layered with a creamy mascarpone filling.",
       price: 10,
       category: "Dessert",
-      image: require("../assets/images/menu/Tiramisu-6.jpg"),
+      image: require("../assets/images/menu/Tiramisu-6.webp"),
     },
     {
       name: "Baklava",
@@ -92,14 +92,14 @@ const useMenu = () => {
         "Traditional Greek dessert with flaky phyllo dough filled with nuts and honey.",
       price: 12,
       category: "Dessert",
-      image: require("../assets/images/menu/105a4e88dca44f4a81dbaf6ccb7b83bc.jpg"),
+      image: require("../assets/images/menu/105a4e88dca44f4a81dbaf6ccb7b83bc.webp"),
     },
     {
       name: "Lemon Cake",
       description: "Homemade lemon cake with a lemon glaze.",
       price: 14,
       category: "Dessert",
-      image: require("../assets/images/menu/lemon dessert.jpg"),
+      image: require("../assets/images/menu/lemon dessert.webp"),
     },
   ];
 };
