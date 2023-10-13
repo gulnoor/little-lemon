@@ -15,8 +15,8 @@ const StyledBar = styled.div`
   background: var(--md-sys-color-surface-container);
   z-index: 1200;
   & > .navbar-top-logo {
-    height: 54px;
-    margin: 12px;
+    height: 48px;
+    margin: 12 0px;
   }
   & > .navbar-top-hamburger {
     padding: 24px;
