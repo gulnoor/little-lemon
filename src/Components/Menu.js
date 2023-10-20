@@ -35,7 +35,7 @@ const Menu = () => {
       name: "Greek Salad",
       description:
         "The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons. ",
-      image: require("../assets/images/menu/greek salad.jpg"),
+      image: require("../assets/images/menu/greek salad.webp"),
       category: "Salad",
       price: "$12.99",
     },
