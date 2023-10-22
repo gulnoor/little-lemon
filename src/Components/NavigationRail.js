@@ -13,7 +13,7 @@ import styled from "@emotion/styled";
 import darkmode from "../assets/dark_mode_FILL0_wght400_GRAD0_opsz24.svg"
 import lightmode from "../assets/light_mode_FILL0_wght400_GRAD0_opsz24.svg"
 
-const StyledIcon = styled.img`
+export const StyledIcon = styled.img`
   filter: ${(props) =>
     props.theme === "dark"
       ? "invert(80%) sepia(9%) saturate(214%) hue-rotate(0deg) brightness(103%) contrast(81%)"
