@@ -4,11 +4,27 @@ import { useContext, useState } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import { UserContext } from "../context/UserContext";
 import Cart from "./Cart";
+import home from "../assets/home_FILL0_wght400_GRAD0_opsz24 (1).svg";
+import menu from "../assets/restaurant_menu_FILL0_wght400_GRAD0_opsz24.svg";
+import table from "../assets/table_restaurant_FILL0_wght400_GRAD0_opsz24.svg";
+import accounticon from "../assets/account_circle_FILL0_wght400_GRAD0_opsz24.svg";
+import cart from "../assets/shopping_cart_FILL0_wght400_GRAD0_opsz24.svg";
+import styled from "@emotion/styled";
+import darkmode from "../assets/dark_mode_FILL0_wght400_GRAD0_opsz24.svg"
+import lightmode from "../assets/light_mode_FILL0_wght400_GRAD0_opsz24.svg"
+
+const StyledIcon = styled.img`
+  filter: ${(props) =>
+    props.theme === "dark"
+      ? "invert(80%) sepia(9%) saturate(214%) hue-rotate(0deg) brightness(103%) contrast(81%)"
+      : "invert(9%) sepia(19%) saturate(404%) hue-rotate(5deg) brightness(97%) contrast(97%)"};
+`;
+
 const NavigationRail = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { user } = useContext(UserContext);
 
-  const [cartStyle, setCartStyle] = useState({marginLeft:"-250px"});
+  const [cartStyle, setCartStyle] = useState({ marginLeft: "-250px" });
 
   const handleCartClick = () => {
     setCartStyle((prev) => {
@@ -44,27 +60,25 @@ const NavigationRail = () => {
         <ul>
           <li>
             <Link style={linkStyle} to="/">
-              <span className="material-symbols-outlined">home</span>
+              <StyledIcon theme={theme} src={home}></StyledIcon>
               Home
             </Link>
           </li>
           <li>
             <Link to="/menu" style={linkStyle}>
-              <span className="material-symbols-outlined">restaurant_menu</span>
+              <StyledIcon theme={theme} src={menu}></StyledIcon>
               Menu
             </Link>
           </li>
           <li>
             <Link style={linkStyle} to="/reservation">
-              <span className="material-symbols-outlined">
-                table_restaurant
-              </span>
+              <StyledIcon theme={theme} src={table}></StyledIcon>
               Reservation
             </Link>
           </li>
           <li>
             <div onClick={handleCartClick} style={linkStyle} to="cart">
-              <span className="material-symbols-outlined">shopping_cart</span>
+              <StyledIcon theme={theme} src={cart}></StyledIcon>
               Cart
             </div>
           </li>
@@ -75,7 +89,8 @@ const NavigationRail = () => {
                 style={linkStyle}
                 to="/userprofile"
               >
-                <img
+                <StyledIcon
+                  theme={theme}
                   style={{
                     borderRadius: "100vh",
                     width: "90%",
@@ -83,14 +98,14 @@ const NavigationRail = () => {
                   }}
                   alt="user profile"
                   src={user.photoURL}
-                ></img>
+                ></StyledIcon>
                 {user.displayName}
               </Link>
             </li>
           ) : (
             <li className="user-navrail">
               <Link style={linkStyle} to="/sign-in">
-                <span className="material-symbols-outlined">person</span>
+                <StyledIcon theme={theme} src={accounticon}></StyledIcon>
                 Sign In
               </Link>
             </li>
@@ -99,9 +114,9 @@ const NavigationRail = () => {
           <li className="theme-navrail">
             <Link style={linkStyle} onClick={toggleTheme}>
               {theme === "light" ? (
-                <span className="material-symbols-outlined">dark_mode</span>
+                <StyledIcon theme={theme} src={darkmode}></StyledIcon>
               ) : (
-                <span className="material-symbols-outlined">light_mode</span>
+                <StyledIcon theme={theme} src={lightmode}></StyledIcon>
               )}
               {theme === "light" ? "Night Mode" : "Light Mode"}
             </Link>

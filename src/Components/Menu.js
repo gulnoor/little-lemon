@@ -1,5 +1,5 @@
 import "./menu.css";
-import { useContext, useState } from "react";
+import { useContext, useLayoutEffect, useRef, useState } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import { Route, Routes } from "react-router-dom";
 import TopNav from "./TopNav";
@@ -9,26 +9,49 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLemon } from "@fortawesome/free-regular-svg-icons";
 import { faLemon as faLemonSolid } from "@fortawesome/free-solid-svg-icons";
 import bgimg2 from "../assets/images/restauranfood.webp";
+
+const LemonRating = styled(Rating)({
+  display: "inline-flex",
+  "& .MuiRating-iconFilled": {
+    color: "var(--md-sys-color-primary)",
+    // paddingRight:"12px"
+  },
+  "& .MuiRating-iconHover": {
+    color: "var(--md-sys-color-primary)",
+    // paddingRight:"12px"
+  },
+  "& .MuiRating-iconEmpty": {
+    color: "var(--md-sys-color-primary)",
+    // paddingRight:"12px"
+  },
+});
+const MenuHeroImg = styled("img")`
+  display: flex;
+  ${"" /* margin-left: auto; */}
+  height: 550px;
+  width: 50%;
+  object-fit: cover;
+  border-radius: 16px;
+  ${"" /* flex: 0 1 auto; */}
+  filter: ${(props) => (props.theme === "dark" ? "brightness(0.9)" : "none")};
+  @media screen and (max-width: 839px) {
+    width: 100%;
+    height: 400px;
+  }
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    height: 250px;
+  }
+`;
+
 const Menu = () => {
   // const menu = useContext(MenuContext);
+  const titleRef = useRef();
   const [rating, setRating] = useState(4.5);
-  const LemonRating = styled(Rating)({
-    display: "inline-flex",
-    "& .MuiRating-iconFilled": {
-      color: "var(--md-sys-color-primary)",
-      // paddingRight:"12px"
-    },
-    "& .MuiRating-iconHover": {
-      color: "var(--md-sys-color-primary)",
-      // paddingRight:"12px"
-    },
-    "& .MuiRating-iconEmpty": {
-      color: "var(--md-sys-color-primary)",
-      // paddingRight:"12px"
-    },
-  });
-
   const { theme } = useContext(ThemeContext);
+useLayoutEffect(()=>{
+  titleRef.current.style.opacity=1
+},[])
 
   const menu = [
     {
@@ -134,33 +157,21 @@ const Menu = () => {
       image: require("../assets/images/menu/lemon dessert.jpg"),
     },
   ];
-  const MenuHeroImg = styled("img")`
-  display: flex;
-  ${"" /* margin-left: auto; */}
-  height: 550px;
-  width: 50%;
-  object-fit: cover;
-  border-radius: 16px;
-  ${'' /* flex: 0 1 auto; */}
-  filter: ${theme === "dark" ? "brightness(0.9)" : "none"};
-  @media screen and (max-width: 839px) {
-        width: 100%;
-        height: 400px;
-      }
-      @media screen and (max-width: 600px) {
-        width: 100%;
-        height: 250px;
-      }
-  
-
-  `;
 
   return (
     <>
       <div className=" menu-hero">
         <div className="menu-title">
-          <h1 className="display-large">Menu</h1>
-          <p className="display-small">traditional recipes served with a modern twist</p>
+          <h1
+            ref={titleRef}
+            className="display-large"
+            style={{ opacity: "0",transition:"all 4s" }}
+          >
+            Menu
+          </h1>
+          <p className="display-small">
+            traditional recipes served with a modern twist
+          </p>
         </div>
         {/* <div className="menu-categories">
           <Link to={"/menu/appetizers"} className="category-btn">
@@ -180,7 +191,7 @@ const Menu = () => {
             <p>Sweeten your meal with a traditional Mediterranean dessert</p>
           </div>
         </div> */}
-        <MenuHeroImg src={bgimg2} />
+        <MenuHeroImg theme={theme} src={bgimg2} />
       </div>
       <TopNav names={["Appetizer", "Salad", "Entree", "Dessert"]} />
       <div className="menu-container">
@@ -208,13 +219,6 @@ const Menu = () => {
         </Routes>
 
         <div className="menu-card-container">
-          {/* <div className="menu-card p-4">
-            <img alt="" src={menu[7] ? menu[7].image : null}></img>
-            <h2 className="text-4xl">{menu[7] ? menu[7].name : null}</h2>
-            <span>{menu[7] ? menu[7].description : null}</span>
-            <Button>Add to cart</Button>
-          </div> */}
-
           <Card
             sx={{
               padding: "32px",

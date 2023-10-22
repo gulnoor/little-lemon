@@ -1,3 +1,8 @@
+material-symbol-outlined{
+color: var(--md-sys-color-on-surface);
+filter: invert(9%) sepia(17%) saturate(505%) hue-rotate(5deg) brightness(92%) contrast(95%);
+
+}
 .Nav ul {
   display: flex;
   font-size: 1rem;
