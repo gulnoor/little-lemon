@@ -1,4 +1,12 @@
+.container::-webkit-scrollbar, .itemcontainer::-webkit-scrollbar {
+  display: none;
+}
 .container {
+  /* Hide scrollbar for IE, Edge and Firefox */
+
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
   height: 100%;
   background-color: var(--md-sys-color-surface-container-low);
   color: var(--md-sys-color-on-surface);

@@ -1,7 +1,7 @@
 import "./Hero.css";
 import logo from "../assets/images/bing image creator/_6f3b3a12-fb05-405b-b999-0bf287ef5c12.jpeg";
-import Button from "./Button/Button";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 
 const Hero = () => {
   const navigate = useNavigate();
@@ -28,14 +28,11 @@ const Hero = () => {
           We are a family owned Mediterranean restaurant, focused on traditional
           recipes served with a modern twist
         </span>
-        <Button className={"w-fit"} variant="outlined" style={buttonStyle}>
+        <Button variant="outlined" onClick={()=>navigate("/menu")}>
           Order Online
         </Button>
         <Button
-          className={"w-fit h-2"}
-          id="res"
-          variant="filled"
-          style={buttonStyle}
+          variant="contained"
           onClick={() => {
             navigate("/reservation");
           }}

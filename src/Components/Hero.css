@@ -1,7 +1,6 @@
 .Hero {
   display: flex;
   flex-direction: column;
-
   align-items: center;
   color: var(--md-sys-color-on-surface);
   margin: 0.5rem;
@@ -16,8 +15,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* color: var(--md-sys-color-on-primary-container); */
-  /* width: 50%; */
+
 }
 .hero-img {
   border-radius: 32px;
@@ -33,7 +31,9 @@
 
 .Hero h2 {
   font-size: 32px;
+  margin-bottom: 20px;
 }
+
 .Hero span {
   font-size: 20px;
 }
