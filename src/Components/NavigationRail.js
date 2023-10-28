@@ -10,8 +10,8 @@ import table from "../assets/table_restaurant_FILL0_wght400_GRAD0_opsz24.svg";
 import accounticon from "../assets/account_circle_FILL0_wght400_GRAD0_opsz24.svg";
 import cart from "../assets/shopping_cart_FILL0_wght400_GRAD0_opsz24.svg";
 import styled from "@emotion/styled";
-import darkmode from "../assets/dark_mode_FILL0_wght400_GRAD0_opsz24.svg"
-import lightmode from "../assets/light_mode_FILL0_wght400_GRAD0_opsz24.svg"
+import darkmode from "../assets/dark_mode_FILL0_wght400_GRAD0_opsz24.svg";
+import lightmode from "../assets/light_mode_FILL0_wght400_GRAD0_opsz24.svg";
 
 export const StyledIcon = styled.img`
   filter: ${(props) =>
