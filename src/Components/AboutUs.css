@@ -38,15 +38,13 @@
     margin-bottom: 32px;
   }
 }
-@media screen and (min-width:600px) {
-    .AboutUs>article{
-        font-size: 1.2rem;
-    }
-
+@media screen and (min-width: 600px) {
+  .AboutUs > article {
+    font-size: 1.2rem;
+  }
 }
-@media screen and (min-width:840px) {
-    .AboutUs>article{
-        font-size: 1.4rem;
-    }
-
+@media screen and (min-width: 840px) {
+  .AboutUs > article {
+    font-size: 1.4rem;
+  }
 }

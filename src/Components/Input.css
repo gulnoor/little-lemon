@@ -1,40 +1,39 @@
-
-input:focus{
-    /* outline: none;
+input:focus {
+  /* outline: none;
     border: 3px solid var(--md-sys-color-primary); */
 }
 
 input[type="date"] {
-    color: trasparent;
+  color: trasparent;
+}
+.input-container {
+  width: 100%;
+}
+.big-container {
+  width: 100%;
+}
+.summary-box,
+.inputs-div {
+  width: 100%;
+}
+@media screen and (min-width: 600px) {
+  .big-container.Date,
+  .big-container.Time,
+  .big-container.Name {
+    width: 49%;
   }
-.input-container{
-    width: 100%;
-}
-.big-container{
-    width: 100%;
-}
-.summary-box, .inputs-div{
-    width: 100%;
-}
-@media screen  and (min-width: 600px){
-.big-container.Date, .big-container.Time, .big-container.Name {
-        width: 49%;
-    }
-.summary-box, .inputs-div{
+  .summary-box,
+  .inputs-div {
     width: 50%;
+  }
 }
-
+.form-error {
+  color: var(--md-sys-color-error);
+  font-size: 0.8rem;
+  margin-bottom: 16px;
+  font-weight: 600;
 }
-.form-error{
-    color: var(--md-sys-color-error);
-    font-size: 0.8rem;
-    margin-bottom: 16px;
-    font-weight: 600;
-
+option {
+  background-color: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
 }
-option{
-    background-color: var(--md-sys-color-secondary-container);
-    color: var(--md-sys-color-on-secondary-container);
-
-}
-

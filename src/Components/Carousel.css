@@ -13,11 +13,6 @@
   display: none;
 }
 
-
-
-
-
-
 @media screen and (max-width: 600px) {
   .carousel-container {
     height: 45vh;
@@ -25,7 +20,7 @@
   }
 }
 @media screen and (max-width: 840) {
-  .carousel-container{
+  .carousel-container {
     width: 85%;
   }
 }

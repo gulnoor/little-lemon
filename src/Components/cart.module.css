@@ -54,24 +54,23 @@
 .total {
   margin-top: auto;
   display: grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns: 1fr 1fr;
 
   padding: 16px;
 }
 @media screen and (max-width: 1200px) {
   .container {
-    position: fixed; 
+    position: fixed;
     z-index: 998;
     margin-left: 0;
     /* height:100vh; */
     /* height: 80%; */
 
-    overflow-y: scroll; 
+    overflow-y: scroll;
   }
 }
 @media screen and (max-width: 840px) {
   .container {
-   display: none;
-   
+    display: none;
   }
 }

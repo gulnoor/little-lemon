@@ -110,7 +110,7 @@ const BookingForm = () => {
       .catch(function (rejectValue) {
         setAvailTimes(rejectValue);
       });
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [formik.values.date]);
 
   const handleChipClick = (time, i) => {

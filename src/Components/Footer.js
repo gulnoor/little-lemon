@@ -72,8 +72,6 @@ const Footer = () => {
           <p>Email: littlelemonchicago@example.com</p>
         </div>
       </div>
-
-      
     </footer>
   );
 };

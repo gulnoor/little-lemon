@@ -1,4 +1,4 @@
-import {  useRef } from "react";
+import { useRef } from "react";
 import "./Carousel.css";
 import styled from "@emotion/styled";
 
@@ -20,7 +20,7 @@ const StyledP = styled.p`
   width: 90%;
   transform: translate(-50%, -50%);
   display: -webkit-box;
-  -webkit-line-clamp: 5; 
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   color: white;
 
@@ -74,7 +74,7 @@ const CarouselItem = ({ menuItem, handleClick }) => {
         className="title-large"
         style={{
           whiteSpace: "nowrap",
-          overflow:"hidden",
+          overflow: "hidden",
           textOverflow: "ellipsis",
           textAlign: "center",
         }}

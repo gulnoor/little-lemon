@@ -99,17 +99,14 @@ const Material3Input = ({
         });
   }, [isFocused]);
 
-
   return (
     <div
       style={{
         display: "flex",
         flexDirection: "column",
-        transition:"all 0.3s"
+        transition: "all 0.3s",
       }}
       className={`big-container ${children}`}
-
-
     >
       <div style={boxStyle} className={`input-container ${children}`}>
         <label htmlFor={id} style={labelStyle}>

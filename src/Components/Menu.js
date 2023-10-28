@@ -49,9 +49,9 @@ const Menu = () => {
   const titleRef = useRef();
   const [rating, setRating] = useState(4.5);
   const { theme } = useContext(ThemeContext);
-useLayoutEffect(()=>{
-  titleRef.current.style.opacity=1
-},[])
+  useLayoutEffect(() => {
+    titleRef.current.style.opacity = 1;
+  }, []);
 
   const menu = [
     {
@@ -165,7 +165,7 @@ useLayoutEffect(()=>{
           <h1
             ref={titleRef}
             className="display-large"
-            style={{ opacity: "0",transition:"all 4s" }}
+            style={{ opacity: "0", transition: "all 4s" }}
           >
             Menu
           </h1>

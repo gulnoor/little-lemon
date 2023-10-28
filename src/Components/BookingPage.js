@@ -57,7 +57,7 @@ const StyledHero = styled.div`
   align-items: center;
   color: var(--md-sys-color-on-tertiary-container);
   @media screen and (max-width: 601px) {
-    &>img{
+    & > img {
       display: none;
     }
   }

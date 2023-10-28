@@ -17,7 +17,7 @@ const Hero = () => {
       //     }}
       className="Hero"
     >
-        <h1 className="med-heading">Little Lemon</h1>
+      <h1 className="med-heading">Little Lemon</h1>
 
       <div className="hero-content">
         <h1>Little Lemon</h1>
@@ -44,7 +44,6 @@ const Hero = () => {
         </Button>
       </div>
       <img className="hero-img2" src={logo} alt="" />
-
     </header>
   );
 };

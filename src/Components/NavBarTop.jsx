@@ -3,7 +3,7 @@ import logo from "../assets/images/Asset 16@4x.png";
 import hamburger from "../assets/images/🦆 icon _hamburger menu.svg";
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
-import person from "../assets/account_circle_FILL0_wght400_GRAD0_opsz24.svg"
+import person from "../assets/account_circle_FILL0_wght400_GRAD0_opsz24.svg";
 import { StyledIcon } from "./NavigationRail";
 
 const StyledBar = styled.div`
@@ -34,7 +34,7 @@ const StyledBar = styled.div`
 `;
 
 const NavBarTop = () => {
-  const {theme} = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
   return (
     <StyledBar theme={theme}>
       <img
@@ -43,10 +43,14 @@ const NavBarTop = () => {
         src={hamburger}
       ></img>
       <img className="navbar-top-logo" alt="logo" src={logo}></img>
-      <StyledIcon theme={theme} src={person} style={{
-        padding:"16px",
-        height:"100%"
-      }}></StyledIcon>
+      <StyledIcon
+        theme={theme}
+        src={person}
+        style={{
+          padding: "16px",
+          height: "100%",
+        }}
+      ></StyledIcon>
     </StyledBar>
   );
 };

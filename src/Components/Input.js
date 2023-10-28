@@ -54,7 +54,6 @@ const Input = ({
   const [isFocused, setIsFocused] = useState(false);
   const validationScheme = schema.fields[id];
 
-
   const [inputStyle, setInputStyle] = useState({
     zIndex: "42",
     position: "relative",

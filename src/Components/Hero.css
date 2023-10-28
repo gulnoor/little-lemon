@@ -8,8 +8,8 @@
   padding: 0.5rem;
   transition: 0.2s;
 }
-.hero-img2{
-display: none;
+.hero-img2 {
+  display: none;
 }
 
 .hero-content {
@@ -41,68 +41,63 @@ display: none;
 .Hero Button {
   margin-top: 1rem;
 }
-.med-heading{
+.med-heading {
   display: none;
 }
-@media screen and (min-width:601px) {
-  .hero-img{
+@media screen and (min-width: 601px) {
+  .hero-img {
     display: none;
   }
-  .hero-content{
+  .hero-content {
     align-items: flex-start;
-
-    
   }
-  .Hero h1{
+  .Hero h1 {
     display: none;
     font-size: 74px;
   }
-  .Hero .med-heading{
+  .Hero .med-heading {
     display: block;
     text-align: center;
     font-size: 74px;
     width: 100%;
   }
 
-  .Hero span{
+  .Hero span {
     font-size: 22px;
   }
-  .Hero{
+  .Hero {
     flex-direction: row;
     flex-wrap: wrap;
     padding: 0 24px;
   }
-  .hero-img2{
+  .hero-img2 {
     display: block;
     border-radius: 40px;
     width: 45%;
     object-fit: cover;
     margin-left: auto;
   }
-  .hero-content{
+  .hero-content {
     width: 50%;
     justify-content: center;
-
   }
-
 }
-@media screen and (min-width:841px) {
-  .Hero h2{
+@media screen and (min-width: 841px) {
+  .Hero h2 {
     font-size: 42px;
   }
-  .Hero span{
+  .Hero span {
     font-size: 26px;
   }
-
 }
-@media screen and (min-width:1000px) {
-  .Hero{
+@media screen and (min-width: 1000px) {
+  .Hero {
     min-height: 100vh;
   }
-.Hero .med-heading{
-  display: none;
-}
-.Hero h1{
-  display: block;
-}
+  .Hero .med-heading {
+    display: none;
+  }
+  .Hero h1 {
+    display: block;
+  }
 }

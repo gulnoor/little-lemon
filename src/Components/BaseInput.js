@@ -2,8 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import "./Input.css";
 import { ThemeContext } from "../context/ThemeContext";
 
-
-
 const BaseInput = ({
   // styleInput = {},
   // styleContainer = {},
@@ -22,7 +20,6 @@ const BaseInput = ({
   const { theme } = useContext(ThemeContext);
   const validationScheme = schema.fields[id];
 
-
   const [inputStyle, setInputStyle] = useState({
     zIndex: "42",
     position: "relative",
@@ -36,16 +33,14 @@ const BaseInput = ({
         ? "transparent"
         : "var(--md-sys-color-on-surface)",
     outline: "none",
-    width: "100%"
+    width: "100%",
   });
-  
+
   useEffect(() => {
     setInputStyle((prev) => {
       return { ...prev, colorScheme: theme };
     });
   }, [theme]);
-
-
 
   const isValid = (target) => {
     console.log("validating " + id);
@@ -106,59 +101,59 @@ const BaseInput = ({
         };
       });
     }
-  }, [isFocused, value,type]);
-
+  }, [isFocused, value, type]);
 
   switch (type) {
     case "select":
       return (
-          <select
-            style={inputStyle}
-            name={id}
-            id={id}
-            onChange={changeHandler}
-            onBlur={handleBlur}
-            value={value}
-            onFocus={handleFocus}
-          >
-            <option value="">Select {`${children}`}</option>
-            {other.choices?other.choices.map((choice) => {
-              return (
-                <option key={choice} value={choice}>
-                  {choice}
-                </option>
-              );
-            }):null}
-          </select>
-
+        <select
+          style={inputStyle}
+          name={id}
+          id={id}
+          onChange={changeHandler}
+          onBlur={handleBlur}
+          value={value}
+          onFocus={handleFocus}
+        >
+          <option value="">Select {`${children}`}</option>
+          {other.choices
+            ? other.choices.map((choice) => {
+                return (
+                  <option key={choice} value={choice}>
+                    {choice}
+                  </option>
+                );
+              })
+            : null}
+        </select>
       );
     case "textarea":
       return (
-          <textarea
-            style={inputStyle}
-            id={id}
-            onChange={changeHandler}
-            onBlur={handleBlur}
-            value={value}
-            onFocus={handleFocus}
-            name={id}
-            cols="30"
-            rows="10"
-          ></textarea>
+        <textarea
+          style={inputStyle}
+          id={id}
+          onChange={changeHandler}
+          onBlur={handleBlur}
+          value={value}
+          onFocus={handleFocus}
+          name={id}
+          cols="30"
+          rows="10"
+        ></textarea>
       );
     default:
       return (
-          <input
-            style={inputStyle}
-            name={id}
-            onBlur={handleBlur}
-            value={value}
-            onFocus={handleFocus}
-            id={id}
-            type={type}
-            onChange={changeHandler}
-            {...other}
-          />
+        <input
+          style={inputStyle}
+          name={id}
+          onBlur={handleBlur}
+          value={value}
+          onFocus={handleFocus}
+          id={id}
+          type={type}
+          onChange={changeHandler}
+          {...other}
+        />
       );
   }
 };
