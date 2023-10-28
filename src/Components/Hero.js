@@ -5,7 +5,6 @@ import { Button } from "@mui/material";
 
 const Hero = () => {
   const navigate = useNavigate();
-  const buttonStyle = { height: "52px", fontSize: "1.2rem" };
 
   return (
     <header
